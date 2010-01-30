@@ -1,0 +1,19 @@
+The [DataUpdate plugin] can make changes to a data source. To keep track of the updates, the plugin writes entries to a logging page.
+
+The page name is [DataUpdateLog] and it is formatted in the following way:
+{{{
+!!! DataUpdate log
+This is the DataUpdate log page, blah, blah...
+
+!!! Log
+||Date                ||Page    ||User ID ||DB   || SQL
+| 2009-10-10 12:34:14 | SandBox | John    | demo |  UPDATE employees SET.... 
+| 2009-10-10 12:52:44 | SandBox | John    | demo |  UPDATE employees SET.... 
+...
+}}}
+
+The logging mechanism looks for the "!!! Log" title and expects a list of table entries as shown. You can change the text before the "!!! Log" line as you wish but not afterwards.
+ 
+By default the last week of logs are kept. At regular intervals the logger checks for entries that are more than 7 days old, if it finds any they are discarded.
+
+Log files over 100k are truncated.

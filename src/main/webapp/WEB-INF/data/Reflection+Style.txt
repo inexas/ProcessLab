@@ -1,0 +1,45 @@
+!! Image with reflection effect.
+
+%%tabbedAccordion
+%%tab-Introduction
+
+! Introduction
+
+This style allows you to insert images with reflection effect. It is totally useless, but great fun.
+
+Simply add a %~%reflection style around your images.
+The reflection of the image appears below the image, and will fade into the background colour...
+{{{
+  %%reflection
+  [home_vulture.jpg]
+  /%
+}}}
+%%(float:left;)
+renders as:
+[{Image src='wet_vulture.jpg' width='160' }]
+/%
+
+Reality check:
+%%reflection-50-70
+[{Image src='home_vulture.jpg' width='160' }]
+/%
+
+/%
+%%tab-Usage
+
+! Usage
+
+Put a {{%~%reflection ... /~%}} around your pictures to add a reflection image at the bottom.
+General format is :
+{{{
+  %%reflection-<height>-<opacity>
+   ..your images..
+  /%
+}}} 
+
+* __height__ : 1..100. Optional height value of the reflection image, in percent of the height of the reflected image (default = 30%) 
+* __opacity__ : 1..100. Optional opacity or transparency value of the reflection image 
+  (default = 50%, 100 means not transparent)
+
+/%
+%%

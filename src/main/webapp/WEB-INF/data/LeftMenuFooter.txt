@@ -1,0 +1,22 @@
+----
+__Editing__\\
+[Edit page help]\\
+- [Editing styles]\\
+- [DataStar plugins]\\
+- [All plugins|Plugins]\\
+
+[Sand box]\\
+\\
+----
+__Admin__\\
+[Page index]\\
+[Recent changes]\\
+[Security]\\
+[System info]\\
+[Undefined pages]\\
+[Unused pages]\\
+\\
+----
+__Referring pages__\\
+[{INSERT ReferringPagesPlugin}]
+\\

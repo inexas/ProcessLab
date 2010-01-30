@@ -1,0 +1,51 @@
+!!! Line charts
+
+Line charts display one or more data series on a graph
+
+!! Special features
+* Clicking on one of the points on the line pops up a tool tip giving details of the value
+* Clicking on the legend for a series animates the line
+
+!! Parameters
+* __format__ mandatory: Must be 'area'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView minmaxlegend'}]
+
+* __smooth__: Show line either as a curve or a series of straight line segment
+** Optional, default: 'false'
+** Valid values: true, false
+** Examples: smooth=true
+
+!!! Examples
+
+!! Dynamic non-stacked area chart
+
+|| Source || Chart
+|{{{
+[{
+DataView db=demo format=line size=s
+
+SELECT name,quantity,price
+FROM products
+}]
+}}}| [{DataView db=demo format=line size=s sql='SELECT name,quantity,price FROM products'}]
+
+!! Line chart from static data
+
+|| Source || Chart
+| {{{
+[{DataView format=area size='200,400' smooth=true
+isStacked=true
+
+Expense,Jan,Feb,Mar
+Hardware,15,18,15
+Software,75,2,3
+Services,120,110,117
+}]
+}}}| [{DataView format=line size='200,400' smooth=true
+
+Expense,Hardware,Software,Services
+Jan,15,15,120
+Feb,18,2,110
+Mar,15,0,117
+}]

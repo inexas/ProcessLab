@@ -1,0 +1,13 @@
+Lists the pages current locked for editing.
+
+!!! Parameters
+* __none__
+
+!!! CSS classes
+* listlocksplugin
+
+!!! Example
+{{[[{ListLocksPlugin}]}} generates the following table.
+
+[{ListLocksPlugin}]
+

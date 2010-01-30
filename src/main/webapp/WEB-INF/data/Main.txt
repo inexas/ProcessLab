@@ -1,0 +1,25 @@
+!!! Welcome to ProcessLab
+ProcessLab is an enterprise knowledge management tool. It helps you to collect, homogenize and publish both structured and unstructured tacit enterprise knowledge.
+
+%%quote
+!! Case history
+Nathalie is in charge of the customer inquiries department for a large insurance company. She has 15 people in her team.
+
+Nathalie's job is to keep the customers happy. She has to make sure that inquiries are handled by the right people, correctly and with the minimum of delay. To do this she needs two new reports: 'Inquiry overview', 'Team member/inquiry overview'. The raw data is in the database, somewhere...
+
+! Before ProcessLab
+Call IT department, explain request. They send a business analyst. Define requirements. Estimate effort / budget. Plan project. Implement. Test. Deploy. Several weeks, several $1,000's later: Nathalie has report delivered by email as PDF once per week by email. Nathalie happy.
+
+! After ProcessLab
+Call Business Engineering department, arrange appointment with Business Engineer. Thursday a.m. the Business Engineer Ralf is at Nathalie's desk. "What do you need exactly?". "You mean [like that|Inquiry overview report]?", "And [how about that|Inquiry By Team report]?". %%teal (Hint: follow the links.)%% Two hours later Nathalie and Ralf head off for a coffee. Nathalie has latest report available on-line whenever she needs it. So do the team. Nathalie %%underline very%% happy.
+/%
+
+!!! So what are the key benefits of ProcessLab?
+# Simplifies information management: ProcessLab provides your workforce with a single integrated interface to both structured and unstructured data
+# Institutionalize organizational knowledge
+# Centralizes know-how - people know where to put things and where to find things. They also know what is the latest version is and can continually improve it 
+# Increases productivity not only can information be recorded it can be found again saving duplication and building on top of existing know-how
+# Time to market: Deploy new reports in hours, not weeks
+# Zero latency: the latest figures are immediately available to the people who need them
+# Felling the Excel forest: too much business is done by sending around Excel spreadsheets. Spreadsheets are great tools but which version is the latest one? And which one is correct?
+# Versioning: Information is never lost, there's a complete audit trail of all the content

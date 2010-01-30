@@ -1,0 +1,16 @@
+* __min__: minimum Y axis value
+** Optional
+** Default: calculated from series values
+** Valid values: integer values
+** Examples: min=0
+
+* __max__: maximum Y axis value
+** Optional
+** Default: calculated from series values
+** Valid values: integer values
+** Examples: min=200
+
+* __legend__ allows you to omit or place the legend
+** Optional, default: right
+** Valid values: left, right, top, bottom, none
+** Examples: legend=left

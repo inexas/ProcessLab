@@ -1,0 +1,61 @@
+!! Tabbed Sections
+
+This style allows to add tabbed sections to your wiki pages, similar to the ones used in edit or page-info mode. The formatting of the tabs can be customised in the jspwiki.css.
+
+!! Usage
+
+Enclose all tabbed sections inside a __%~%tabbedSection ../~%__. Next, add each tabbed section inside a __%~%tab-''tabname'' .. /~%__. Replace ''tabname'' with the name of your tab: use only alphanumeric characters or a dash in the name of your tabs (no other punctuations), the name of the tab may not start with a digit. (css classname restrictions) Use ~CapitalisedWords for multi-word tabnames.
+
+When the page loads, only the first tab will be visible.All other sections are hidden, until you click the corresponding tab.
+
+{{{
+%%tabbedSection
+
+%%tab-ThisIsMyFirstTab
+Some text inside the first tab.
+/%
+
+%%tab-ThisIsMyLastTab
+Some other text inside the second tab.
+/%
+
+/%
+}}}
+
+!! Reality check: 
+
+%%tabbedSection
+
+%%tab-LoremIpsum
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec dictum velit eget risus. Fusce ligula. Maecenas vitae velit eget odio pulvinar aliquet. Quisque ultricies mollis lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent dapibus odio. Nullam sodales erat vel pede. Morbi ut turpis. Sed sed metus. Donec ut dui. Duis gravida risus non nibh. Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam dolor urna, tincidunt eget, posuere nec, suscipit quis, arcu. Proin pede risus, placerat id, tincidunt eu, consequat in, sem. Sed eu sapien. Vestibulum turpis. Sed fringilla odio vel eros. Mauris in libero sed sapien mattis pellentesque. Cras aliquet nibh sit amet tortor. Nam nunc.
+/%
+
+%%tab-NullamSodales
+Nullam sodales erat vel pede. Morbi ut turpis. Sed sed metus. Donec ut dui. Duis gravida risus non nibh. Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam dolor urna, tincidunt eget, posuere nec, suscipit quis, arcu. Proin pede risus, placerat id, tincidunt eu, consequat in, sem. Sed eu sapien. Vestibulum turpis. Sed fringilla odio vel eros. Mauris in libero sed sapien mattis pellentesque. /%
+
+%%tab-Cras
+Cras aliquet nibh sit amet tortor. Nam nunc.
+/%
+/%
+
+!! Notes / FAQ
+
+;How can you float content next to a tabbed section ?: A %~%tabbedSections always occupies the full width of the page, and does not allow to float other content next to it. Use css trickery to work around this limitation: wrap the %~%tabbedSection in a floating block with a reduced width.
+
+%%commentbox
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec dictum velit eget risus. Fusce ligula. Maecenas vitae velit eget odio pulvinar aliquet. Quisque ultricies mollis lorem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent dapibus odio. Nullam sodales erat vel pede. Morbi ut turpis. Sed sed metus. 
+/%
+%%(width:60%; float:left;)
+%%tabbedSection
+%%tab-ThisIsMyFirstTab
+Some text inside the first tab.
+/%
+%%tab-ThisIsMyLastTab
+Some other text inside the second tab.
+/%
+/%
+/%
+
+%%(clear:both)
+
+/%

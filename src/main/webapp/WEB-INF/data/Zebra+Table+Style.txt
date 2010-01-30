@@ -1,0 +1,84 @@
+%%tabbedSection
+%%tab-Introduction
+
+This style allows you to add alternate row coloring to your (large) tables. You can do this by simply enclosing the table inside %~%zebra-table ... %~% tags. 
+
+Example:
+%%zebra-ffe0e0-ffff80
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+/% 
+
+/%
+%%tab-Usage
+! Usage 
+
+Basic syntax: 
+{{{
+%%zebra-table ... %%
+%%zebra-<colorOdd> ... %%
+%%zebra-<colorOdd>-<colorEven> ... %%
+}}}
+
+You can specify the odd and/or even colors using [html hex color|http://html-color-codes.com/] values or HTML color names like ''aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, purple, red, silver, teal, white, yellow'' and ''transparent''. When nothing specified, the odd  rows get the css class '.odd'.
+
+Here is an example of a table with zebra style:
+{{{
+%%zebra-table 
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+/% 
+}}} 
+
+/%
+%%tab-Examples
+!Examples
+You can see the result here 
+
+* normal table
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+
+
+* zebra table with odd rows styled according to jspwiki.css : {{%~%zebra-table}}
+%%zebra-table 
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+/% 
+
+
+* zebra table with odd rows colored %%(background:#ffe0e0;) ''#ffe0e0'' %% : {{%~%zebra-ffe0e0}}
+%%zebra-ffe0ee
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+/% 
+
+
+* zebra table with %%(background:#ffe0e0;) odd%% and %%(background:#ffff80;) even%% rows colored {{%~%zebra-ffe0e0-ffff80}}
+%%zebra-ffe0e0-ffff80 
+|| column-head1 || column-head2 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+| cell-data | cell data 
+/% 
+
+/%
+/%

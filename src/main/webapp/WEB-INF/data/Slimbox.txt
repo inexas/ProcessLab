@@ -1,0 +1,20 @@
+!!!Slimbox
+
+The attachment viewer has been replaced by the amazing Slimbox. It allows to preview images as an overlay on the current page. As a bonus, Slimbox is also available as a style to beef up your wiki pages with this cool attachment viewer.
+
+! Usage:
+Put the style around a set of image links. Each viewable image will get a clickable %%(font-size:1.4em; font-weight:bold; color:blue;)&raquo;/% marker in front. Click it to enter the slimbox viewer. Navigate through the gallery with the arrow keys. Exit the viewer by {{Esc}}, the close button or clicking outside the image panel.
+
+{{{
+%%slimbox
+|[tomato.jpg]  |[Tomatoes are red vegetables|tomato.jpg] 
+|[doggy.bmp]   |[Cows are animals too|cow.jpg] 
+%%
+}}}
+
+Reality check:\\
+%%slimbox 
+|[tomato.jpg]  |[Tomatoes are red vegetables|tomato.jpg] 
+|[doggy.bmp]   |[Cows are animals too|cow.jpg] 
+%% 
+

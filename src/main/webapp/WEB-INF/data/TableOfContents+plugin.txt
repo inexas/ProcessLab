@@ -1,0 +1,16 @@
+[{TableOfContents}]
+
+This plugin generates a table of contents for a page by using the !!!headings as the content entries.
+
+!!Parameters
+;__title__: The title that is used for the TOC.  Default is "Table of Contents"
+;__numbered__: If true, generates automatically numbers for the headings.
+;__start__:  If using a numbered list, sets the start number.
+;__prefix__:  If using a numbered list, sets the prefix used for the list.
+
+!!Example
+{{{
+[{TableOfContents}]
+[{TableOfContents title='Page contents' numbered='true' prefix='Chap. '}]
+}}}
+

@@ -1,0 +1,13 @@
+%%center
+[Respect.gif]
+%%
+
+We are indebted to the open source community for the hard work they have contributed. This page names and thanks a number of notable projects that have meant that ProcessLab exists.
+* Java: Thanks to Sun for the best language around today
+* Apache Tomcat: Again thanks again to Sun for a reliable platform
+* Eclipse: The best Java IDE. Include the Mylyn plugin guys
+* JSPWiki: is the Wiki Wiki engine we use. I have used JSPWiki over a considerable number of years and it is one of the best engines around. Thanks especially to Janne Jalkanen
+* Hypersonic Database: is the database behind the [Demo].
+* MySQL a great serious database we use for bulk testing
+* Google for a search engine that solves 99% of all household problems and a great Visualizations package
+

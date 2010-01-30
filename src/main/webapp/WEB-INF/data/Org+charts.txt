@@ -1,0 +1,89 @@
+!!! Organizational charts
+Organizational charts give you the possibility to display hierarchical relationships graphically. This is useful in showing project teams, management teams etc.
+
+!! Parameters
+* __format__: mandatory, must be 'org'
+[{InsertPage page='DataView base parameters'}]
+* __collapse__: Allows the viewer to close and open nodes on the chart
+** Optional, default: true
+** Valid values: true, false
+** Examples: collapse=true
+
+!! Data
+Two or three columns should be provided
+# __Name__ string, mandatory: The label for the organizational unit. This should be unique within column 1
+# __Parent__ string, mandatory: The name of the parent organizational unit. If the unit is the root then use an empty string or omit it altogether
+# __Tooltip__ string, optional, no default: A tool tip to be displayed
+
+!!! Examples
+
+!! Dynamic
+
+%%(text-align:center)
+[{DataView format=org db=demo size=m
+
+SELECT
+    e1.name AS name,e2.name AS manager,e1.email
+FROM
+    employees e1
+    LEFT JOIN employees e2 ON e1.managerId=e2.id
+}]
+%%
+
+{{{
+[{DataView format=org db=demo size=m
+
+    SELECT
+        e1.name AS name,e2.name AS manager,e1.email
+    FROM
+        employees e1
+        LEFT JOIN employees e2 ON e1.managerId=e2.id
+}]
+}}}
+
+!! Statically generated example
+The following example shows how to generate an organizational chart statically.
+
+! Example: corporate structure
+
+[{DataView format='org'
+
+Label, Parent, Tooltip
+Board of Directors
+CEO, Board of Directors
+Corporate Center,CEO
+Marketing,CEO
+Operations,CEO
+Finance,CEO
+Tax,Finance
+Asset Management,Finance
+Accounting,Finance
+Research,Operations
+Production,Operations
+IT,Operations
+Sales,Marketing
+Communications,Marketing
+}]
+
+! Source: corporate structure
+
+{{{
+[{DataView format='org'
+
+Label, Parent, Tooltip
+Board of Directors
+CEO, Board of Directors
+Corporate Center,CEO
+Marketing,CEO
+Operations,CEO
+Finance,CEO
+Tax,Finance
+Asset Management,Finance
+Accounting,Finance
+Research,Operations
+Production,Operations
+IT,Operations
+Sales,Marketing
+Communications,Marketing
+}]
+}}}

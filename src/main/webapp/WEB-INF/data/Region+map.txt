@@ -1,0 +1,53 @@
+!!! Region map
+A region map is a map of a region, country or continent map showing values as colors with hovertext.
+
+!!! Parameters
+* __format__ mandatory: Must be 'marker'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView region'}]
+
+!! Data
+# Region name which may be:
+#* The name of a country, e.g. "England" or an uppercase [ISO-3166|http://en.wikipedia.org/wiki/ISO_3166-1] code or its English name, e.g. "CH" or "Switzerland"
+#* An uppercase [ISO-3166-2|http://en.wikipedia.org/wiki/ISO_3166-1] region code or its Englishname, e.g.  (for example, "US-NJ" or "New Jersey"). Note: Regions can only be specified when the dataMode option is set to 'regions'.
+# [[Number, Optional] A numeric value displayed when the user hovers over this region. If column 3 is used, this column is required.
+# [[String, Optional] Additional string text displayed when the user hovers over this region.
+
+The map is limited to 400 entries, only the first 400 will be shown.
+
+Notes
+# The region parameter may either be a [ISO-3166-2|http://en.wikipedia.org/wiki/ISO_3166-1] country code (e.g. "CH", country name (e.g. "Switzerland") or a one of the following codes:
+#* world - (Whole world)
+#* 005 - (South America)
+#* 013 - (Central America)
+#* 021 - (North America)
+#* 002 - (All of Africa)
+#* 017 - (Central Africa)
+#* 015 - (Northern Africa)
+#* 018 - (Southern Africa)
+#* 030 - (Eastern Asia)
+#* 034 - (Southern Asia)
+#* 035 - (Asia/Pacific region)
+#* 143 - (Central Asia)
+#* 145 - (Middle East)
+#* 151 - (Northern Asia)
+#* 154 - (Northern Europe)
+#* 155 - (Western Europe)
+#* 039 - (Southern Europe)
+ 
+!!! Examples
+
+%%(text-align:center)
+[{DataView db='demo' format='region' size='m'
+    sql='SELECT country,sum(lineTotal)/1000 AS sales FROM ordersView GROUP BY country ORDER BY country'}]
+    
+__GPS sales breakdown by regionin $000's, 2008__
+%%
+
+{{{
+[{DataView
+    db='demo'
+    format='geo'
+    size='m'
+    sql='SELECT Region,sum(lineTotal)/1000 AS sales FROM ordersView GROUP BY country ORDER BY country'}]
+}}}

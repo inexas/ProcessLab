@@ -1,0 +1,24 @@
+!!! Category popup
+
+''[Page categories] are purely conceptual groupings for organizing the site's contents. To include a page in a category, just link to your chosen category page from the bottom of the page. ''
+
+This style allows to easily get access to category without first navigating to the intermediate ''category'' page itself.
+
+!! Usage:
+
+{{{
+  %%category [Category CategoryName]%% 
+}}}
+The {{%~%category}} style turns an ordinary page link into a pop-up screen which lists all pages referring to the [[CategoryPage]. When you click the link, the ''referenced by'' information of the category page is retrieved from the server.
+
+!! Example:
+The following code:
+{{{
+See also %%category [Category style] and [Category category]%%
+}}}
+
+Will render as:
+
+;: See also %%category [Category style] and [Category category]%%
+----
+[Category category]

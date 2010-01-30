@@ -1,0 +1,31 @@
+Plain text is a simple, but powerful formal that lets you embed information from a data source in normal text.
+
+!! Parameters
+[{InsertPage page='DataView base parameters'}]
+
+!! Data
+One row, one column only.
+
+In-lined data is supported but it doesn't make much sense.
+
+!!! Examples
+
+At Global GPS we have [{
+DataView format=text db=demo sql='SELECT COUNT(*) FROM products
+}] 
+products in our catalogue and in 2008 we sold an average of [{
+DataView format=text db=demo sql='SELECT SUM(quantity)/12 FROM lineitems
+}]
+units a month.
+
+!! Source
+{{{
+At Global GPS we have [{
+DataView format=text db=demo sql='SELECT COUNT(*) FROM products
+}] 
+products in our catalogue and in 2008 we sold an average of [{
+DataView format=text db=demo sql='SELECT SUM(quantity)/12 FROM lineitems
+}]
+units a month.
+}}}
+

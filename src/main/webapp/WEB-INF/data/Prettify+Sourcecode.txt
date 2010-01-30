@@ -1,0 +1,323 @@
+!!!Code prettify
+
+This style allows to add syntax coloring to your code blocks. (inside tripple { brackets)
+
+The lexer should work on a number of languages including C and friends, Java, Python, Bash, SQL, HTML, XML, CSS, Javascript, and Makefiles. It works passably on Ruby, PHP and Awk and a decent subset of Perl, but, because of commenting conventions, doesn't work on Smalltalk, Lisp-like, or CAML-like languages.
+
+! Usage
+{{{
+%%prettify
+{{{
+your prettified code snippet
+<triple } } } to close the code block>
+/%
+}}}
+
+----
+!!Examples
+
+
+!Bash
+
+%%prettify
+{{{
+#!/bin/bash
+
+# Fibonacci numbers
+# Writes an infinite series to stdout, one entry per line
+function fib() {
+  local a=1
+  local b=1
+  while true ; do
+    echo $a
+    local tmp=$a
+    a=$(( $a + $b ))
+    b=$tmp
+  done
+}
+
+# output the 10th element of the series and halt
+fib | head -10 | tail -1
+}}} /%
+
+!C
+
+%%prettify
+{{{
+#include <stdio.h>
+
+/* the n-th fibonacci number.
+ */
+unsigned int fib(unsigned int n) {
+  unsigned int a = 1, b = 1;
+  unsigned int tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+main() {
+  printf("%u", fib(10));
+}
+}}} /%
+
+!C++
+%%prettify
+{{{
+#include <iostream>
+
+using namespace std;
+
+//! fibonacci numbers with gratuitous use of templates.
+//! \param n an index into the fibonacci series
+//! \param fib0 element 0 of the series
+//! \return the nth element of the fibonacci series
+template <class T>
+T fib(unsigned int n, const T&amp; fib0) {
+  T a(fib0), b(fib0);
+  while (--n >= 0) {
+    T tmp(a);
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+int main(int argc, char **argv) {
+  cout << fib(10, 1U);
+}
+}}} /%
+
+!Java
+%%prettify
+{{{
+package foo;
+
+import java.util.Iterator;
+
+/**
+ * the fibonacci series implemented as an Iterable.
+ */
+public final class Fibonacci implements Iterable<Integer> {
+  /** the next and previous members of the series. */
+  private int a = 1, b = 1;
+
+  public Iterator<Integer> iterator() {
+    return new Iterator<Integer>() {
+      /** the series is infinite. */
+      public boolean hasNext() { return true; }
+      public Integer next() {
+        int tmp = a;
+        a += b;
+        b = tmp;
+        return a;
+      }
+      public void remove() { throw new UnsupportedOperationException(); }
+    };
+  }
+
+  /**
+   * the n<sup>th</sup> element of the given series.
+   * @throws NoSuchElementException if there are less than n elements in the
+   *   given Iterable's {@link Iterable#iterator iterator}.
+   */
+  public static <T>
+  T nth(int n, Iterable<T> iterable) {
+    Iterator<? extends T> it = iterable.iterator();
+    while (--n > 0) {
+      it.next();
+    }
+    return it.next();
+  }
+
+  public static void main(String[] args) {
+    System.out.print(nth(10, new Fibonacci()));
+  }
+}
+
+}}} /%
+
+!Javascript
+%%prettify
+{{{
+/**
+ * nth element in the fibonacci series.
+ * @param n >= 0
+ * @return the nth element, >= 0.
+ */
+function fib(n) {
+  var a = 1, b = 1;
+  var tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+document.write(fib(10));
+}}} /%
+
+!Perl
+%%prettify
+{{{
+#!/usr/bin/perl
+
+use strict;
+use integer;
+
+# the nth element of the fibonacci series
+# param n - an int >= 0
+# return an int >= 0
+sub fib($) {
+  my $n = shift, $a = 1, $b = 1;
+  ($a, $b) = ($a + $b, $a) until (--$n < 0);
+  return $a;
+}
+
+print fib(10);
+}}} /%
+
+!Python
+
+%%prettify
+{{{
+#!/usr/bin/python2.4
+
+def fib():
+  '''
+  a generator that produces the elements of the fibonacci series
+  '''
+
+  a = 1
+  b = 1
+  while True:
+    a, b = a + b, a
+    yield a
+
+def nth(series, n):
+  '''
+  returns the nth element of a series,
+  consuming the earlier elements of the series
+  '''
+
+  for x in series:
+    n = n - 1
+    if n <= 0: return x
+
+print nth(fib(), 10)
+}}} /%
+
+!XML
+%%prettify
+{{{
+<!DOCTYPE series PUBLIC "fibonacci numbers">
+
+<series base="1" step="s(n-2) + s(n-1)">
+  <element i="0">1</element>
+  <element i="1">1</element>
+
+  <element i="2">2</element>
+  <element i="3">3</element>
+  <element i="4">5</element>
+  <element i="5">8</element>
+
+  ...
+</series>
+}}} /%
+
+!HTML
+%%prettify
+{{{
+<html>
+  <head>
+    <title>Fibonacci number</title>
+
+  </head>
+  <body>
+    <noscript>
+      <dl>
+        <dt>Fibonacci numbers</dt>
+        <dd>1</dd>
+
+        <dd>1</dd>
+        <dd>2</dd>
+        <dd>3</dd>
+        <dd>5</dd>
+
+        <dd>8</dd>
+        &amp;hellip;
+      </dl>
+    </noscript>
+
+    <script type="text/javascript"><!--
+function fib(n) {
+  var a = 1, b = 1;
+  var tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+document.writeln(fib(10));
+// -->
+
+    </script>
+  </body>
+</html>
+}}} /%
+
+!PHP
+%%prettify
+{{{
+<html>
+  <head>
+    <title><?= 'Fibonacci numbers' ?></title>
+
+    <?php
+      // PHP has a plethora of comment types
+      /* What is a
+         "plethora"? */
+      function fib($n) {
+        # I don't know.
+        $a = 1;
+        $b = 1;
+        while (--$n >= 0) {
+          echo "$a\n";
+          $tmp = $a;
+          $a += $b;
+          $b = $tmp;
+        }
+      }
+    ?>
+  </head>
+  <body>
+    <? fib(10); ?>
+  </body>
+</html>
+}}} /%
+
+
+!SQL
+%%prettify 
+{{{
+/* A multi-line
+ * comment */
+'Another string /* Isn\'t a comment',
+"A string */"
+-- A line comment
+SELECT * FROM users WHERE id IN (1, 2.0, +30e-1);
+-- keywords are case-insensitive.
+-- Note: user-table is a single identifier, not a pair of keywords
+select * from user-table where id in (x, y, z);}}}
+/%
+
+----
+[Category style]

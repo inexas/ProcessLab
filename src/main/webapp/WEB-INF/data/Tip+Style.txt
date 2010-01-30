@@ -1,0 +1,81 @@
+!!! TIP
+
+%%tabbedSection
+%%tab-Introduction
+
+!Introduction
+
+This style allows to add tips with additional info to your wikipage. The tip appears when hoovering your mouse over the tip-caption.
+
+Example:
+{{{
+%%tip-MoreInfo
+Here is some more info about tomatoes
+[{Image src='tomato.jpg' width='154' align='center' }]
+/% 
+}}}
+
+Reality check: 
+%%tip-MoreInfo
+Here is some more info about tomatoes.
+[{Image src='tomato.jpg' width='154' align='center' }]
+/% 
+/%
+%%tab-Screenshot
+
+[{Image src='TipScreenshot.jpg' }]
+
+/%
+%%tab-Usage
+
+!Usage
+
+{{{
+%%tip-<tip-caption>
+<tip body>
+/%
+}}}
+
+
+The __tip caption__ is optional. (default is “More…”) 
+The tip-caption is shown as text. The rest of the tip is invisible.
+When you hoover the mouse over the tip-caption, the tip-body becomes visible
+
+The __tip body__ can contain any info, including pictures, plugins, etc.
+Be aware that the size of the tip is limited.
+The maximal width is 172px, which can be adjusted via the jspwiki.css.\\
+
+Note that the tip body will be visible but its content is NOT clickable.
+/%
+%%tab-Examples
+! Examples
+
+Example 1
+{{{
+The look and feel can easily be configured via Skins or %%tip-CSS Cascading Style Sheet/%. 
+Look at the Screenshots to see what you can expect
+/%
+}}}
+The look and feel can easily be configured via Skins or %%tip-CSS Cascading Style Sheet/%. 
+Look at the Screenshots to see what you can expect
+
+
+Example 2
+{{{
+%%tip
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, 
+tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, 
+accumsan ac, sem. 
+/%
+}}}
+
+%%tip
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, 
+tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, 
+accumsan ac, sem. 
+/%
+
+/%
+/%

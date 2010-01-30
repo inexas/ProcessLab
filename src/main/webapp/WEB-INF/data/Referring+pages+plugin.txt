@@ -1,0 +1,19 @@
+Finds and lists all pages that refer to the current page.
+
+!!! Parameters 
+* __max__=''n'' : How many pages to list.  Default is 10. Some pages might create very long lists, so it's a good idea to limit the list size.
+* __maxwidth__=''n'' : Limits the length of the generated links to at most ''n'' characters.  This should used to keep the [LeftMenu] or [LeftMenuFooter] at a manageable width.  Default is to not limit the length at all.
+* __separator__=''<markup>'' : What should be  put between the different items.  It's WikiMarkup, and by default it's two backslashes (meaning a carriage return, or <br />). JesseWilbur: If you want to use something like a "|", you have to put it in single quotes. separator='|'
+* __page__=''<page name>''
+* __before__=''<markup>''
+* __after__=''<markup>''
+* __show__=''pages|count'' : This parameter can have two values, "pages" (the default), and "count". The value "pages" will give you the list containing the pages, the value "count" will give you just the number of pages, not the whole list.
+* __showLastModified__=''true|false'' : The showLastModified parameter gives you the last modified date/time of the most recently changed page. It is only valid if show="count", otherwise a PluginException is thrown.
+
+This plugin extends AbstractReferralPlugin and therefore inherits its parameters.
+
+!!! Examples
+
+{{{[{INSERT ReferringPagesPlugin}]}}}
+See [LeftMenuFooter].
+

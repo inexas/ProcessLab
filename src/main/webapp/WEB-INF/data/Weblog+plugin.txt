@@ -1,0 +1,29 @@
+Builds a simple weblog.
+
+!!! Parameters
+* __{{page}}__ - which page is used to do the blog; default is the current page.
+* __{{days}}__ - how many days the weblog aggregator should show.  If set to "all", shows all pages.
+* __{{pageformat}}__ - What the entry pages should look like.  The pageformat can use the {{%p}} for the current page name
+* __{{startDate}}__ - Date when to start.  Format is "ddMMyy";
+* __{{maxEntries}}__ - How many entries to show at most.
+
+The "days" and "startDate" can also be sent in HTTP parameters, and the names are "weblog.days" and "weblog.startDate", respectively.
+
+
+!!! Examples
+{{{
+[{INSERT WeblogPlugin}]
+}}}
+
+!! Example Blog Page
+
+Here's an example blog or "News" page showing both the entry and display plugins in use:
+{{{
+[{WeblogEntryPlugin entrytext='Create a new entry.'}] Note that if your entry starts with 
+a heading it will be used as the title (e.g., "! My Title").
+
+----
+
+[{WeblogPlugin days='90' allowComments='true'}]
+}}}
+

@@ -1,0 +1,22 @@
+Lists all pages that are not currently referred to by any other page, thus meaning they are inaccessible through any other means.
+
+!!! Parameters
+
+* __maxwidth__=''n'' : Limits the length of the generated links to at most ''n'' characters.  This should used to keep the [LeftMenu] or [LeftMenuFooter] at a manageable width.  Default is to not limit the length at all.
+* __before__='''*''' : This element goes before each generated link. The value is WikiText, and the default is empty. 
+* __separator__=''',''' : Sets the separator to use between generated links. The value is WikiText, and the default is a nothing (Change to ", " for a horizontal, comma-separated list.)
+* __after__='''\n''' : Sets the separator to use after each generated links. The value is WikiText, and the default is a linebreak, which produces a vertical list. 
+* __include__='''pagename''' : a regular expression of pages to include in this list. 
+* __exclude__='''pagename''' : a regular expression of pages to exclude from this list.
+* __show__=''pages|count'' : This parameter can have two values, "pages" (the default), and "count". The value "pages" will give you the list containing the pages, the value "count" will give you just the number of pages, not the whole list.
+* __showLastModified__=''true|false'' : The showLastModified parameter gives you the last modified date/time of the most recently changed page. It is only valid if show="count", otherwise a PluginException is thrown.
+
+This plugin extends AbstractReferralPlugin and therefore inherits its parameters.
+
+!!! Examples
+
+{{{[{UnusedPagesPlugin}]}}}
+
+See [Unused pages].
+
+

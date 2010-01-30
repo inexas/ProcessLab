@@ -1,0 +1,64 @@
+!!! Sortable wiki tables
+
+This style allows you to make tables sortable by enclosing them inside a %~%sortable block.
+Just click the column header and your table is sorted without round-trip to the server.
+
+See also [Filtered Tables]
+
+!!Usage
+
+Enclose your tables in %~%sortable tags.
+Make sure your table starts with a row of header cells ( syntax: ~|~| ).
+
+* When you move the mouse over the header cells, you'll see a tool-tip and a mouse pointer
+  indicating you can click the cell.
+* Click the column header to sort, click again to reverse the sort order. 
+* The sort algorithm will auto-guess the data type of a column: date, numeric, 
+  ip-address, currency(€$£), disk memory (2MB, 4GB, 3TB) or string.
+* ''Note for jsp/plugin writers'':\\
+  Normally the cell text is parsed as data. However, you can add a different value 
+  for sorting by means of a cell attribute: {{<td sortdata="sortable-value">displayed value</td>}}.\\
+  Typically, this is used for a date field, which often is rendered in a locale 
+  friendly way -- in such a case, a date value compatible with javascript, can be added
+  as an attribute.
+{{{
+    <td sortdata="Fri, 5 Oct 2007 08:16:23">05-Oct-2007 20:16</td>
+}}}  
+* Sortable can also be combined with [Zebra table style].
+
+{{{
+%%zebra-table
+%%sortable
+|| Title || Author || Published   || Edition || Some IP@        || Expenses || Disk Memory
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100 |  €500     |  2Gb 
+| book2  |  happy  |  25 Jan 2005 |  19      |  256.100.100.100 |  €1500    |  4Kb
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100  |  €50      |  1.23TB
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100   |  €0.500   |  2.73kb
+| book5  |  rappy  |  25 Jul 2005 |  017     |  1.100.25.100    |  €5500    |  0.4Tb
+/%
+/%
+}}}
+
+Reality check:
+%%zebra-table
+%%sortable
+|| Title || Author || Published   || Edition || Some IP@        || Expenses || Disk Memory
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100 |  €500     |  2Gb 
+| book2  |  happy  |  25 Jan 2005 |  19      |  256.100.100.100 |  €1500    |  4Kb
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100  |  €50      |  1.23TB
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100   |  €0.500   |  2.73kb
+| book5  |  rappy  |  25 Jul 2005 |  017     |  1.100.25.100    |  €5500    |  0.4Tb
+/%
+/%
+%%zebra-c9c176-aab065
+%%sortable
+|| Title || Author || Published   || Edition || Some IP@        || Expenses || Disk Memory
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100 |  €500     |  2Gb 
+| book2  |  happy  |  25 Jan 2005 |  19      |  256.100.100.100 |  €1500    |  4Kb
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100  |  €50      |  1.23TB
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100   |  €0.500   |  2.73kb
+| book5  |  rappy  |  25 Jul 2005 |  017     |  1.100.25.100    |  €5500    |  0.4Tb
+/%
+/%
+
+%%collapsebox-closed

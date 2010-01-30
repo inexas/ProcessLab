@@ -1,0 +1,22 @@
+An example company called Global GPS has been set up so that you can experiment with the [DataStar plugins]. A database is automatically created for each new browser session for GGPS. GGPS has 5 employees, a product catalogue of 5 GPSs, 5 customers in the US, UK, France, Switzerland and Australia. It has offices in Zurich, Bern, Winterthur and Geneva - a lot of offices for 5 employees!
+
+Unless you are an administrator you won't be able to edit the Visualizations help pages yourself but you can experiment by copying and pasting the page source into the [sand box] and learning there.
+
+!!! Database schema
+A page where the structure of the database is documented is a very useful help for anyone that creating DataView pages. Rather than trying to keep documentation up to date, this page demonstrates a way of doing it dynamically. Edit this page to see how it is done but note that SQL will change for different database types.
+
+Here is a list of the tables and views available in the demo database.
+
+[{DataView db=demo link='DemoTableColumns&Table_name={1}'
+
+SELECT TABLE_TYPE AS Type, Table_Name AS Name
+FROM INFORMATION_SCHEMA.SYSTEM_TABLES 
+WHERE TABLE_TYPE IN ('VIEW', 'TABLE')
+ORDER BY Type,Name
+}]
+
+Double click on a table / view name to see the columns
+
+
+!!! The demo database and scheduling
+The demo database is an 'in-memory' database that is held in the session. When you log out the demo database is lost. Normally that's not an issue but it would not be possible to test scheduling. Instead, when schedules are set up, a global shared database is set up. So if you change your session database in anyway using the DataUpdate plugin for example, you won't see it in the scheduled results.

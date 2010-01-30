@@ -1,0 +1,91 @@
+!! Collapsible list 
+
+%%tabbedSection
+%%tab-Introduction
+!Introduction
+This %~%collapse style /% turns ordinary lists into collapsible trees.
+
+Testing the collapible trees .. Thrusday ...Clicking the list item bullets will expand or collapse nested list items.\\
+As a bonus, the status of expanded/collapsed nodes are persisted in a browsers cookie, 
+so you don't have to redo your clicking when visiting other pages in between.
+(cookies are saved for favorites as well as the main page)
+
+See also [collapsible boxes|Collapsible Box]. 
+
+%%(border:2px solid #e0e0e0;float:left;)
+[Collapsible List/collapse-open.jpg]
+/%
+%%(border:2px solid #e0e0e0;float:left;)
+[Collapsible List/collapse-closed.jpg]
+/%
+
+%%(clear:both) 
+
+/%
+/%
+%%tab-Usage
+!Usage
+
+Enclose the collapsible list in {{%~%collapse}} tag.
+* Unorder sublists (* bullet) are rendered by default expanded 
+* Ordered sublists (# bullets) are rendered by default collapsed.
+
+{{{
+%%collapse
+* Europe
+** France
+*** Paris
+*** Nice
+** South-Africa
+** Belgium 
+### Brussel  (these items are by default collapsed)
+### Peulis
+* Australia
+*** Sydney
+**** Kangeroo
+**** Huppeldepup
+/%
+}}}
+
+Reality check:
+%%collapse
+* Europe
+** France
+*** Paris
+*** Nice
+*** India
+** South-Africa
+** Belgium 
+### Brussel  (these items are by default collapsed)
+### Peulis
+* Australia
+*** Sydney
+**** Kangeroo
+**** Huppeldepup
+/%
+ 
+/%
+%%tab-Implementation
+!Implementation
+
+Collapsible lists only work if you have javascript turned on.
+
+The formatting of the bullets is done through CSS. You can change
+the look and feel of open/close bullets as you wannt.
+Check out {{templates/default/jspwiki.css}} for the CSS stylesheet definitions, section 460-Collapsible-Lists.
+
+* Default list-item bullets are turned off. (''list-style:none;'')
+  Additionaly, the list-items get a ''position:relative;'' such that the inserted ''collapse''
+  bullets can be positioned correctly.
+* Each inserted bullet gets a css selector ''.collapseBullet'', ''collapseOpen'' or ''collapseClose''. 
+* These bullets are floated to the left, and shifted 1.5em to the left 
+  so that they line up with the previous indentation level.
+
+You may be interested to replace the standard, text-based, bullets by fancy images.
+This can easily be done through css updates. Some examples are available in the different {{skin.css}} files.
+Notice how the ''overflow:hidden;'' can be used to hide the default bullets and e.g. replace it by some background-images.
+
+[Collapsible List/brushed-collapse.jpg]
+
+/%
+/%

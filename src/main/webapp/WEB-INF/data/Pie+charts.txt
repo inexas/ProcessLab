@@ -1,0 +1,31 @@
+Pie charts allow you to compare a single set of values, for example the number of sales of different products over a year.
+
+!! Special features
+* Clicking on one of the slices pops up a tool tip giving details of the value
+* Clicking on the legend for a series animates the relevant slice
+
+!! Parameters
+* __format__ mandatory: Must be 'pie'
+* __size__, optional, default='m' : 'xs', 's', 'm', 'l', 'xl' or 'hhh,www' where hhh is the integer hight in pixels and www is the integer width in pixels
+* __db__, optional, no default: the name of the data source to use: if db is specified then the data will be retrieved dynamically: i.e. each time the page is loaded, and a SQL statement must be provided in either a sql parameter or in the plugin body 
+* __sql__, optional, no default: the SQL to use to generate the source data
+* __is3D__, optional, default='true': display with 3D effect bars
+
+!!! Examples
+
+!! Product quantities
+
+[{DataView db=demo format=pie size=s  sql='SELECT name, quantity FROM products'}]
+
+! Source
+{{{
+[{DataView db=demo format=pie size=s  sql='SELECT name, quantity FROM products'}]
+}}}
+
+!! Product prices
+[{DataView db=demo format=pie size=s is3d=true sql='SELECT name,price FROM products'}]
+
+! Source
+{{{
+[{DataView db=demo format=pie size=s is3d=true sql='SELECT name,price FROM products'}]
+}}}

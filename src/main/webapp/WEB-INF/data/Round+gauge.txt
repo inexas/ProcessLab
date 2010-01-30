@@ -1,0 +1,3 @@
+!!! Round gauge
+
+[{DataView db=demo format='gauge' size='s' sql='SELECT name, quantity FROM products'}]

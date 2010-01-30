@@ -1,0 +1,63 @@
+!!! Marker maps
+Marker maps allow you to show your data on a map with colored circles. Hovering above the circle will display other information.
+
+!!! Parameters
+* __format__ mandatory: Must be 'marker'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView region'}]
+
+Notes
+# Either the sql parameter must be supplied or the data must be inlined
+# The region parameter may either be a [ISO-3166-2|http://en.wikipedia.org/wiki/ISO_3166-1] country code (e.g. "CH", country name (e.g. "Switzerland") or a one of the following codes:
+#* world - (Whole world)
+#* 005 - (South America)
+#* 013 - (Central America)
+#* 021 - (North America)
+#* 002 - (All of Africa)
+#* 017 - (Central Africa)
+#* 015 - (Northern Africa)
+#* 018 - (Southern Africa)
+#* 030 - (Eastern Asia)
+#* 034 - (Southern Asia)
+#* 035 - (Asia/Pacific region)
+#* 143 - (Central Asia)
+#* 145 - (Middle East)
+#* 151 - (Northern Asia)
+#* 154 - (Northern Europe)
+#* 155 - (Western Europe)
+#* 039 - (Southern Europe)
+ 
+!!! Data
+The following columns must be provided
+# __Latitude__, number, mandatory: The latitude of a marker. Positive numbers are north, negative south. [Latitude and longitude lookup|http://itouchmap.com/latlong.html]
+# __Longitude__, number, mandatory: The latitude of a marker. Positive numbers are north, negative south. [Latitude and longitude lookup|http://itouchmap.com/latlong.html]
+# __Value__, number, optional: A numerical value, for example sales volue
+# __Label__, string, optional: A label to display on the tooltip
+
+!!! Examples
+
+%%(text-align:center)
+
+[{DataView format='marker' region='CH'
+
+Latitude,Longitude,Sales,OfficeName
+    47.3748,8.534349,200,Zurich
+    46.939012,7.44873,30,Bern
+    47.497423,8.727425,350,Winterthur
+    46.192057,6.133761,375,Geneva
+}]
+
+__2008 sales by office__
+%%
+
+Source
+{{{
+[{DataView format='marker' region='CH'
+
+Latitude,Longitude,Sales,OfficeName
+    47.3748,8.534349,200,Zurich
+    46.939012,7.44873,30,Bern
+    47.497423,8.727425,350,Winterthur
+    46.192057,6.133761,375,Geneva
+}]
+}}}

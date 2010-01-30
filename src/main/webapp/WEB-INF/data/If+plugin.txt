@@ -1,0 +1,52 @@
+The __IfPlugin__ allows parts of a WikiPage to be executed conditionally. You can also use shorthand "If" to run it.  
+
+!!! Parameters:
+* __group__ = '''list'''. A "|"-separated list of group names.
+* __user__ = '''list'''.  A "|"-separated list of user names.
+* __ip__='''list'''. A "|"-separated list of IP addresses.
+* __var__='''name'''. A wiki variable.
+* __page__='''name'''. A page name.
+* __contains__='''regex'''. A Perl5 [regexp|RegularExpressionSyntax] pattern.
+* __is__='''regex'''. A Perl5 [regexp|RegularExpressionSyntax] pattern.
+* __exists__='''true|false'''. 
+
+!!! Usage
+
+If any of them match, the body of the plugin is executed. You can negate the content by prefixing it with a "{{!}}". For example, to greet all admins, put the following in your LeftMenu:
+{{{
+  [{If group='Admin'
+
+  Hello, Admin, and your mighty powers!}]
+}}}
+
+In order to send a message to everybody except Jack use
+{{{
+  [{If user='!Jack'
+
+  %%warning
+  Jack's surprise birthday party at eleven!
+  %%}]
+}}}
+
+Note that you can't use {{"!Jack|!Jill"}}, because for Jack, {{!Jill}} matches; and for Jill, {{!Jack}} matches. These are not [regular expressions|RegularExpressionSyntax] (though they might become so in the future).
+
+To check for page content, use
+{{{
+  [{If page='TestPage' contains='xyzzy'
+
+  Page contains the text "xyzzy"}]
+}}}
+
+The difference between "{{contains}}" and "{{is}}" is that "{{is}}" is always an exact match, whereas "{{contains}}" just checks if a pattern is available.
+
+To check for page existence, use
+{{{
+  [{If page='TestPage' exists='true'
+
+  Page "TestPage" exists.}]
+}}}
+
+With the same mechanism, it's also possible to test for the existence of a variable - just use "{{var}}" instead of "page".
+
+Another caveat is that the plugin body content is not counted towards ReferenceManager links. So any links do not appear on any reference lists. Depending on your position, this may be a good or a bad thing, though considering that the purpose of this plugin is to ''conditionally'' include the content, any links should only be counted by the ReferenceManager if the plugin test ''passed.''
+

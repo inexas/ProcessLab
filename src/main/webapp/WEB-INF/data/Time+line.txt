@@ -1,0 +1,69 @@
+Time lines allow to show hove variables change over time
+
+!! Special features
+* The variable can be annotated
+
+!! Parameters
+* __format__ mandatory: Must be 'timeline'
+* __size__, optional, default='m' : 'xs', 's', 'm', 'l', 'xl' or 'hhh,www' where hhh is the integer hight in pixels and www is the integer width in pixels
+* __db__, optional, no default: the name of the data source to use: if db is specified then the data will be retrieved dynamically: i.e. each time the page is loaded, and a SQL statement must be provided in either a sql parameter or in the plugin body 
+* __sql__, optional, no default: the SQL to use to generate the source data
+* __annotate__, optional, no default: include this parameter if there are annotations to be displayed
+
+!! Data
+The first column contains the label to use.
+
+Thereafter there are three values for each of the data series
+# The numerical value to show on the Y axis
+# An annotation title
+# Annotation text
+
+Note that if annotations are present, you must include the annotate parameter
+
+!!! Examples
+
+!! Dynamic time line
+[{DataView db=demo format=timeline size=s
+
+SELECT Date,SUM(Quantity) AS Quantity
+FROM OrdersView
+GROUP BY Date
+ORDER BY Date
+}]
+
+! Source
+{{{
+[{DataView db=demo format=timeline size=s
+
+SELECT Date,SUM(Quantity) AS Quantity
+FROM OrdersView
+GROUP BY Date
+ORDER BY Date
+}}}
+
+
+!! Static time line
+[{DataView format=timeline size='300,800' annotate=true
+
+Date:date,Cat_sales:number,Title1,Text1,Dog_sales,Title2,Text2
+2009-01-01,20,,,23
+2009-01-02,23,,,25
+2009-01-03,68,Add campaign,"Started online and ""TV ads"", how about that!",38
+2009-01-04,75,,,37
+2009-01-05,72,,,38,Dog ad campaign
+2009-01-06,85,,,39
+}]
+
+! Source
+{{{
+[{DataView format=timeline size='300,800' annotate=true
+
+Date:date,Cat_sales:number,Title1,Text1,Dog_sales,Title2,Text2
+2009-01-01,20,,,23
+2009-01-02,23,,,25
+2009-01-03,68,Cat campaign,"Started online and ""TV ads"", how about that!",38
+2009-01-04,75,,,37
+2009-01-05,72,,,38,Dog ad campaign
+2009-01-06,85,,,39
+}]
+}}}

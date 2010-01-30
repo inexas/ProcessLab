@@ -1,0 +1,72 @@
+The Page View Plugin counts page views and presents the statistics on page views.
+The counters themselves are kept in memory and persisted in the work directory,
+loading and saving on startup and shutdown.
+
+Three main functionalities are supported:
+* invisibly count page views, typically from the TitleBox or Leftmenu
+* show the page hits of the current page
+* show a list of page hits
+
+Most of the functionality is present in the list format.
+
+The plugin uses the following parameters:
+* {{show}} output format, values {{__none__|count|list}}, default is 'none'
+* {{count}} count page views?, values {{yes|no}}, default is 'yes' if format equals 'none' and 'no' otherwise
+
+The following parameters are used when format equals list
+* {{entries}} maximum number of entries listed
+* {{min}} minimum page view count to be listed
+* {{max}} maximum page view count to be listed
+* {{sort}} sorting method, values {{__name__|count}}, default is 'name'
+* {{refer}} regular expression naming pages that have to be referred to to be included in the list. (to list popularity of category pages, use refer='Categories' or even refer='Categor*'.)
+* {{include}} filter pagenames to be included in the list
+* {{exclude}} filter pagenames to be excluded from the list
+
+* {{plugin body}} defines the content of the generated list, if it contains {{----}} separators the body is split into {{header}}, {{line}}, and {{footer}} which are used to generate the table. Inside the {{line}} portion __{1}__ represents the page name and __{2}__ represents the page view count. {0} represents the (constant) current page name.
+
+
+An example of the counter in TitleBox would be:
+{{{
+[{Page view plugin}]
+}}}
+
+An example of a table listing the top 50 pageviews excluding the main page and the administrative pages:
+{{{
+[{PageViewPlugin show='list' sort='count' entries='50' exclude='Main,*Pages'
+
+* [{1}] ({2} views)
+}]
+}}}
+
+A possible outcome of the above is:
+%%quote
+* [Category Pineapples|Page view plugin] (101 views)
+* [Category Apples|Page view plugin] (66 views)
+* [Category Dates|Page view plugin] (42 views)
+%%
+
+An example of a table listing the pageviews on categories presenting popularity bars:
+{{{
+[{PageViewPlugin show='list' refer='Categories' entries=5
+
+%%graphBars
+|| Name  || Count
+----
+|  [{1}] | %%gBar {2} %%
+----
+%%
+}]
+}}}
+
+Which renders as:
+%%quote
+[{PageViewPlugin show='list' sort=count entries=5
+
+%%graphBars
+|| Name  || Count
+----
+|  [{1}] | %%gBar {2} %%
+----
+%%
+}]%%
+

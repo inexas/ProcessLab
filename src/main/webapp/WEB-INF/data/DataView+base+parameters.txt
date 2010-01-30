@@ -1,0 +1,25 @@
+* __size__: The object size to render
+** Optional, default: m
+** Valid values: xs, s, m, l, xl or '<h>,<w>' where <h>, <w> are integer height and width in pixels
+** Examples: size=s, size='100,500'
+
+* __db__: The database data source to use. If this is specified then a sql statement must be provided either in a sql parameter or in the plugin body. See [DataStar data sources].
+** Optional, either a db or in line data must be specified. No default
+** Valid values: any of the configured database data sources; [{DataSourceList format=comma}]   
+
+* __sql__: The SQL statement to use
+** Optional: The db parameter must also be specified. Default: use in-line data in the plugin body
+** Valid values: Any valid SQL statement. The choice of SQL statements is normally restricted to SELECT statements in the [Datastar configuration] page
+** Examples: sql='SELECT * FROM Products'
+** Notes
+*** You will have to 'use apostrophes' as in the example above as the SQL statement contains white space
+*** For complex queries it is better to specify SQL in the plugin body as it can be typeset to be more readable
+
+* __cached__: Cache the result set for a number of minutes. See [Result set caching]
+** Optional, default: result set is not cached
+** Valid values: Any positive integer. The number of minutes to cache the response for
+** Examples: 
+*** cached=60: Cache for 1 hour
+*** cached=1440: Cache for 1 day
+*** cached=10080: Cache for 1 week
+*** cached=40320: Cache for 4 weeks

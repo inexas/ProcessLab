@@ -1,0 +1,42 @@
+Displays information about active wiki sessions.
+
+
+!!! Parameters
+*__property__ = __'''users | distinctUsers'''__ \\ This parameter is optional.
+
+!!! Examples
+
+
+! Number of Active Wiki Sessions
+
+{{{
+[{SessionsPlugin}]
+}}}
+When using the plugin without any parameters, it generates a number as shown below:
+
+|__Total Active Sessions__| [{SessionsPlugin}]
+
+----
+
+! List of Users
+
+{{{
+[{SessionsPlugin property='users'}]
+}}}
+Using ''user'' for the property parameter generates an extensive list of all active sessions, like the following :
+
+[{SessionsPlugin property='users'}]
+
+----
+
+! List of Distinct Users
+
+__NOTE:__ This example won't work correctly until the jspwiki.org site is using version 2.5.32 or later. The current version running on this site is [{$jspwikiversion}].
+
+{{{
+[{SessionsPlugin property='distinctUsers'}]
+}}}
+Using ''distinctUsers'' for the property parameter generates a list of sessions whereby duplicates are only shown once followed by a counter, like the following :
+
+[{SessionsPlugin property='distinctUsers'}]
+

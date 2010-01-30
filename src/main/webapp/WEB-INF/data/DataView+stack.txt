@@ -1,0 +1,4 @@
+* __stack__: values from several series are added to each other
+** Optional, default: false
+** Valid values: true, false
+** Examples: stack=true

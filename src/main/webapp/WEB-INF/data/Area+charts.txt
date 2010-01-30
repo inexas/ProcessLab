@@ -1,0 +1,46 @@
+Area charts allow you to compare different values and different series of values.
+
+!! Special features
+* Clicking on one of the points on the line pops up a tool tip giving details of the value
+* Clicking on the legend for a series animates the line
+
+!! Parameters
+* __format__ mandatory: Must be 'area'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView minmaxlegend'}]
+[{InsertPage page='DataView stack'}]
+
+
+!!! Examples
+
+!! Dynamic non-stacked area chart
+
+|| Source || Chart
+|{{{
+[{
+DataView db=demo format=area size=s
+
+SELECT name,quantity,price
+FROM products
+}]
+}}}| [{DataView db=demo format=area size=s sql='SELECT name,quantity,price FROM products'}]
+
+!! Stacked area chart from static data
+
+|| Source || Chart
+| {{{
+[{DataView format=area size='200,400' stack=true
+isStacked=true
+
+Age,Legs,Body,Head
+Baby,15,18,15
+Child,50,50,17
+Adult,80,70,30
+}]
+}}}| [{DataView format=area size='200,400' stack=true
+
+Age,Legs,Body,Head
+Baby,15,18,15
+Child,50,50,17
+Adult,80,70,30
+}]

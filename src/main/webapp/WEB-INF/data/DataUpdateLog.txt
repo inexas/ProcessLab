@@ -1,0 +1,5 @@
+!!! DataUpdate log
+This is the DataUpdate log page. Please do not change any text after the '!!! Log' line below. If, for any reason, the file should become messed up you can just delete the page and it will be re-created from scratch
+
+!!! Log
+|| Date || Page || User ID || DB || SQL

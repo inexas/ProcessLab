@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('number', 'Salary');
+        data.addColumn('boolean', 'Full Time Employee');
+        data.addRows(14);
+        data.setCell(0, 0, 'Mike');
+        data.setCell(0, 1, 10000, '$10,000');
+        data.setCell(0, 2, true);
+        data.setCell(1, 0, 'Jim');
+        data.setCell(1, 1, 8000, '$8,000');
+        data.setCell(1, 2, false);
+        data.setCell(2, 0, 'Alice');
+        data.setCell(2, 1, 12500, '$12,500');
+        data.setCell(2, 2, true);
+        data.setCell(3, 0, 'Bob');
+        data.setCell(3, 1, 7000, '$7,000');
+        data.setCell(3, 2, true);
+        data.setCell(4, 0, 'Bob');
+        data.setCell(4, 1, 7000, '$7,000');
+        data.setCell(4, 2, true);
+        data.setCell(5, 0, 'Bob');
+        data.setCell(5, 1, 7000, '$7,000');
+        data.setCell(5, 2, true);
+        data.setCell(6, 0, 'Bob');
+        data.setCell(6, 1, 7000, '$7,000');
+        data.setCell(6, 2, true);
+        data.setCell(7, 0, 'Bob');
+        data.setCell(7, 1, 7000, '$7,000');
+        data.setCell(7, 2, true);
+        data.setCell(8, 0, 'Bob');
+        data.setCell(8, 1, 7000, '$7,000');
+        data.setCell(8, 2, true);
+        data.setCell(9, 0, 'Bob');
+        data.setCell(9, 1, 7000, '$7,000');
+        data.setCell(9, 2, true);
+        data.setCell(10, 0, 'Bob');
+        data.setCell(10, 1, 7000, '$7,000');
+        data.setCell(10, 2, true);
+        data.setCell(11, 0, 'Bob');
+        data.setCell(11, 1, 7000, '$7,000');
+        data.setCell(11, 2, true);
+        data.setCell(12, 0, 'Bob');
+        data.setCell(12, 1, 7000, '$7,000');
+        data.setCell(12, 2, true);
+        data.setCell(13, 0, 'Bob');
+        data.setCell(13, 1, 7000, '$7,000');
+        data.setCell(13, 2, true);
+
+       var table = new google.visualization.Table(document.getElementById('table_div'));
+       table.draw(data, {showRowNumber: true,page:'enable',pageSize:5});
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id='table_div'></div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+The "Groups" plugin lists the currently active groups separated by commas. The groups are sorted in ascending order, and are hyperlinked to the page that displays the group's members.
+
+!!! Parameters
+
+* none
+
+!!! Examples
+
+{{{
+[{Groups}]
+}}}
+
+Will show this:
+
+[{Groups}]
+

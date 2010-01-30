@@ -1,0 +1,58 @@
+Column, or vertical bar, charts allow you to compare different values and different series of values.
+
+For a horizontal version of this chart, see the [Bar chart].
+
+!! Special features
+* Clicking on the bar pops up a tool tip giving details of the value
+* Clicking on the legend for a series animates the relevant bars
+
+!! Parameters
+* __format__ mandatory: Must be 'column'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView minmaxlegend'}]
+[{InsertPage page='DataView stack'}]
+
+!!! Examples
+
+----
+!! Dynamic column chart
+%%center
+[{DataView
+    format=column size='230,420'
+    db=demo sql='SELECT name, price FROM products ORDER BY price DESC'
+}]
+__Product price comparison__
+/%
+
+! Source
+{{{
+[{DataView
+    format=column size='230,420'
+    db=demo sql='SELECT name, price FROM products ORDER BY price DESC'
+}]
+}}}
+
+----
+!! Static column chart
+
+%%center
+[{DataView format=column size='300,300' stack=true is3d= true legend=left
+
+Office,Cats,Dogs,Mice
+Manchester,10,15,55
+London,39,88,104
+Shrewsbury,30,40,60
+}]
+__Pet sales by outlet__
+/%
+
+! Source
+{{{
+[{DataView format=column size='300,300' stack=true is3d= true legend=left
+
+Office,Cats,Dogs,Mice
+Manchester,10,15,55
+London,39,88,104
+Shrewsbury,30,40,60
+}]
+}}}

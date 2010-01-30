@@ -1,0 +1,5 @@
+The following pages belong to the 'category' category (or link to it for some other reason). The 'category' category is a category of pages that are reflexively related to 'page categories'.
+
+[{ReferringPagesPlugin}]
+----
+[Category category]

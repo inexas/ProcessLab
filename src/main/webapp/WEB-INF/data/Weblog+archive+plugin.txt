@@ -1,0 +1,9 @@
+Creates a list of all weblog entries on a monthly basis.
+
+!!! Parameters 
+* __{{page}}__ - 
+
+!!! Example
+
+[[{INSERT WeblogArchivePlugin}]
+

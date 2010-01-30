@@ -1,0 +1,52 @@
+When the plugin definition itself contains the data we term this static data because the data will not change unless the page containing the definition is changed. Static data is defined in the following way.
+
+{{{
+[{DataView format='pie'
+                              <-- Important: empty line
+Product,Quantity
+Garmin,21
+Tomtom,36
+Blaupunkt,21
+}]
+}}}
+
+Notes
+* The plugin name is always {{DataView}}
+* The format parameter value ({{'pie'}} above) is one of the available [formats|DataView plugin]: {{'pie'}}, {{'bar'}}, {{'column'}}, ...
+* There is no {{db='xyz'}} parameter
+* There may be other parameters depending on the format, e.g. {{size='s'}}
+* The data is contained in the body - note the plugin body must have an empty line between the last parameter and the start of the data
+
+The data is formatted in a number of rows and columns. Each row is on a new line and each column is separated from the next with a column.
+
+The first row contains column headers. The column headers are often used to label the data. The header may also be used to override the data type. In the following way
+{{{
+...
+Product:string,Quantity:number
+Garmin,21
+...
+}}}
+
+The data types above must with one of {{'string'}}, {{'boolean'}}, {{'date'}} or {{'number'}}.
+
+In most cases you not need to define the type of the data. Instead it will be assumed to be of a certain type depending on the {{format='?'}} parameter.
+
+Rules
+* Column names (in the first row) cannot contain ':' characters, colons are used to specify the data type
+* Commas delimit columns, if your data contains commas then you can quote the data (see pathological examples below)
+* You can include quotes in the data by double quoting
+
+%%center
+||What you need (string, number columns)   || How to write it
+| With, comma, 21                          | "With, comma", 21
+| "Quoted string", 21                      | ""Quoted string"", 21
+
+Pathological examples
+/%
+
+When the data is a date, date/time or time, it should be formatted in descending magnitudes: year before month, month before date, ... The general format is {{YYYY-MM-DD hh:mm:ss}} using a 24 hour clock and padding with zeroes as follows
+* 2009-06-21
+* 2009-06-21 22:12:03
+* 22:12:03
+
+

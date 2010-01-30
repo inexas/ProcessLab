@@ -1,0 +1,12 @@
+Displays all of the pages in this Wiki in alphabetical order.  IndexPlugin has been contributed by AlainRavet.
+
+!!! Parameters
+* exclude parameter, it is used in the example pages. "INSERT ~IndexPlugin exclude='~SandBox*'"
+* include parameter. Similar to the exclude parameter above
+
+;:The IndexPlugin uses GLOB patterns which do not support multiple alternative matches. A summary of the supported syntax is [here|http://jedit.org/users-guide/globs.html]
+
+!!! Example
+See [Page index].
+
+----

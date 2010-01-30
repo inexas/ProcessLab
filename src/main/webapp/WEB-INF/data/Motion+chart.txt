@@ -1,0 +1,68 @@
+A motion chart shows up to four dimensions of a single attribute through position X, position Y, size and color of an entity over a fifth dimensions: time through movement.
+
+!! Parameters
+* __format__ mandatory: Must be 'area'
+[{InsertPage page='DataView base parameters'}]
+* State: allows you to pre-configure the state of the chart
+** Optional, default: start up state
+** Valid values: see State below
+
+! State
+The 'state' parameter is too complex to set by hand. Instead you should copy/paste it from the tools in the following way:
+# Set up the chart in the way you would like the viewer to see it
+# Click on the Settings icon in the bottom right of the chart
+# Select the advance tab, select the state string and copy it
+# Paste it into the state parameters like this.
+
+{{{
+[{DataView format=motion state='01","orderedByX":false,"xZoomedIn":false,"uniColorForNonSelected":false,
+"sizeOption":"_UNISIZE","iconType":"BUBBLE","playDuration":23111.11111111111,"dimensions":
+{"iconDimensions":["dim0"]},"xZoomedDataMax":1200,"yLambda":1,"yAxisOption":"3","colorOption":
+"4","showTrails":true,"xAxisOption":"2","orderedByY":false}'
+
+Product,Date:date,Quantity,Price
+Aaa,2008-08-01,16, 48
+...
+}}}
+
+
+!! Data
+At least three columns must be provided:
+* Column 1: The attribute name
+* Column 2: Date values. Date in the format: YYY-MM-DD
+* 3rd and subsequent columns: String or numeric values.
+
+
+!!! Examples
+
+[{DataView format=motion
+
+Product,Date:date,Quantity,Price
+Aaa,2008-08-01,16, 48
+Bbb,2008-08-01,15, 42
+Ccc,2008-08-01,36, 40
+Aaa,2008-09-01,21, 44
+Bbb,2008-09-01,25, 42
+Ccc,2008-09-01,28, 30
+Aaa,2008-10-01,26, 40
+Bbb,2008-10-01,35, 30
+Ccc,2008-10-01,20, 11
+}]
+
+!! Source
+
+{{{
+[{DataView format=motion
+
+Product,Date:date,Quantity,Price
+Aaa,2008-08-01,16, 48
+Bbb,2008-08-01,15, 42
+Ccc,2008-08-01,36, 40
+Aaa,2008-09-01,21, 44
+Bbb,2008-09-01,25, 42
+Ccc,2008-09-01,28, 30
+Aaa,2008-10-01,26, 40
+Bbb,2008-10-01,35, 30
+Ccc,2008-10-01,20, 11
+}]
+}}}

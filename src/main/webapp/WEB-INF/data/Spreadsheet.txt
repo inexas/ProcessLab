@@ -1,0 +1,53 @@
+!!! Spreadsheet download
+Spreadsheet download allow you to create an icon or linked text that the user can click on to download data in a spreadsheet.
+
+Note you can add the spreadsheet download function to other charts by adding the 'sheet' parameter (see examples below).
+
+!!! Parameters
+* __format__: Must be 'spreadsheet'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView region'}]
+* __target__ If the target text looks like an image (i.e. ends with ".png", ".gif" or ".jpg") a clickable icon will be displayed, otherwise it is assume that the value is text that should be linked.
+** Optional, default: download.png
+** Valid values: download.png, numbers.png, excel.gif (see 'Icons' below)
+** Examples: target=excel.png, target='Click me to download data'
+
+!! Icons
+Other icons can be added by copying them into the webapps /images directory. In a future version of ProcessLab it will be possible to reference attachments.
+
+!!! Examples
+
+!! Default icon
+{{{
+[{DataView format= spreadsheet db=demo sql='SELECT * FROM ordersView'}]
+}}}
+
+Download data: [{DataView format= spreadsheet db=demo sql='SELECT * FROM ordersView'}]
+
+!! Image
+{{{
+[{DataView format=spreadsheet db=demo target='images/download.png' sql='SELECT * FROM ordersView'}]
+}}}
+
+Download data: [{DataView format= spreadsheet db=demo target='images/download.png' sql='SELECT * FROM ordersView'}]
+
+!! Linked text
+
+{{{
+[{DataView format= spreadsheet db=demo target='spreadsheet' sql='SELECT * FROM ordersView'}]
+}}}
+
+Download data in a [{DataView format= spreadsheet db=demo target='spreadsheet' sql='SELECT * FROM ordersView'}].
+
+!! Added onto another visualization
+{{{
+[{DataView format=bar db=demo spreadsheet=true
+
+SELECT * FROM Products
+}]
+}}}
+[{DataView format=column size=s db=demo spreadsheet=true
+
+SELECT Name,Price FROM Products
+}]
+

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+        version="2.4">
+
+	<description>
+		ProcessLab is Enterprise Knowledge Management Tool.
+	</description>
+	<display-name>ProcessLab</display-name>
+
+	<!-- Resource bundle default location -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>templates.default</param-value>
+	</context-param>
+
+   <!--
+      WikiServletFilter defines a servlet filter which filters all requests. It was
+      introduced in JSPWiki 2.4.
+
+      In 2.7/2.8, the WikiServletFilter also performs an important security function:
+      it sets authentication status based on container credentials. It should generally
+      execute first. Note that if you configure a filter *before* this one that returns
+      non-null values for getUserPrincipal() or getRemoteUser(), WikiSecurityFilter
+      will pick the credentials up, and set the user's WikiSession state to
+      "authenticated." WikiServletFlter will also set the WikiSession's' state
+      to "authenticated" if jspwiki.properties property "jspwiki.cookieAuthentication"
+      is set to true, and the user possesses the correct authentication cookie.
+
+      Lastly, if jspwiki.properties property "jspwiki.cookieAssertions" is set to true,
+      WikiServletFilter will also set WikiSession state to "asserted" if the user
+      possesses the correct "assertion cookie."
+   -->
+
+   <filter>
+      <filter-name>WikiServletFilter</filter-name>
+      <filter-class>com.ecyrd.jspwiki.ui.WikiServletFilter</filter-class>
+   </filter>
+   <filter>
+      <filter-name>WikiJSPFilter</filter-name>
+      <filter-class>com.ecyrd.jspwiki.ui.WikiJSPFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/attach/*</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/atom/*</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/dav/*</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/RPCU/</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/RPC2/</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiServletFilter</filter-name>
+       <url-pattern>/JSON-RPC</url-pattern>
+   </filter-mapping> 
+   <filter-mapping>
+       <filter-name>WikiJSPFilter</filter-name>
+       <url-pattern>/wiki/*</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+       <filter-name>WikiJSPFilter</filter-name>
+       <url-pattern>*.jsp</url-pattern>
+   </filter-mapping>
+   
+   <!--
+       HttpSessionListener used for managing WikiSession's.
+     -->
+   <listener>
+      <listener-class>com.ecyrd.jspwiki.auth.SessionMonitor</listener-class>
+   </listener>
+   
+   <!--
+       Now, let's define the XML-RPC interfaces.  You probably don't have to
+       touch these.
+
+       First, we'll define the standard XML-RPC interface.
+     -->
+   <servlet>
+       <servlet-name>XMLRPC</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.xmlrpc.RPCServlet</servlet-class>       
+       <init-param>
+           <param-name>handler</param-name>
+           <param-value>com.ecyrd.jspwiki.xmlrpc.RPCHandler</param-value>
+       </init-param>
+
+       <init-param>
+           <param-name>prefix</param-name>
+           <param-value>wiki</param-value>
+       </init-param>
+   </servlet>
+
+   <!--
+       OK, this then defines that our UTF-8 -capable server.
+     -->
+
+   <servlet>
+       <servlet-name>XMLRPC-UTF8</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.xmlrpc.RPCServlet</servlet-class>       
+       <init-param>
+           <param-name>handler</param-name>
+           <param-value>com.ecyrd.jspwiki.xmlrpc.RPCHandlerUTF8</param-value>
+       </init-param>
+
+       <init-param>
+           <param-name>prefix</param-name>
+           <param-value>wiki</param-value>
+       </init-param>
+   </servlet>
+
+   <!-- JSON AJAX API -->
+   <servlet>
+       <servlet-name>com.metaparadigm.jsonrpc.JSONRPCServlet</servlet-name>
+       <servlet-class>com.metaparadigm.jsonrpc.JSONRPCServlet</servlet-class>
+   </servlet>
+
+   <!-- Atom Publishing Protocol -->
+   <servlet>
+       <servlet-name>ATOM</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.rpc.atom.AtomAPIServlet</servlet-class>       
+   </servlet>
+
+   <!-- Maps short URLS to JSPs; also, detects webapp shutdown. -->
+   <servlet>
+       <servlet-name>WikiServlet</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.WikiServlet</servlet-class>       
+       <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <servlet>
+       <servlet-name>DAVServlet</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.dav.WikiDavServlet</servlet-class>
+   </servlet>
+
+   <!--
+       Attachment exchange handler.
+     -->
+
+   <servlet>
+       <servlet-name>AttachmentServlet</servlet-name>
+       <servlet-class>com.ecyrd.jspwiki.attachment.AttachmentServlet</servlet-class>
+   </servlet>
+
+	<!-- ProcessLab stuff -->
+	<servlet>
+		<servlet-name>JsonDataSource</servlet-name>
+		<servlet-class>com.inexas.wikibi.DataServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+   <servlet>
+       <servlet-name>Spreadsheet</servlet-name>
+       <servlet-class>com.inexas.wikibi.SpreadsheetServlet</servlet-class>
+   </servlet>
+
+	<servlet-mapping>
+		<servlet-name>JsonDataSource</servlet-name>
+		<url-pattern>/jds</url-pattern>
+	</servlet-mapping>
+
+   <servlet-mapping>
+       <servlet-name>Spreadsheet</servlet-name>
+       <url-pattern>/ss</url-pattern>
+   </servlet-mapping>
+
+	<!-- ProcessLab stuff ends -->
+	
+   <servlet-mapping>
+       <servlet-name>AttachmentServlet</servlet-name>
+       <url-pattern>/attach/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+       <servlet-name>WikiServlet</servlet-name>
+       <url-pattern>/wiki/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+       <servlet-name>com.metaparadigm.jsonrpc.JSONRPCServlet</servlet-name>
+       <url-pattern>/JSON-RPC</url-pattern>
+   </servlet-mapping>
+
+   <!-- This means that we don't have to use redirection
+        from index.html anymore.  Yay! -->
+   <welcome-file-list>
+       <welcome-file>Wiki.jsp</welcome-file>
+   </welcome-file-list>
+   
+   <!-- Error pages -->
+   <error-page>
+     <error-code>403</error-code>
+     <location>/error/Forbidden.html</location>
+   </error-page>
+
+</web-app>

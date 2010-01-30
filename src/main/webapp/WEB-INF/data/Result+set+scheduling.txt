@@ -1,0 +1,72 @@
+Result set scheduling allows you to 'execute' [DataStar plugins] in a page according to a schedule you choose. This is particularly useful when used in conjunction with [result set caching|Result set caching]. Here's an example:
+
+{{{
+[{DataView db=demo cached=1500 schedule=weekdays
+
+SELECT * FROM ComplexView
+}]
+}}}
+
+Assume that a SELECT from the ComplexView view takes a long time: say 20 minutes, to execute. The example above will execute the query on weekdays at 02:00 in the morning and cache the result set for 1500 minutes (25 hours). That means that instead of waiting 20 minutes the page will be rendered in less than a second.
+
+Advantages
+* Faster display of page
+* Less stress on database during working hours
+* Consistent result set
+* Queries are only executed 'just-in-time'
+
+Disadvantages
+* The data displayed in a page may not be right up to date (but if the user wants to he can refresh the data with one click)
+* The queries are always executed, even when they are not needed
+
+!!! Setting up schedules
+There are two ways of setting up schedules: named schedules or in-line.
+
+!! Named schedules
+Named schedules are pre-configured and reusable schedules like 'weekdays', 'everyday'. 
+Each schedule is given a name: we used the schedule named 'weekdays' in the example above above. Setting up a schedule is described in the [site schedules|Job Scheduling] page where you can also find a list of pre-configured schedules.
+
+
+!! In-line schedules
+In-line schedules are coded within the plugin definition itself. The coding borrows from the '[wp:cron]' de facto standard for scheduling in computers. At first it might look a little daunting but it's quite easily understood and very effective.
+
+Here's an example.
+{{{
+[{DataView db=demo cached=1500 schedule='0 2 * * 1-5' sql='SELECT * FROM ComplexView'}]
+}}}
+
+The schedule '0 2 * * 1-5' can be decoded using the table below. See the [site schedules|Job Scheduling] page for a more verbose explanation.
+
+%%center
+[cron.png]
+%%
+
+* 0 Minutes
+* 2 hours
+* 1-5 Monday to Friday
+* * Every day of the month (but see day of week above)
+* * Every month of the year
+* * Every year (at least until 2049!)
+Which reads as: 'every weekday at 02:00 in the morning'.
+
+!!! What's happnin'?
+The currently schedule jobs can be seen on the [SiteSchedulerConsole] page and you can also see a log of all processed jobs in the [SiteSchedulerLog] page.
+
+!!! Possible future enhancements
+todo Move these to Trac
+* Allow users to specify their own schedules
+* Add a SchedulesView plugin to list available schedules
+* Notifications for failed tasks
+* Mailing list for completed tasks (e.g. send PDF of Page X to mailing list)
+
+!!! Implementation
+* Schedules are handled by the TaskManager
+* When a new version of page is saved...
+** Any existing schedules for that page are removed
+** The page is inspected to see if there are plugins to be scheduled
+** For each scheduled plugin, a ScheduledTask is created and submitted to the TaskManager
+* The TaskManager saves ScheduledTasks to the SiteScheduledTasks page
+* The TaskManager maintains a queue of tasks to perform
+* As each task becomes ready a thread is spawned to execute the task
+* As the task completes an entry is written to the SiteScheduledTaskLog page
+

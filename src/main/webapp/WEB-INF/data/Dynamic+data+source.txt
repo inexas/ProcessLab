@@ -1,0 +1,9 @@
+Dynamic data sources are use by the [DataStar plugins] as a source for data to show in a visualizations. They are 'dynamic' in as much as the data is taken directly out of a database and so could change each time a page is displayed.
+
+Here is an example
+{{{
+[{DataView db=demo sql='SELECT * FROM PRODUCTS'}]
+}}}
+
+The db parameter 'demo' is the data source. The database configuration is set up on the [DataStar configuration] page (note might not have access rights to view this page) and the list of currently accessible data sources can be found using the [DatasourceList plugin].
+

@@ -1,0 +1,430 @@
+!!! Graph Bars
+
+This style allows to insert graph bars in your wiki pages. Check out the [FindPage] which shows the search results as horizontal bars.
+
+!!Usage
+
+Default syntax:
+{{{
+  %%graphBars
+    %%gBar integer or date value %%  renders first graph bar
+    %%gBar integer or date value %%  renders 2nd graph bar
+    ...
+  %%
+}}}
+
+Specify extra parameters to define color, size, orientation and type of the graphic bars. Use a dash (-) as separator.
+{{{
+  %%graphBars<name>-min<integer>-max<integer>-<color1>-<color2>-vertical-progress-gauge   
+    ... %%gBar<name> value %% ...  
+  %%
+}}}
+* __name__ : optional name of the graphBar. \\
+  Using graphbars with names allows you to nest multiple graphBars. 
+  When you specify a name, make sure to use that name for the corresponding values. (eg ''%~%graphBarsPlan'' should match with ''%~%gBarPlan''
+  \\When using with tables, you can omit the %~%gBar tags and use a column- or row-name of the table. (eg ''%~%graphBarsPlan'' will generate bars 
+  for all table-cells in the ''Plan'' column)
+* __min<integer>__ : minimum size of the bars in pixel (default min = 20px)
+* __max<integer>__ : maximum size of the bars in pixel (default max = 200px)
+* __<color1>__ : hexadecimal HTML Color Code, default value is determined by jspwiki.css
+* __<color2>__ : hexadecimal HTML Color Code, the use of the 2nd color is determined by the ''bar-type''
+  By default, color2 is used to gradually ''blend'' the bar colors from color1 to color2.
+* __vertical__ : default = horizontal; vertical or horizontal
+* __progress__ : All bars have equal length and 2 colors. The value determines the size of the bars with ''color1''.
+* __gauge__ : The bar value determines color gradient between ''color1'' and ''color2''. 
+
+!!Examples
+
+%%tabbedSection
+%%tab-DefaultUsage
+!Default
+Here is a default case, without parameters. 
+
+__Numbers (integers or floats )__  inside a bullet list.
+{{{
+%%graphBars
+* %%gBar 20 %% apples
+* %%gBar 40 %% pears
+* %%gBar 60 %% bananas
+%%
+}}}
+becomes
+
+%%graphBars
+* %%gBar 20 apples %%  
+* %%gBar 40 %% pears
+* %%gBar 60 %% bananas
+%%
+
+__Date & Time __
+{{{
+%%graphBars-progress
+||Project Planning   ||%%gBar [{CurrentTimePlugin format='dd MMM yyyy' }]%% today 
+|Requirement Capture | %%gBar 1 Jan 2006 %% 
+|Analyse             | %%gBar 15 Feb 2006 %% 
+|Build               | %%gBar 1 Apr 2006 %% 
+|Validate            | %%gBar 15 Jun 2006 %% 
+%%
+}}}
+becomes
+
+%%graphBars-progress
+||Project Planning   ||%%gBar [{CurrentTimePlugin format='dd MMM yyyy' }]%% today 
+|Requirement Capture | %%gBar 1 Jan 2006 %% 
+|Analyse             | %%gBar 15 Feb 2006 %% 
+|Build               | %%gBar 1 Apr 2006 %% 
+|Validate            | %%gBar 15 Jun 2006 %% 
+%%
+
+%%
+%%tab-BarLengths
+
+! Bar Lengths
+You can specify bar lengths with prefix __min__ and __max__.
+The values you specifiy determine the number of pixels for the shortest and the tallest graph-bar. 
+{{{
+%%graphBars-min5-max15
+| apples  | %%gBar 20 kg %% 
+| bananas | %%gBar 60 kg %%
+%%
+}}}
+becomes
+%%graphBars-min5-max15
+| apples  | %%gBar 20 kg %% 
+| bananas | %%gBar 60 kg %%
+%%
+
+%%
+%%tab-BarColor
+
+!Bar Colors
+
+You can use HTML hexadecimal Color codes or HTML color names. 
+
+{{{
+%%graphBars-fuchsia
+| apples  | %%gBar 20 %% 
+| pears   | %%gBar 40 %% 
+| bananas | %%gBar 60 %%
+%%
+}}}
+becomes
+
+%%graphBars-fuchsia
+| apples  | %%gBar 20 %% 
+| pears   | %%gBar 40 %% 
+| bananas | %%gBar 60 %%
+%% 
+
+You can specify 2 colors. Each bar will be colored differently, gradually moving from ''color1'' to ''color2''
+
+{{{
+%%graphBars-ffff00-669900
+%%graphBarsW-ffff00-669900-progress-max50
+| apple      | %%gBar 20 %% | %%gBarW 20 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW  5 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  7 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 12 %% 
+| apple      | %%gBar 120 %%| %%gBarW 13 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW 17 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  2 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 14 %% 
+%%
+%%
+}}}
+becomes
+
+%%graphBars-ffff00-669900
+%%graphBarsW-ffff00-669900-progress-max50
+| apple      | %%gBar 20 %% | %%gBarW 20 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW  5 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  7 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 12 %% 
+| apple      | %%gBar 120 %%| %%gBarW 13 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW 17 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  2 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 14 %% 
+%%
+%%
+
+%%
+%%tab-NamedBars
+
+!Named Bars
+
+Named bars allow you to specify different graphbar styles in a single page section or table
+
+__Example 1: nested named graph-bars__
+
+
+{{{
+%%graphBars-ffff00-669900
+%%graphBarsW-ffff00-669900-progress-max50
+| apple      | %%gBar 20 %% | %%gBarW 20 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW  5 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  7 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 12 %% 
+%%
+%%
+}}}
+becomes
+
+%%graphBars-ffff00-669900
+%%graphBarsW-ffff00-669900-progress-max50
+| apple      | %%gBar 20 %% | %%gBarW 20 %% 
+| pear       | %%gBar 40 %% | %%gBarW 10 %% 
+| banana     | %%gBar 60 %% | %%gBarW  5 %% 
+| strawberry | %%gBar 49 %% | %%gBarW  7 %% 
+| cherry     | %%gBar 37 %% | %%gBarW 12 %% 
+%%
+%%
+
+__Example 2: named graphbars in tables__
+
+When using bars inside a table, you can omit the gBar tags around each value. 
+The graphBar will automatically detect which column or row it should work on.
+
+
+{{{
+%%graphBarsSize-ffff00-669900
+%%graphBarsLength-ffff00-669900-progress-max50
+||Category   || Size || Length 
+| apple      | 20    | 20 
+| pear       | 40    | 10 
+| banana     | 60    |  5 
+| strawberry | 49    |  7 
+| cherry     | 37    | 12 
+%%
+%%
+}}}
+becomes
+
+%%graphBarsSize-ffff00-669900
+%%graphBarsLength-ffff00-669900-progress-max50
+||Category   || Size || Length 
+| apple      | 20    | 20 
+| pear       | 40    | 10 
+| banana     | 60    |  5 
+| strawberry | 49    |  7 
+| cherry     | 37    | 12 
+%%
+%%
+
+With vertical bars (row based table)
+{{{
+%%graphBarsCost-vertical-min3-max20-progress-lime
+%%graphBarsWeight-vertical-red-max60
+||Fruit  | apples | pears | bananas | strawberry | cherry       
+||Weight | 20     | 40    | 60      | 120        | 49   
+||Cost   | 5      | 3     | 7       | 20         |  9   
+%%
+%%
+}}}
+
+becomes
+%%graphBarsCost-vertical-min3-max20-progress-lime
+%%graphBarsWeight-vertical-red-max60
+||Fruit  | apples | pears | bananas | strawberry | cherry       
+||Weight | 20     | 40    | 60      | 120        | 49
+||Cost   | 5      | 3     | 7       | 20         |  9
+%%
+%%
+
+
+%%
+%%tab-VerticalBars
+
+!Vertical Bars
+Vertical bars are typically used inside tables; although inline vertical bars are possible too.
+
+You can get vertical layout with normal bars, ''progress'' bars and ''gauge'' bars.
+
+__Tables with vertical bars__
+{{{
+%%graphBars-vertical
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+}}}
+
+becomes
+%%graphBars-vertical
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+
+__Inline Vertical bars__ ( may not be vey useful )
+{{{
+%%graphBars-ffff00-669900-vertical
+Some text %%gBar 20 %% %%gBar 40 %% %%gBar 120 %% %%gBar 20 %% %%gBar 49 %% and some bars
+%%
+}}}
+
+becomes
+%%graphBars-ffff00-669900-vertical
+Some text %%gBar 20 %% %%gBar 40 %% %%gBar 120 %% %%gBar 20 %% %%gBar 49 %% and some bars
+%%
+
+%%
+%%tab-ProgressBars
+
+!Progress Bar
+Progress bars have equal lengths and consist of 2 colors. 
+
+__Horizontal (default) progress bar__
+{{{
+%%graphBars-ffff00-669900-progress
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 120 %%
+| cherry     | %%gBar 49 %%
+%%
+}}}
+becomes
+
+%%graphBars-ffff00-669900-progress
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 120 %%
+| cherry     | %%gBar 49 %%
+%%
+
+__Vertical Progress Bar__
+
+{{{
+%%graphBars-ffff00-669900-vertical-progress
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+}}}
+
+becomes
+%%graphBars-ffff00-669900-vertical-progress
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+
+__Invert colors__
+If you don't specify ''color2'', the invert of 'color1' will be taken,
+{{{
+%%graphBars-red-progress
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+| apple      | %%gBar 80 %% 
+| pear       | %%gBar 90 %% 
+| banana     | %%gBar 120 %%
+| strawberry | %%gBar 149 %%
+| cherry     | %%gBar 137 %%
+%%
+}}}
+becomes
+
+%%graphBars-red-progress
+%%sortable
+|| Fruit     || Turn-over
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+| apple      | %%gBar 80 %% 
+| pear       | %%gBar 90 %% 
+| banana     | %%gBar 120 %%
+| strawberry | %%gBar 149 %%
+| cherry     | %%gBar 137 %%
+%%
+%%
+
+%%
+%%tab-GaugeBars
+
+!Gauge Bars
+
+The color of the bar varies depending on the value of the bar.
+
+__Horizontal (default) gauge bar__
+{{{
+%%graphBars-ffff00-669900-gauge
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+%%
+}}}
+becomes
+
+%%graphBars-ffff00-669900-gauge
+%%sortable
+|| Fruit     || Turn-over
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+%%%%
+
+__Vertical gauge bar__
+{{{
+%%graphBars-ffff00-669900-vertical-gauge
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+}}}
+
+becomes
+%%graphBars-ffff00-669900-vertical-gauge
+|| apples      || pears       || bananas     || strawberry   || cherry       
+| %%gBar 20 %% | %%gBar 40 %% | %%gBar 60 %% | %%gBar 120 %% | %%gBar 49 %%  
+%%
+
+__Invert colors__
+If you don't specify ''color2'', the invert of 'color1' will be taken,
+{{{
+%%graphBars-red-gauge
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+| apple      | %%gBar 80 %% 
+| pear       | %%gBar 90 %% 
+| banana     | %%gBar 120 %%
+| strawberry | %%gBar 149 %%
+| cherry     | %%gBar 137 %%
+%%
+}}}
+becomes
+
+%%graphBars-red-gauge
+%%sortable
+|| Fruit     || Turn-over
+| apple      | %%gBar 20 %% 
+| pear       | %%gBar 40 %% 
+| banana     | %%gBar 60 %%
+| strawberry | %%gBar 49 %%
+| cherry     | %%gBar 37 %%
+| apple      | %%gBar 80 %% 
+| pear       | %%gBar 90 %% 
+| banana     | %%gBar 120 %%
+| strawberry | %%gBar 149 %%
+| cherry     | %%gBar 137 %%
+%%
+%%
+
+%%
+%%
+
+
+----
+[Category style]

@@ -1,0 +1,18 @@
+A simple counter plugin that starts counting at 1 at the top of the page, and each time it is invoked, will increase its value. Counters are transient, and relevant to the current page view only - i.e. two persons viewing the same page at the same time get their own counters.
+
+The current counter value is accessible also as a [WikiVariable].  The name of the variable is "counter", or "counter-<name>", if you have defined a counter name.
+
+!!! Parameters
+* __name__ = ''counter name''.  You may define as many counters per page as you want; you just need to separate them with the ''counter name''. This parameter is optional.
+* __increment__ = ''value''. (Since 2.8) The amount to increment the counter with, it may be both a positive and a negative value, the default is 1. This parameter is optional.
+* __start__ = ''value'' (Since 2.8) The starting value of the count, the default value = 0. This parameter is optional.
+* __showResult__ = ''true/false'' (Since 2.8) Can be true or false, and determines if the counter value should be visible on the page, the default is true. This parameter is optional.
+
+!!! Examples
+
+||Source code|| Result on page|| Comments
+|[[{Counter}], [[{Counter}], [[{Counter}], [[{Counter name='aa'}] |[{Counter}], [{Counter}], [{Counter}], [{Counter name='aa'}] |The value of "counter" at the end is [{$counter}] and the value of "counter-aa" is [{$counter-aa}].
+|[[{$counter}], [[{$counter-aa}] |[{$counter}], [{$counter-aa}]|access the counter value via the variable name (without increasing it)
+| .[[{Counter showResult=false}]. [[{Counter}]. | .[{Counter showResult=false}].[{Counter}].| the first result(4) is not visible, the second is visible, the dots are placed here to make this visible
+| [[{Counter start=15}] [[{Counter}] | [{Counter start=15}] [{Counter}]| set the offset to 15 and start counting
+| [[{Counter }] [[{Counter increment=10}] | [{Counter }] [{Counter increment=10}]| the second invocation increases the counter with the specified value of 10

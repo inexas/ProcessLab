@@ -1,0 +1,20 @@
+Lists all pages that are referred to, but not yet created.
+
+Usage:
+{{{
+[{UndefinedPagesPlugin max=400 before='#' after='\n'}]
+}}}
+
+!!! Parameters
+ 
+* __maxwidth__=''n'' : Limits the length of the generated links to at most ''n'' characters.  This should be used to keep the [LeftMenu] or [LeftMenuFooter] at a manageable width.  Default is to not limit the length at all.
+* __show__=''pages|count'' : This parameter can have two values, "pages" (the default), and "count". The value "pages" will give you the list containing the pages, the value "count" will give you just the number of pages, not the whole list.
+
+
+This plugin extends AbstractReferralPlugin and therefore inherits its parameters.
+
+
+!!! Examples
+
+See [Undefined pages].
+

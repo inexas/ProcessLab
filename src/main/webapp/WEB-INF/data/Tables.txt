@@ -1,0 +1,57 @@
+Tables allow you to display your data in automatically paged tables that can be sorted.
+
+!!! Parameters
+* __format__: Must be 'table'
+* __db__: the name of the data source to use
+* __sql__: the SQL to use to generated the data
+* __size__: 'xs', 's', 'm', 'l', 'xl' controls the maximum number of rows in a page
+* __link__: link='PageName&n1={v1}&n2={p2}'
+
+
+
+!! Special features
+* Clicking on column headers sorts the data
+
+!! Parameters
+* __format__ optional, default 'table'
+[{InsertPage page='DataView base parameters'}]
+
+
+!!! Examples
+
+!! Example: Order listing
+[{DataView db=demo format=table size=xs
+    
+    SELECT * FROM orders
+}]
+
+! Source
+{{{
+[{DataView db=demo format=table size=xs
+    
+    SELECT * FROM orders
+}]
+}}}
+    
+!! Example: Employee's email address finder
+To find the email of an employee type in part of their first name and press submit. ''(Clue: the employees in Global GPS are Alice, Bob, Charles, Diane and Ernie)''
+
+\\
+[{DataView db=demo format=table size=s
+    
+    SELECT name,email 
+    FROM employees 
+    WHERE LCASE(name) LIKE LCASE('%@Name@%')
+}]
+
+! Source
+{{{
+[{DataView db=demo format=table size=s
+    
+    SELECT name,email 
+    FROM employees 
+    WHERE LCASE(name) LIKE LCASE('%@Name@%')
+}}}
+
+The plugin statement above does everything for us. The @Name@ causes a small form to be displayed prompting the user for the user's name, or part of it, to be entered. The results table won't be displayed until the SQL statement is completed - that is the user has submitted a value.
+

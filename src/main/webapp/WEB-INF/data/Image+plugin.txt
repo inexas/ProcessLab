@@ -1,0 +1,46 @@
+The Image plugin allows one to have finer control over the layout of images than just the simple in-lining of images.
+
+!!! Parameters
+
+;__src__ = '' 'Image source' '': This can either be a full URL (http://...) or an attachment name. Required.
+;__align__ = '' 'left|right|center' '': The image alignment.
+;__height__ = '' 'integer' '': Force the height of the image.
+;__width__ = '' 'integer' '': Force the width of the image.
+;__alt__ = '' 'alt text' '': The alt text of an image.  This is very useful when doing pages that can be navigated with text-only browsers.
+;__caption__ = '' 'caption text' '': The text that should be shown as a caption under the image.
+;__link__ = '' 'hyperlink' '': A hyperlink (http://...).
+;__border__ = '' 'integer' '': Size of the image border.
+;__style__ = '' 'style info' '': Any style markup you would like to apply to the table surrounding the image.
+;__class__ = '' 'class name' '': Redefine the default class for this image, which is "imageplugin".
+
+!!! Examples
+{{{
+[{Image src='SandBox/test.png' caption='Testing Image' style='font-size: 120%; color: green;'}]
+}}}
+
+Shows the attachment {{SandBox/test.png}} with the caption __Testing Image__ underneath it.  The text is 120% in height and will be rendered in green color.
+
+{{{
+[{Image src='http://opi.yahoo.com/online?u=YahooUser1234&m=g&t=2' 
+link='http://edit.yahoo.com/config/send_webmesg?.target=YahooUser1234&.src=pg'}]}}}
+
+Shows the Yahoo online / offline graphic and creates a link to Yahoo send message 
+
+[{Image src='http://opi.yahoo.com/online?u=YahooUser1234&m=g&t=2' 
+link='http://edit.yahoo.com/config/send_webmesg?.target=YahooUser1234&.src=pg'}]
+
+While the ImagePluginWithThumbnails provides automatic creation of thumbnails from the full size image, it's also pretty complicated and not part of ProcessLab proper. But the Image plugin can do thumbnail links if you're willing to create the thumbnail images yourself, using the {{link}} attribute, e.g.,
+
+{{{
+[{Image src='images/ref/image_thumb.png' link='images/ref/image.png'}]
+}}}
+
+When you click on the image thumbnail the full size image will be displayed.
+
+
+!!! CSS
+
+;__{{.imageplugin}}__: The table that encompasses the image.  It consists of two subcategories:
+;:__{{img}}__ = IMG tag that gets embedded.
+;:__{{caption}}__ = caption that is embedded.
+

@@ -1,0 +1,27 @@
+Scatter charts allow you to present data that will expose clustering or trends.
+
+!! Special features
+* Clicking on one of the points on the line pops up a tool tip giving details of the value
+
+!! Parameters
+* __format__ mandatory: Must be 'area'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView minmaxlegend'}]
+
+
+!!! Examples
+
+!! Dynamic non-stacked area chart
+
+[{DataView db=demo format=scatter size=s
+
+SELECT name, quantity FROM products
+}]
+
+! Source
+{{{
+[{DataView db=demo format=scatter size=s
+
+SELECT name, quantity FROM products
+}]
+}}}

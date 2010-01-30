@@ -1,0 +1,23 @@
+Inserts the latest changes in order. 
+
+!!Parameters: 
+* __since__=''n'' : show changes from the last n days.
+* __format__=''(full|compact)'' : if "full", then display a long
+  version with all possible info.  If "compact", then be as compact as possible.
+
+!!Example:
+The following example inserts the changes from the past 2 days in a full format.  
+{{{
+[{INSERT RecentChangesPlugin since=2, format=full}]
+}}}
+
+And here they are:
+[{RecentChangesPlugin since=2, format=full}]
+
+
+----
+
+Here is the same list in compact format:
+[{RecentChangesPlugin since=2 format=compact}]
+
+

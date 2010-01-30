@@ -1,0 +1,41 @@
+Data* drill-down is a simple feature that allows you to link pages from a visualization. For example try double-clicking on one of the lines in the demo product catalogue below. You will be taken to a page that shows the sales for this product. ''Click on the back button to get back here afterwards.''
+
+[{DataView db=demo link='Drill-down+demo&Name={0}'
+
+SELECT Name FROM Products
+}]
+
+!!! How it works
+To make the drill-down feature work you need to think about two pages: the source page where you want people to double click, and the target page: where they will go to if the drill down. Here is the source of the example shown above.
+
+!! Source page
+{{{
+[{DataView db=demo link='Drill-down+demo&Name={0}'
+
+SELECT Name FROM Products
+}]
+}}}
+
+As you can see, the drill down is achieved by adding a single 'link' parameter. It is in the format:
+{{{
+link = <PageName> [& <Name> = <Value>]...
+}}}
+
+Here's some examples
+* __link=Target__: as simple as it gets; a page name
+* __link='Target+page'__: When page names have spaces in the you need to use '+' symbols
+* __link='Target&Name=Harry'__: A single literal parameter
+* __link='Target&Name={0}'__: A single variable parameter
+* __link='Target&Name={0}&Quantity=200'__: Multiple parameters
+
+From the examples you can see that parameters can be sent to the target visualization. There are two types of parameters: literal or fixed parameters or variable parameters. Variable parameters are taken from the data using in the visualization. For example {1} will be replace by the second column of the selected row (the first column is column 0 or {0}).
+
+!! Target page
+{{{
+[{DataView db=demo
+
+SELECT * FROM ordersView WHERE ProductName='@Name@'
+}]
+}}}
+
+On the target page just add the parameters you are expecting as fields with the same name. So 'Name' is used in both the link specification as well as in the SQL WHERE clause.

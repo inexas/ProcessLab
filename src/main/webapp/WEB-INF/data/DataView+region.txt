@@ -1,0 +1,4 @@
+* __region__: The region to show in the map
+** Optional, default: world
+** Valid vales: 'world', 'africa', 'asia', 'europe', 'middle_east', 'south_america', and 'usa'
+** Examples: region=europe

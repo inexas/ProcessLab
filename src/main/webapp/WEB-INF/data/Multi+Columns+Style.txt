@@ -1,0 +1,63 @@
+!!! Multi Columns
+
+%%tabbedSection
+%%tab-Introduction
+
+! Introduction
+
+This style allows to format text side by side, like in a newspaper. Use a horizontal rulers {{----}} to separate the columns.
+
+Column widths are equal and automatically calculated. Optionally, you can specify the width in pixel(px) for the columns.
+
+{{{
+%%columns-<width>
+Content for the first column
+----
+Content for the 2nd column
+----
+Content for the 3rd column
+/%
+}}}
+
+Note: If you want to insert a horizontal ruler in the content of a column, you can use the __%~%hr /~%__ style.
+
+/%
+%%tab-Example
+! Example 
+
+%%columns
+!Back Up Everything
+Automatic backup, built right into your Mac. Never worry about losing a file again. Time Machine stores an up-to-date copy of all your Mac’s files on an external hard drive, personal file sharing volume, or Mac OS X Server. That includes system files, applications, accounts, preferences, music, photos, movies, and documents.
+!Automatic Backup
+Enjoy effortless setup. The first time you attach an external drive to your Mac, Time Machine asks if you’d like to use that drive as your backup. Say yes and Time Machine takes care of everything else. Automatically. In the background. You’ll never have to worry about backing up again.
+!Go Back In Time
+See what your computer looked like in the past. Select a specific date and let Time Machine find your most recent changes, or do a Spotlight search to find exactly the file you’re looking for. Once you do, click Restore and Time Machine brings it back to the present.
+----
+!Automatic Stop and Resume
+Never skip a beat. If your Time Machine backup is interrupted — because you took your portable on the road or put your Mac to sleep — Time Machine will simply stop backing up. When you reconnect to your backup drive again, TIme Machine automatically picks up where it left off.
+!Do Not Back Up List
+Be selective. By default, Time Machine backs up your entire system. But you can also select items to exclude from a Time Machine backup to save space on your backup disk.
+!Browse Other Time Machine Disks
+Browse other Time Machine disks with your Mac. Just plug in the drive and your Mac will recognize the Time Machine backup volume, even if it has backed up a different Mac.
+!Migration Assistant Support
+Migrate easier. Move individual users and folders from an existing Time Machine backup to set up new systems with ease. Then just start up the new Mac and you’ll be right where you left off on the previous one.
+----
+!Manual Backup
+Create a new incremental backup at any time. Hold down the Control key and click the Time Machine icon in the Dock.
+Quick Look Before Restoring
+Quickly preview your files before you restore them to make sure those documents are really the ones you want.
+
+!Restore Your Mac
+Restore everything on your Mac. Time Machine will put all the files right back where the originals were — as if nothing ever happened. You can even restore your files to set up a brand-new Mac.
+
+!Preserve Access Privileges
+Back up the entire system and all users at once, while maintaining the access privileges associated with your files.
+/%
+
+
+/%
+%%tab-Discussion
+!Discussion
+
+/%
+/%

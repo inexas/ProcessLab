@@ -1,0 +1,47 @@
+There are a number of mechanisms that can be used for authentication and authorization. This ProcessLab is currently configured to use its own login system for authentication and groups for authorization.
+
+!!! Making sure the user is who s/he says he is: authentication
+ProcessLab supports multiple levels of authentication and trust. Users can be anonymous, have "asserted" identities using cookies, be authenticated, or be administrators:
+|| Status || Description || Left Menu Shows..
+| Anonymous | User not logged in, and has not supplied a cookie | (nothing)
+| Asserted | User's browser contains a cookie called {{JSPWikiAssertedName}} | "G'Day, ''username'' (not logged in)"
+| Authenticated | User logged in with a login id and password | "G'Day, ''username'' (authenticated)"
+
+Depending on the default security policy and page access controls in place, users may (or may not) be required to authenticate. 
+
+When a user decides to log in — or is challenged to do so by a page access control or security policy — he or she sees a standard web form with a username field and a masked password field. After receiving the submitted web form, ProcessLab attempts to log the user in via either of these methods:
+* __Custom authentication__, which looks up and validates the user's id and password against those stored in ProcessLab's UserDatabase
+* __Container authentication__, which relies on the servlet container to perform the authentication and supply credentials
+
+ProcessLab is smart enough to detect which authentication method is in force. If certain {{<security-contraint>}} elements in {{web.xml}} are uncommented, container authentication is used. If not, ProcessLab uses custom authentication. In both cases, the user experience is identical. 
+
+!!! Controlling access to pages: authorization
+Suppose you've got a page that you'd like to restrict access to. You've got a page called TestSocialCommittee, and you'd like to lock it down so that only the SocialCommittee group can access it. Here's how to do it.
+
+First, make sure you've created a wiki profile. Create a user with these properties:
+* login name: andrew
+* wiki name: Andrew Aardvark
+* full name: Andrew Aardvark
+
+Next, once you've logged in as andrew, create a new wiki group by clicking on the "create group" link. Give the group these properties:
+* group name: SocialCommittee
+* members: Andrew Aardvark
+
+After you save the group, it will be saved to a page called GroupSocialCommittee. You can verify that it added the correct wiki markup to this page by opening the page GroupSocialCommittee and clicking on the "edit page" link. You should see this content:
+{{{
+[{ALLOW edit SocialCommittee}]
+[{SET members='AndrewAardvark'}]
+}}}
+
+This is a wiki group. Edit this page to see its members.
+
+So far so good; we've created the group we need. Now we create our test page and add an ACL to it. Edit the URL at the top of the page so that the right-most part of it reads /Edit.jsp?page=TestSocialCommittee. You should see the editor page, with an empty page (blank content). Add the following text:
+
+{{{
+[{ALLOW view SocialCommittee}]
+Only the group SocialCommittee can see this.
+}}}
+
+Now log out. Try navigating to the TestSocialCommittee page. Access to the page will be denied, and you will be prompted to log in.
+
+Log in. Try Navigating to TestSocialCommittee again. You should see the text: Only the group SocialCommittee can see this..

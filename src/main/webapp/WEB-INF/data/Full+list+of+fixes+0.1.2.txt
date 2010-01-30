@@ -1,0 +1,2 @@
+* Documentation updated: [DataStar configuration]
+* [Result set caching] added resolving [http://trac.xp-dev.com/wikibi/ticket/28]

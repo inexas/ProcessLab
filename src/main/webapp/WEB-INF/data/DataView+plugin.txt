@@ -1,0 +1,50 @@
+The DataView plugin allows you to easily and quickly publish data in a web page in a graphical, tabular or plain text format. The data may be static: hard coded in the web page, or dynamic: taken from a live database. By editing ProcessLab page you can add spectacular graphics in a few lines. In a pie chart, for example:
+
+| [{DataView format='pie' size='120,200' legend='none'
+
+Type,Amount
+Dogs,150
+Cats,76
+Mice,21
+}] | {{{ [{DataView format='pie' size='120,200' legend='none'
+
+Type,Amount
+Dogs,150
+Cats,76
+Mice,21
+}]
+}}}
+
+The general format to insert a data visualization is
+{{{
+[{DataView db='<DataSourceName> format='<Format>' <FormatSpecificParameters>...
+
+<SqlQueryOrStaticData>
+}]
+}}}
+Where
+* db=<''DataSourceName''> optional: is the name of a [DataView source]
+* format=<''Format''> mandatory: is one of the formats listed below
+* FormatSpecificParameters optional: a list of one or more format specific parameters. Depending on which output format you use some parameters are provided to allow you fine control on how data is rendered. For example: size='m' can be used to control the size of the rendered object
+* SqlQueryOrStaticData'' mandatory: the raw data that is to be rendered. Either an [SQL query or a static data|DataView sources|Data sources] 
+
+
+!!! Available data visualizations
+
+| [Area chart] | [areachart.png] | Show variables as an area
+| [Bar chart] | [barchart.png]   | Horizontal bar chart
+| [Column chart] | [colchart.png] | Vertical column charts 
+| [Intensity map] | [intensitymap.png] | Intensity maps color regions or countries according to supplied values
+| [Line chart] | [linechart.png] | Line charts display one or more data series on a graph
+| [Marker map] | [markermap.png] | Marker maps allow you to show your data on a map with colored circles
+| [Motion chart] | [motion.png] | Motion charts allow you to show five different data dimensions on the same chart
+| [Org charts] | [orgchart.png] | Organizational charts give you the possibility to display hierarchical relationships graphically
+| [Pie chart]  | [piechart.png] | The classical pie chart allowing you to compare data values
+| [Plain text] | [ptext.png] | Plain text is a simple, but powerful format that allows you to embed information from a database in text
+| [Region map] | [regionmap.png] | A region map is a map of a region, country or continent map showing values as colors with hover-text
+| [Round gauge] | [gauge.png]     
+| [Scatter chart] | [sctrchart.png]  Scatter charts allow you to present data that will expose clustering or trends
+| [Spreadsheet] | [ssheet.png] | Display an icon that, when clicked on, downloads data as a spreadsheet
+| [Tables] | [tables.png] 
+| [Time line] | todo diagram | 
+

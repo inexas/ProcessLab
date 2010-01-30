@@ -1,0 +1,5 @@
+The following pages belong to the 'style' category (or link to it for some other reason).
+
+[{ReferringPagesPlugin}]
+----
+[Category category]

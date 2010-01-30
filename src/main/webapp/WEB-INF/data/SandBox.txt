@@ -1,0 +1,8 @@
+!!! This is the SandBox, you can do what you like here
+
+[{DataView db=demo
+
+
+SELECT * FROM products
+ }]
+

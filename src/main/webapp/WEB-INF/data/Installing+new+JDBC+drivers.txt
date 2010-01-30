@@ -1,0 +1,32 @@
+This page covers the installation of new JDBC drivers to enable [DataStar plugins] to access databases.
+
+You need to download and install a JDBC driver for each type of database you need to access only once. That is once only to access all databases on DB2, once for all database stored on MySQL etc.
+
+The installation procedure is quite simple and only takes a few minutes.
+# Get an appropriate JDBC driver
+# Copy it to the lib directory in the webapps directory
+# Reload the ProcessLab instance
+# Configure the data source in the [DataStar configuration] page
+
+You will need to know how ProcessLab is installed and have access to the application server.
+
+The explanation below assumes that you are using the Apache Tomcat application server.
+
+!!! Getting the JDBC driver
+[JDBC drivers|wp:JDBC] are stored in [JAR files|wp:JAR_files]. If you have a department responsible for the database you are accessing, they will be able to provide you with the correct JAR file. Otherwise they are available for download free directly from the database supplier. For example, if you need to access a MySQL database you can download the JDBC driver from the MySQL website [downloads page|http://dev.mysql.com/downloads/#connector-j].
+
+Be sure that the version number of the driver is appropriate for the database you are accessing.
+
+!!! Installing the driver
+In order to install the driver you will need to copy it into the 'webapp/WEB-IF/lib' directory. Assuming you are running ProcessLab under Apache Tomcat you will find it under '.../Tomcat/webapps/<pl>/WEB-IF/lib/' directory where <pl> is the name of the webapp that ProcessLab is installed as. You can find the webapp name in the URL, for example:
+
+;: {{http://localhost:8080/__pl__/Wiki.jsp?page=Installing%20new%20JDBC%20drivers}}
+
+!!! Reloading the ProcessLab instance
+Once you have installed the driver, the ProcessLab instance can be reloaded by either (in order of preference)
+# Reload the instance using the Tomcat manager
+# Restarting the whole of Tomcat using, for example windows Services
+# Restarting the computer hosting the Tomcat
+
+!!! Configuring the data source
+See [DataStar configuration].

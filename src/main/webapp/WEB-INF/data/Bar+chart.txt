@@ -1,0 +1,61 @@
+!!! Horizontal bar charts
+Horizontal bar charts allow you to compare different values and different series of values.
+
+For a vertical version of this chart, see the [Column chart].
+
+!! Special features
+* Clicking on the bar pops up a tool tip giving details of the value
+* Clicking on the legend for a series animates the relevant bars
+
+!! Parameters
+* __format__ mandatory: Must be 'bar'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView minmaxlegend'}]
+[{InsertPage page='DataView stack'}]
+[{InsertPage page='DataView is3d'}]
+
+!!! Examples
+
+----
+!! Dynamic bar chart
+%%center
+[{DataView
+    format=bar size='180,420'
+    db=demo sql='SELECT name, price FROM products ORDER BY price DESC'
+}]
+__Product price comparison__
+/%
+
+! Source
+{{{
+[{DataView
+    format=bar size='180,420'
+    db=demo sql='SELECT name, price FROM products ORDER BY price DESC'
+}]
+}}}
+
+----
+!! Static bar chart
+
+%%center
+[{DataView
+    format=bar size='120,400' stack=true is3d=true legend=left
+
+Office,Cats,Dogs,Mice
+Manchester,10,15,55
+London,39,88,104
+Shrewsbury,30,40,60
+}]
+__Pet sales by outlet__
+/%
+
+! Source
+{{{
+[{DataView
+    format=bar size='120,400' stack=true is3d=true legend=left
+
+Office,Cats,Dogs,Mice
+Manchester,10,15,55
+London,39,88,104
+Shrewsbury,30,40,60
+}}}

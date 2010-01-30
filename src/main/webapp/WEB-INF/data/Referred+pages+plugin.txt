@@ -1,0 +1,44 @@
+Finds and lists all pages that are referred to by the current page. See also [Referring pages plugin]). 
+
+!!! Parameters 
+; __page='<pagename>'__ : The name of the root page.  Default is the name of the calling page. 
+; __type='local|external|attachment'__ : ''Local'' shows all local wiki links.\\''External'' shows all external links of the root page. \\''Attachment'' shows the referred attachments of the root page. You can combine the different types like in {{{type='local attachment'}}} Default is ''local''. 
+; __depth='1..8'__ : Number of levels of wiki links to be expanded. Default is one.
+; __include='<pattern>'__ : Only show links matching the include pattern[1]. (eg. {{'BUG.*|CHANGE.*')}}
+; __exclude='pattern'__ : Never show links matching the exclude pattern[1]. (eg. {{'LeftMenu.*|Main')}}
+; __format='full|sort'__ : Format ''full'' will display all referred page links with duplicate links as normal text but are expanded as normal. Default format will suppress duplicate page links. \\ Format ''sort'' will sort the referred page links alphabetically. Default format shows all referred page links in order of appearance.
+
+!!! Examples
+
+Some valid examples :
+{{{ 
+    [{ReferredPagesPlugin depth='2'}]
+    [{ReferredPagesPlugin page='Main' depth='2' format='sort' }]
+    [{ReferredPagesPlugin page='Main' depth='2' include='JSP.*|.*Tag' format='full'}]
+    [{ReferredPagesPlugin page='About' type='external' include='.*\.com.*'}]
+}}}
+
+The output of the plugin may look like this[2][3] :
+
+[<pagename>|Referred pages plugin]
+* [Page1|Referred pages plugin]
+** [Page12|Referred pages plugin]
+** [Page21| Referred pages plugin]
+** Page 1
+* [Page 2|Referred pages plugin]
+
+
+----
+!Notes
+
+[#1] This plugin uses the PERL regular expression syntax, which is more powerful than the 
+standard unix globbing syntax. \\
+The main difference is that ''any char'' is matched by means of a explicit dot "{{.}}" ; 
+multiple occurences of any char are thus matched by means of "{{.*}}", "{{.+}}" or "{{.?}}". 
+\\See also [overview of regular expression syntax|EditFindAndReplaceHelp]
+
+[#2]Hover your mouse over the {{<pagename>}} link and you will see all the settings of the called plugin.
+
+[#3]The whole output of the plugin is enclosed in a {{<div class='ReferredPagesPlugin'>}} tag, 
+so you can do any special formatting you want via the jspwiki.css.
+

@@ -1,0 +1,164 @@
+[{TableOfContents }]
+!! Introduction
+
+This style allows you to add horizontol or vertical accordion sections to your wiki pages.
+
+An accordion is an animated set of tabs. When clicking one of the tabs, all others are being closed with a smooth visual transition effect. 
+
+There are several accordion flavours:
+* __%~%accordion__: standard accordion with tabs positioned vertically. 
+  ([example|http://www.solutoire.com/experiments/mootools/acc_ex3.html])
+  This is great for [LeftMenu's|LeftMenu]\\
+  When used with a single tab, you can use this as a replacement of a  [Collapsible Box]
+* __%~%tabbedAccordion__: tabs are positioned one behind the other like a tabbed book, 
+  similar to the good old [Tabbed Sections] but with stunning visual effect
+* __%~%leftAccordion__ and __%~%rightAccordion__: the tabs are positioned at the left or 
+  right side of the tab contents like a tabbed book
+
+!! Standard Accordion
+
+All tabs are stacked vertically. Switching tabs will slide the tab vertically in or out. 
+
+Add a __%~%accordion__ around all tabs and start each tab with __%~%tab-<tab-name>__.
+The name of a tab may only contain alphanumeric characters and a dash; but no other punctuations.
+It may not start with a digit. (css classname restrictions) 
+
+When the page loads, only the first tab will be visible. 
+All other tabs are hidden, until you click the corresponding tab.
+
+Note: when printing, only the visible tabs are shown.
+
+{{{
+%%accordion
+%%tab-FirstTab
+...
+/%
+%%tab-SecondTab
+...
+/%
+/%
+}}}
+
+Reality check:
+%%(width:600px;)
+%%accordion
+%%tab-FirstTab
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, accumsan ac, sem. Sed scelerisque tortor nec leo. Etiam vel massa vitae nulla elementum aliquet. Donec egestas semper tellus. Donec ultrices ante cursus lacus. Integer nec est. Suspendisse potenti. Donec fringilla. Maecenas condimentum, arcu sit amet volutpat tincidunt, mi urna sodales nunc, eget porttitor odio lectus sit amet metus. Vivamus aliquam. Etiam lectus leo, venenatis sit amet, vestibulum eu, sollicitudin vitae, metus.
+/%
+%%tab-SecondTab
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut molestie nunc eu turpis. Donec facilisis enim sed dui. Sed nunc. Cras eu arcu. Praesent vel augue vel dolor ultricies convallis. Nam consectetuer risus eu urna. Cum sociis natoque penatibus et magnis 
+[Editing styles/poppy.jpg]
+dis parturient montes, nascetur ridiculus mus. Nam suscipit. Duis quis lacus sed tellus auctor blandit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin eget massa in ante vehicula pharetra. Ut massa pede, ornare id, ultrices eget, porta et, metus.
+/%
+%%tab-ThirdTab
+* Vestibulum ante ipsum primis ...
+* Ut molestie nunc eu turpis. ...
+* Donec facilisis enim sed dui. 
+/%
+/%
+
+/%
+!! Tabbed Accordion
+
+This accordion variant generates a set of horizontal tabs with accordion effect.
+It is similar to [Tabbed Sections] but the transition between the tabs is gradual with a fading effect.
+
+{{{
+%%tabbedAccordion
+%%tab-FirstTopic
+...
+/%
+%%tab-SecondTopic
+...
+/%
+/%
+}}}
+
+Reality check:
+%%(width:600px;)
+%%tabbedAccordion
+%%tab-FirstTopic
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, accumsan ac, sem. Sed scelerisque tortor nec leo. Etiam vel massa vitae nulla elementum aliquet. Donec egestas semper tellus. Donec ultrices ante cursus lacus. Integer nec est. Suspendisse potenti. Donec fringilla. Maecenas condimentum, arcu sit amet volutpat tincidunt, mi urna sodales nunc, eget porttitor odio lectus sit amet metus. Vivamus aliquam. Etiam lectus leo, venenatis sit amet, vestibulum eu, sollicitudin vitae, metus.
+/%
+%%tab-SecondTopic
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut molestie nunc eu turpis. Donec facilisis enim sed dui. Sed nunc. Cras eu arcu. Praesent vel augue vel dolor ultricies convallis. Nam consectetuer risus eu urna. Cum sociis natoque penatibus et magnis 
+[Editing styles/poppy.jpg]
+dis parturient montes, nascetur ridiculus mus. Nam suscipit. Duis quis lacus sed tellus auctor blandit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin eget massa in ante vehicula pharetra. Ut massa pede, ornare id, ultrices eget, porta et, metus.
+/%
+%%tab-ThirdTopic
+* Vestibulum ante ipsum primis ...
+* Ut molestie nunc eu turpis. ...
+* Donec facilisis enim sed dui. 
+/%
+/%
+
+/%
+!! Side Accordion
+
+This accordion variant generates a set of vertical tabs with accordion effect.
+It is similar to a Tabbed Accordion, but the tabs appear at the left or right side instead of the top of the content.
+
+The Side Accordion is available from v2.8 onwards.
+!Left side accordion
+{{{
+%%leftAccordion
+%%tab-FirstTopic
+...
+/%
+%%tab-SecondTopic
+...
+/%
+/%
+}}}
+
+Reality check:
+
+%%(width:600px;)
+%%leftAccordion
+%%tab-FirstTopic
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, accumsan ac, sem. Sed scelerisque tortor nec leo. Etiam vel massa vitae nulla elementum aliquet. Donec egestas semper tellus. Donec ultrices ante cursus lacus. Integer nec est. Suspendisse potenti. Donec fringilla. Maecenas condimentum, arcu sit amet volutpat tincidunt, mi urna sodales nunc, eget porttitor odio lectus sit amet metus. Vivamus aliquam. Etiam lectus leo, venenatis sit amet, vestibulum eu, sollicitudin vitae, metus.
+/%
+%%tab-SecondTopic
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut molestie nunc eu turpis. Donec facilisis enim sed dui. 
+[Editing styles/poppy.jpg]
+Sed nunc. Cras eu arcu. Praesent vel augue vel dolor ultricies convallis. Nam consectetuer risus eu urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam suscipit. Duis quis lacus sed tellus auctor blandit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin eget massa in ante vehicula pharetra. Ut massa pede, ornare id, ultrices eget, porta et, metus.
+/%
+%%tab-ThirdTopic
+* Vestibulum ante ipsum primis ...
+* Ut molestie nunc eu turpis. ...
+* Donec facilisis enim sed dui. 
+/%
+/%
+/%
+!Right side accordion
+{{{
+%%rightAccordion
+%%tab-FirstTopic
+...
+/%
+%%tab-SecondTopic
+...
+/%
+/%
+}}}
+
+Reality check:
+
+%%(width:600px;)
+%%rightAccordion
+%%tab-FirstTopic
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In tempus ante nec ipsum. In ut felis id leo aliquet euismod. augue lorem, posuere eu, tincidunt non, bibendum quis, nisl. Integer erat erat, posuere vel, convallis feugiat, accumsan ac, sem. Sed scelerisque tortor nec leo. Etiam vel massa vitae nulla elementum aliquet. Donec egestas semper tellus. Donec ultrices ante cursus lacus. Integer nec est. Suspendisse potenti. Donec fringilla. Maecenas condimentum, arcu sit amet volutpat tincidunt, mi urna sodales nunc, eget porttitor odio lectus sit amet metus. Vivamus aliquam. Etiam lectus leo, venenatis sit amet, vestibulum eu, sollicitudin vitae, metus.
+/%
+%%tab-SecondTopic
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut molestie nunc eu turpis. Donec facilisis enim sed dui. 
+[Editing styles/poppy.jpg]
+Sed nunc. Cras eu arcu. Praesent vel augue vel dolor ultricies convallis. Nam consectetuer risus eu urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam suscipit. Duis quis lacus sed tellus auctor blandit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin eget massa in ante vehicula pharetra. Ut massa pede, ornare id, ultrices eget, porta et, metus.
+/%
+%%tab-ThirdTopic
+* Vestibulum ante ipsum primis ...
+* Ut molestie nunc eu turpis. ...
+* Donec facilisis enim sed dui. 
+/%
+/%
+/%
+

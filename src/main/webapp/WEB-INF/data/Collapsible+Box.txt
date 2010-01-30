@@ -1,0 +1,48 @@
+!! Collapsible Box
+
+%%tabbedSection
+%%tab-Introduction
+
+This style is an extension of [Collapsible Lists|Collapsible List]. 
+
+''__It provides collapsible boxes:__'' when closed only the title of the box is visible; when opened the complete box becomes visible. A open/close icon (+) will be shown at the right edge of the box, indicating the status of the box.
+E.g. [TableOfContents plugin] renders the toc by default inside a collapsible box.
+
+The first {{!}}, {{!!}} or {{!!!}} becomes the title of the collapsebox.  Use the style {{%~%collapsebox-closed}} to close the box by default.
+
+/%
+%%tab-Example\ Usage
+{{{
+  %%collapsebox
+  ! Title of the box
+  Here is the body of the box
+  * item 1
+  * item 2
+  /%
+}}}
+
+%%collapsebox
+! Title of the box
+Here is the body of the box
+* item 1
+* item 2
+/%
+
+And:
+{{{
+  %%collapsebox-closed
+  ! Title of a closed box
+  Here is the body of the box
+  * item 1
+  * item 2
+  /%
+}}}
+
+%%collapsebox-closed
+! Title of a closed box
+Here is the body of the box
+* item 1
+* item 2
+/%
+
+/%

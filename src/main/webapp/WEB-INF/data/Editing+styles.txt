@@ -1,0 +1,101 @@
+!!! Introduction
+If you don't find the styles you want within the normal wiki markup you may want to use CSS styles. There are two ways to do this, named (or predefined) styles or in-line styles. The general syntax is:
+
+Named styles:
+{{{
+This word at the end of this sentence is %%red red/%.
+}}}
+This word at the end of this sentence is %%red red/%.
+
+And the equivalent in inline styles:
+{{{
+This word at the end of this sentence is %%(color:red)red/%.
+}}}
+This word at the end of this sentence is %%(color:red)red/%.
+
+;Note : Use of this second form is discouraged as future versions of ProcessLab will focus more on styles.
+
+
+!!! Predefined styles
+
+!! Text effects
+* %~%small -- Smaller then normal font, like %%small this %%
+* %~%sub -- Subscript, like a%%sub ij %%= a%%sub ji%%
+* %~%sup -- Superscript, like 2%%sup 3 %%= 8
+* %~%strike -- Strike through text, like %%strike this text is hardly readable %%
+* %~%ltr -- left-to-right text formatting
+* %~%rtl -- right-to-left text formatting
+
+!! Special block markers:
+%%information
+Use %~%information ... %~% for informational messages
+/%
+%%warning
+Use %~%warning ... %~% for warning blocks
+/%
+%%error
+Use %~%error ... %~% for error blocks
+/%
+%%quote
+Use %~%quote ... %~% to quote a block of text
+/%
+%%center
+Use %~%center ... %~% to center your text
+/%
+%%commentbox 
+* %~%commentbox ... %~% Comment box floating at the right margin
+%%
+
+!! Colors
+||Syntax                 ||Description
+| %~%black	... /%   | The color %%black black
+| %~%blue	... /%   | The color %%blue blue
+| %~%brown	... /%   | The color %%brown brown
+| %~%cyan	... /%   | The color %%cyan cyan
+| %~%darkblue	... /%   | The color %%darkblue darkblue	
+| %~%darkgray	... /%   | The color %%darkgray darkgray	
+| %~%darkgreen	... /%   | The color %%red red	
+| %~%darkred	... /%   | The color %%darkred darkred	
+| %~%deeppink	... /%   | The color %%deeppink deeppink	
+| %~%gold	... /%   | The color %%gold gold
+| %~%gray	... /%   | The color %%gray gray
+| %~%green	... /%   | The color %%green green
+| %~%indigo	... /%   | The color %%indigo indigo
+| %~%lightblue	... /%   | The color %%lightblue lightblue	
+| %~%lightgray	... /%   | The color %%lightgray lightgray	
+| %~%lightgreen	... /%   | The color %%lightgreen lightgreen	
+| %~%lightred	... /%   | The color %%lightred lightred	
+| %~%lightyellow... /%   | The color %%lightyellow lightyellow	
+| %~%lime	... /%   | The color %%lime lime
+| %~%magenta	... /%   | The color %%magenta magenta	
+| %~%navy	... /%   | The color %%navy navy
+| %~%orange	... /%   | The color %%orange orange
+| %~%pink	... /%   | The color %%pink pink
+| %~%red	... /%   | The color %%red red
+| %~%silver	... /%   | The color %%silver silver
+| %~%tan	... /%   | The color %%tan tan
+| %~%teal	... /%   | The color %%teal teal
+| %~%violet	... /%   | The color %%violet violet
+| %~%white	... /%   | The color %%white white
+| %~%yellow	... /%   | The color %%yellow yellow
+
+
+!! Complex styles
+* %~%collapse -- Turn ordinary lists into collapsible trees. See [Collapsible List]
+* %~%collapsebox -- Creates a collapsible box which slides in/out vertically. See [Collapsible Box]
+* %~%category -- Generates pop up with pages referenced by the category page. See [Category Style|Page category style] 
+* %~%tip -- Generates a transparent fly-over tip with additional info. See [Tip Style]
+* %~%graphbar -- Add horizontal or vertical graph bars to your wikipages. See [GraphBars]
+
+* %~%sortable -- Turn ordinary wiki tables into sortable tables. See [Sortable Tables] 
+* %~%table-filter -- Turn ordinary wiki tables into Excel-like filtered tables. See [Filtered Tables] 
+* %~%zebra-table -- Add alternate row colors to your tables. See [Zebra Table Style]
+* %~%columns -- Format text in multi-column news-paper format. See [Multi Columns Style]
+
+* %~%tabbedSection, %~%tab -- Create pages with tabular sections. See [Tabbed Sections] 
+* %~%tabbedAccordion -- Generates a tabbed section, with smooth transition effects based on accordion. See [Accordion Style]
+* %~%accordion -- Generates vertical accordion. See [Accordion Style]
+
+* %~%prettify -- Add code-coloring to a preformatted block of text. See [Prettify Sourcecode]
+* %~%slimbox -- Generates a fancy picture viewer for all enclosed links, similar to the attachment viewer. See [Slimbox]
+* %~%reflection -- Generates a reflection at the bottom of the image. See [Reflection Style|Reflection Style] 

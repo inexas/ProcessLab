@@ -1,0 +1,19 @@
+__Categories__ are conceptual groupings for organising the contents of a Wiki.
+
+Each page may belong to one or more categories. In order to mark a page for inclusion for a category, just link to the category page from the bottom of the page. As an example, consider a page describing an interesting idea you want to organize under an "Ideas" category:
+{{{
+...(content of an example page)
+
+----
+
+[Category Ideas]
+}}}
+
+The benefit of this linking is that others may follow your link to the ''Category Ideas'' page, and once there, can see all pages referring to ''Category Ideas'' with the referring pages plugin.
+
+If you want to create new categories, just create a link to [[Category YourNewCategory].
+
+!! Existing Categories
+
+[{ReferringPagesPlugin page='Category category' include='Category*'}]
+

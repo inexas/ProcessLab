@@ -1,0 +1,55 @@
+Insert all or part of a referenced page into the calling page.  
+
+!!! Parameters
+* __{{page}}__ - 
+* __{{style}}__ - 
+* __{{maxlength}}__ - 
+* __{{class}}__ - 
+* __{{section}}__ - 
+* __{{default}}__ - 
+
+!!! Example
+
+If you want to insert a wiki page into another page you use the InsertPage plugin. The following code demonstrates the  basic technique. Of course, first you need the page to be inserted; we'll use [InsertPageTest].
+[{TableOfContents}]
+
+!! Inserting an entire page
+__This__
+
+{{{
+Here, I insert the text of another page:\\
+[{InsertPage page=InsertPageTest}]
+}}}
+
+__produces this__
+
+Here, I insert the text of another page:\\
+[{InsertPage page=InsertPageTest}]
+
+!!! Naming conventions
+
+If the name of the page to be inserted has spaces in it, just enclose it in single quotes:
+
+{{{
+[{InsertPage page='Page with spaces'}]
+}}}
+
+If the name of the page has a single quote, such as with a possessive like [[Writer's Notes] remember to use the name as stored. That is, remember the capital letter such as [[WriterSNotes].
+
+!!! Inserting a section of a page
+If you want to insert a section of a page into another page use a horizontal ruler (four dashes, '-') to part sections.  The page [InsertPageTestSections] contains three sections that is included below:
+
+__This__
+
+{{{
+Here, I insert section 3 of another page:\\
+[{InsertPage page=InsertPageTestSections section=3}]
+}}}
+
+__produces this__
+
+Here, I insert section 3 of another page:\\
+[{InsertPage page=InsertPageTestSections section=3}]
+
+!!! Inserting a page into itself - Circular reference
+Cyclical dependencies are checked for, so inserting a page into itself won't work. If I try to insert this page into itself you get the entire page along with the error message: "Error: Circular - You can't include a page in itself!".

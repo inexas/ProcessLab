@@ -1,0 +1,4 @@
+* __is3d__ display chart using a 3D effect
+** Optional, default: false
+** Valid values: true, false
+** Examples: is3d=true

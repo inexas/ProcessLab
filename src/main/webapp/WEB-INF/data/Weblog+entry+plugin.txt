@@ -1,0 +1,12 @@
+Emits a link to create an new blog entry.
+
+!!! Parameters 
+* __{{entrytext}}__ - text of the link
+* __{{page}}__ - if set, the entry is added to the named blog page. The default is the current page.
+
+!!! Examples
+[[{WeblogEntryPlugin}]  - Inserts the link "New entry" that will create an entry viewable by a [Weblog plugin] on the current page.
+
+[[{WeblogEntryPlugin page='MyBlog' entrytext='post'}] - Inserts the link "post" that will create an entry viewable by a [Weblog plugin] that displays page ''MyBlog''.
+
+

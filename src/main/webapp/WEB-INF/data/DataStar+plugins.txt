@@ -1,0 +1,15 @@
+The DataStar plugins are a set of [plugins] that allow you to interact with data in your enterprise.
+* The [DataView plugin] allows you to visualize data in tables, charts, maps, and plain text
+* The [DataUpdate plugin] allows you to update data
+* The [DataSourceList plugin] allows you to view the list of data stores that are configured
+
+Data* is at the heart of the Business Intelligence of ProcessLab.
+
+!!! Interesting...
+* A [Demo] has been set up so that you can experiment with visualizations
+* [DataStar fields] allow users to parameter0ize their charts
+* [DataStar data sources] describes where data can be retrieved from   
+* [DataStar drill-down] allows you to link pages and charts
+* [DataStar configuration] is the page where you can configure new data sources
+* [DataUpdate logging] logs are kept of all the data updates made    
+

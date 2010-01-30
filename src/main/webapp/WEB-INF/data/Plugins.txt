@@ -1,0 +1,38 @@
+Plugins is a simple way for you to insert complex and dynamic constructs into your page. For example, including the text [[{CurrentTimePlugin}] will insert the current date and time, like this: [{CurrentTimePlugin}].
+
+The syntax is:
+{{{
+  [[{<plugin class> <param1=value1>,<param2=value2>,...}]
+}}}
+
+If a parameter contains spaces, you must use single quotes (') around the parameter.  Like this:
+{{{
+[[{INSERT CurrentTimePlugin format='dd MM yyyy'}]
+}}}
+
+Here is a list of available plugins
+
+* [Comment plugin]: allows you to comment your pages
+* [Counter plugin]: inserts incrementing counters into a page
+* [Current time plugin]: inserts the current date and time into a page
+* [DataView plugin] allows you to visualize data in tables, charts, maps, and plain text, see [Data star plugins|DataStar plugins]
+* [DataUpdate plugin] allows you to update data in a data store, see [Data star plugins|DataStar plugins]
+* [DataSourceList plugin] lists all currently configured data sources, see [Data star plugins|DataStar plugins]
+* [Groups plugin]: displays information about groups
+* [If plugin]: allows you to conditionally exclude sections from a page
+* [Image plugin]: insert an image into a page
+* [Index plugin]: display a page index
+* [Insert page plugin]: insert (parts of) another page
+* [List locks plugin]: display a list of locked pages
+* [Page view plugin]: display page view statistics
+* [Recent changes plugin]: display a list of recently edited pages
+* [Referred pages plugin]: show a list of pages referenced by the current page
+* [Referring pages plugin]: display a list of pages referring to the current page
+* [Search plugin]: show a filtered list of pages 
+* [Sessions plugin]: show a list of the currently active ProcessLab sessions 
+* [Table of contents plugin]: construct a table of contents of the current page take from the headers
+* [Undefined pages plugin]: Show pages that are referenced but have not yet been created
+* [Unused pages plugin]: Show a list of 'dangling' pages: pages that don't have links to them
+* [Weblog archive plugin]: Creates a list of all weblog entries on a monthly basis
+* [Weblog entry plugin]: Prints a link to create a new blog entry
+* [Weblog plugin]: Builds a simple weblog (blog)

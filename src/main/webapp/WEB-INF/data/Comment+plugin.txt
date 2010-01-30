@@ -1,0 +1,11 @@
+A simple plugin that actually does nothing. It just allows you to embed comments in your wiki markup.
+
+!!! Parameters
+None
+
+!!! Examples
+{{{
+[{Comment debug This is a comment and nothing will be see when the page is viewed }]
+}}}
+
+There is a comment in this [{Comment This is a comment and nothing will be see when the page is viewed }] sentence but you can't see it!

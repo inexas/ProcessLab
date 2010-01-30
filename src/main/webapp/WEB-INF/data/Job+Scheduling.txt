@@ -1,0 +1,17 @@
+!!! Introduction
+Site schedules define reusable, named schedules for jobs. Jobs are scheduled using a cron string (see [Result set scheduling] for an example).
+
+Named schedules are much easier to remember and use, for example instead of writing '0 2 * * 1-5' we can write weekdays.
+
+[Result set scheduling/cron.png]
+
+!!! Format
+The name/value pairs are stored in, and looked up from this page. They are in the form name=value and may be commented with the '//' sequence
+
+{{{SD: (Don't change this line)
+//            Min  Hour DOW  Date Mnth Year
+daily       = 0    2    *    *    *    *        // Every day at 02:00
+weekdays    = 0    2    1-5  *    *    *        // Every weekday at 02:00
+weekly      = 0    2    1    *    *    *        // Every week on Monday morning at 02:00
+hourly      = 0    *    *    *    *    *        // Every hour, on the hour 
+}}}

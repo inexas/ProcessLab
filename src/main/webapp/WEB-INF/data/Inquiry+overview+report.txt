@@ -1,0 +1,41 @@
+%%information
+This page shows an example of how a report might be set up, see the [home page|Main] for the introduction. You can see how this page is made using by editing it (click on the 'Edit' link above).
+%%
+
+!!! Inquiry overview report
+
+| [{DataView db=demo format=column size='200,300'
+
+select state,count(*) as amount from inquiries
+group by state
+}] | [{DataView db=demo format=line size='200,500'
+
+select received,count(received) as amount from inquiries
+group by received
+order by received
+}]
+\\
+\\
+----
+!!! All active inquiries
+
+[{DataView db=demo format=table size=s
+
+SELECT customerName,category,id
+FROM inquiries
+WHERE state='active'
+ORDER BY customerName
+}]
+
+!! Inquiry finder
+
+Enter either the Inquiry ID or part of the customer's name in the field below and press 'Submit'.
+
+[{DataView db=demo format=table size=s
+
+SELECT *
+FROM inquiries
+WHERE UCASE(customerName) LIKE UCASE('%@SearchFor@%') OR CONVERT(id,VARCHAR) LIKE '%@SearchFor@%'
+}]
+
+

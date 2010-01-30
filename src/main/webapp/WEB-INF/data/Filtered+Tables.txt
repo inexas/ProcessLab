@@ -1,0 +1,63 @@
+!!! Filtered wiki tables 
+
+%%tabbedSection
+%%tab-Introduction
+!! Introduction
+
+Add a %~%table-filter style around your table to get spreadsheet column filters. 
+Each column gets a dropdown with a sorted list of filterable values. Multiple filter selections are supported too.
+
+See also [Sortable Tables]
+
+[{Image src='vanilla-tablefilter1.jpg'}]
+[{Image src='vanilla-tablefilter2.jpg'}]
+
+/%
+%%tab-Usage
+!!Usage
+
+Enclose your table in %~%table-filter tags.\\
+Your table is assumed to start with a header row. When all is fine, you should see an additional table row with filter dropdowns for each column.
+
+{{{
+%%table-filter
+|| Title || Author || Published   || Edition || Some IP@
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100
+| book2  |  dappy  |  25 Jan 2005 |  19      |  256.100.100.100
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100
+| book5  |  rappy  |  25 Jul 2005 |  06      |  1.100.25.100
+/%
+}}}
+
+Reality check:
+%%zebra-table
+%%sortable
+%%table-filter
+|| Title || Author || Published   || Edition || Some IP@
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100
+| book2  |  dappy  |  25 Jan 2005 |  19      |  256.100.100.100
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100
+| book5  |  rappy  |  25 Jul 2005 |  06      |  1.100.25.100
+/%
+/%
+/%
+
+%%zebra-fuchsia-6699cc
+%%sortable
+%%table-filter
+|| Title || Author || Published   || Edition || Some IP@
+| book1  |  zappy  |  25 Feb 2005 |  5       |  100.100.100.100
+| book2  |  dappy  |  25 Jan 2005 |  19      |  256.100.100.100
+| book3  |  pappy  |  23 Mar 2005 |  06      |  10.100.100.100
+| book4  |  dappy  |  21 Apr 2005 |  199     |  1.100.100.100
+| book5  |  dappy  |  25 Jul 2005 |  06      |  1.100.25.100
+/%
+/%
+/%
+
+/%
+
+----
+[Category style]

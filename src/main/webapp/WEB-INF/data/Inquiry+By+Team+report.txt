@@ -1,0 +1,76 @@
+%%information
+This page shows an example of how a report might be set up, see the [home page|Main] for the introduction. You can see how this page is made using by editing it (click on the 'Edit' link above).
+%%
+
+!!! Inquiry by team member
+
+[{DataView db=demo format=column size='200,900'
+
+SELECT
+	CONCAT(CONCAT(firstName,' '),lastName) AS Name,
+	Active,Received,Cleared
+FROM (
+	SELECT id,SUM(active) AS Active,SUM(Received) AS Received,SUM(Cleared) AS Cleared
+	FROM (
+		SELECT
+			t.id,
+			CASEWHEN(i.state='active',1,0) AS Active,
+			CASEWHEN(i.state='received',1,0) AS Received,
+			CASEWHEN(i.state='cleared',1,0) AS Cleared
+		FROM
+			team t 
+			JOIN inquiries i ON t.id=i.assigneeId
+	)
+	GROUP BY id
+	) x JOIN team t ON t.id=x.id
+ORDER BY
+	firstName
+}] 
+
+!!! Aged inquiries
+
+!! Active
+[{DataView db=demo format=table
+
+SELECT
+	received,id,category,firstName AS assignee
+FROM
+	inquiries i
+	JOIN team t ON t.id=i.assigneeId
+WHERE
+	state='active'
+ORDER BY
+	received
+
+}] 
+
+!! Received
+[{DataView db=demo format=table
+
+SELECT
+	received,id,category,firstName AS assignee
+FROM
+	inquiries i
+	JOIN team t ON t.id=i.assigneeId
+WHERE
+	state='received'
+ORDER BY
+	received
+
+}] 
+
+!! Cleared
+[{DataView db=demo format=table
+
+SELECT
+	received,id,category,firstName AS assignee
+FROM
+	inquiries i
+	JOIN team t ON t.id=i.assigneeId
+WHERE
+	state='cleared'
+ORDER BY
+	received
+
+}] 
+

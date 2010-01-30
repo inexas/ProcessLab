@@ -1,0 +1,26 @@
+The DataSourceList plugin generates a list of data sources that are currently configured.
+
+If you need to create, delete or change the data source you need to visit the [Data star configuration|DataStar configuration] page but you need to be an Database Administrator (i.e. a member of the dbadmins group):
+
+!!! Examples
+
+!! Output as a table
+[{DataSourceList}]
+
+! Source
+{{{
+[{DataSourceList}]
+}}}
+or explicitly
+{{{
+[{DataSourceList format=table}]
+}}}
+
+!! Output as a list
+The currently configured database data sources are: [{DataSourceList format=comma}].
+
+! Source
+{{{
+The currently configured database data sources are: [{DataSourceList format=comma}].
+}}}
+

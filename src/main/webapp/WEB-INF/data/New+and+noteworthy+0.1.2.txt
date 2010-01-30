@@ -1,0 +1,25 @@
+[{TableOfContents }]
+
+!!! New annotated time line chart added
+Annotated time line charts allow you to see how variables change over time. The chart allows you to annotate key events.
+
+[Timeline.png]
+
+See [Time line].
+----
+!!! Result set caching 
+Result set caching saves the results of a DataView query for reuse. This is very useful when the SQL query takes a long time to generate the reuslt set.
+
+[Result set caching/Cached.png]
+
+See [Result set caching]
+----
+!!! Result set scheduling 
+Result set scheduling allows you to fetch data sets for DataView plugins ahead of time.
+
+See [Result set scheduling]
+----
+!!! Comment plugin
+A dumb but useful plugin so you can comment your wiki markup.
+{{{
+This is an [{Comment This comment is invisible when the page is viewed}] example with a comment embedded.

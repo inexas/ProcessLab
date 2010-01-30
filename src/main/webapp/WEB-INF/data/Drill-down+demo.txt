@@ -1,0 +1,13 @@
+;: ''This page is part of the [DataStar drill-down] demo.''
+
+!!! Sales of product to date
+This report shows the sales of a product, most recent first.
+
+[{DataView db=demo
+
+SELECT Date,CustomerName AS Customer_name,Quantity,Country,productName
+FROM ordersView
+WHERE productName LIKE '@Name@%'
+ORDER BY date DESC
+}]
+

@@ -1,0 +1,20 @@
+This page is the home for ProcessLab configuration data
+
+!!! User ID control
+UserIdPattern and UserIdMessage allow you to control the format of the user IDs that users use to create accounts. The UserIdPattern should be a [regular expression|http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html] and UserIdMessage is an error message that will be displayed when someone enters a user ID that does not match the pattern. 
+
+Likewise UserPasswordPattern and UserPasswordMessage can be used in the same way to validate passwords.
+
+For example
+* UserIdPattern = [[A-Za-z][[0-9]{6}
+* UserIdMessage = The user ID  must be a single alphabetic character followed by 6 digits, e.g. A123456
+* UserPasswordPattern = [[A-Za-z0-9]{6,}
+* UserPasswordMessage = The password must be at lease 6 alphanumeric characters
+Note if the UserIdPattern is changed then existing user IDs are not affected
+
+{{{SD (Do not change this line)
+UserIdPattern = 
+UserIdMessage = 
+UserPasswordPattern = 
+UserPasswordMessage = 
+}}}

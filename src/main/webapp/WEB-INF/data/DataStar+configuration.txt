@@ -1,0 +1,62 @@
+This page stores the configuration used by the [DataStar plugins].
+
+[{TableOfContents }]
+
+!!! Description of format
+The configuration of [DataStar plugin] data sources is stored here. If you edit this page you will see that it contains a mixture of document (that you are now reading) and embedded properties.
+
+A data source is a single database that is accessible via JDBC. In order to access the data source we need a data source name and seven parameters provides as 'properties'.
+
+Properties are stored in { { { preformatted blocks } } } embedded in this text. Each property {{name = value}} pair is on a single line. Property names are fixed but the values are provided by the members of the dbadmin group. If you can edit this page then you are in the dbadmin group.
+
+The property value pairs that must be specified for each data source are: 
+* datastar.db.<DataSourceName>.comment: A comment describing the data source
+* datastar.db.<DataSourceName>.driver: The JDBC driver to be used to access the data store, e.g. "org.hsqldb.jdbcDriver"
+* datastar.db.<DataSourceName>.url: The URL to be used, e.g. "jdbc:hsqldb:hsql//localhost/"
+* datastar.db.<DataSourceName>.user: A user ID, e.g. "ProcessLab Ro"
+* datastar.db.<DataSourceName>.password: A password, e.g. "af4df3443Ssa"
+* datastar.db.<DataSourceName>.viewsql: A comma delimited list of valid statements for the DataView plugin for this data source. This is typically "SELECT" 
+* datastar.db.<DataSourceName>.updatesql: A comma delimited list of valid statements for the DataUpdate plugin for this data source. This might be "EXEC, INSERT, UPDATE"
+
+!! Configuration tips
+* The data source name is embedded in the property names, keep the data source short and simple like 'example' above
+* The viewsql and updatesql parameters you define limit statements to SQL that starts with the strings you define
+** You probably always want to limit DataView to SELECT although you might want to include EXEC to access stored procedures
+** Using EXEC only allows you to limit DataUpdate to stored procedures only which will give you finer control over what updates you wish to support
+** If you leave the list empty (e.g. " datastar.db.example.updatesql = " ) then you effectively disable the plugin for that data source
+
+Security tips
+* Anyone that can view this page can also see the passwords, you should restrict read and write access to this page to members of the dbadmin group - this is done in the installation. Note also that ProcessLab administrators have complete access to the site so they can read and change passwords
+* It's a good idea to create specific ProcessLab users in the database with either RO or RW access as appropriate
+
+!! The 'demo' data source
+Note that a data source called "demo" is automatically installed in ProcessLab. The demo datasource is special in that it is recreated for each new browser session.
+
+!! See also
+* [Installing new JDBC drivers]
+
+!!! Contents
+
+!! Data source: example
+This is an example that shows you how you might set up a data source with the name of example. In this case the HSQLDB is set up as a server running on the same computer as ProcessLab and a database user ID has been set up with the ID of "ProcessLabRo" and password of "d33d82e4". The data source is limited to viewing using SELECT statements.
+
+{{{SD: (Don't change this line)
+datastar.db.example.comment = Example data base
+datastar.db.example.driver = org.hsqldb.jdbcDriver
+datastar.db.example.url = jdbc:hsqldb:hsql//localhost/
+datastar.db.example.user = ProcessLabRo
+datastar.db.example.password = d33d82e4
+datastar.db.example.viewsql = SELECT 
+datastar.db.example.updatesql =
+}}}
+
+!! MySQL test
+{{{SD: (Don't change this line)
+datastar.db.test.comment = This is an example for MySQL
+datastar.db.test.driver = com.mysql.jdbc.Driver
+datastar.db.test.url = jdbc:mysql://localhost/test
+datastar.db.test.user = test
+datastar.db.test.password = test
+datastar.db.test.viewsql =  SELECT
+datastar.db.test.updatesql =
+}}}

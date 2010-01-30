@@ -1,0 +1,42 @@
+!!! Intensity map
+Intensity maps show your data values on a map. Several dimensions may be provided, each is shown on a different tab.
+
+!!! Parameters
+* __format__: Must be 'intensity'
+[{InsertPage page='DataView base parameters'}]
+[{InsertPage page='DataView region'}]
+
+!!! Data
+# Two letter country code: string see the Alpha-2 values [ISO 3166-1|http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes]
+# Value 1: mandatory, number the value to be represented on tab 1
+# Value 2: optional, number the value to be represented on tab 2
+# ...
+
+!!! Examples
+
+%%(text-align:center)
+[{DataView format='intensity' db='demo'
+    
+    SELECT 
+        country,
+        sum(quantity) AS quantity,
+        sum(lineTotal)/1000 AS sales
+    FROM ordersView
+    GROUP BY country
+    ORDER BY country
+}]
+%%
+
+! Source
+{{{
+[{DataView format='intensity' db='demo'
+    
+    SELECT 
+        country,
+        sum(quantity) AS quantity,
+        sum(lineTotal)/1000 AS sales
+    FROM ordersView
+    GROUP BY country
+    ORDER BY country
+}]
+}}}

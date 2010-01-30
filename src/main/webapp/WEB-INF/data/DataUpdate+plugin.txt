@@ -1,0 +1,24 @@
+The DataUpdate plugin allows you to make changes to a data source.
+
+
+!!! Examples
+
+!! Insert new product record
+
+Global GPS' product catalogue currently contains the following products...
+[{DataView format='table' db='demo' sql='SELECT * FROM products'}]
+
+\\
+
+Fill in the fields below and press submit to insert a new product 
+* The 'Product ID' should be an integer and should not appear in the product catalogue
+* The 'Product name' can be anything you like - the name of the GPS unit for example!
+* The 'Quantity' should be the number of items currently in the warehouse
+* The 'Price' should be a whole number
+
+[{DataUpdate db='demo' sql='INSERT INTO products(id,name,quantity,price)VALUES(@ProductID@,\'@Name@\',@Quantity@, @Price@)'}]
+
+! Source
+{{{
+[{DataUpdate db='demo' sql='INSERT INTO products(id,name,quantity,price)VALUES(@ProductID@,\'@Name@\',@Quantity@, @Price@)'}]
+}}}

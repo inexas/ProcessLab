@@ -1,0 +1,11 @@
+This page shows a column listing of a given table in the [demo] database.
+
+[{DataView db=demo
+
+SELECT Column_name, Type_name
+FROM INFORMATION_SCHEMA.SYSTEM_COLUMNS
+WHERE 
+    TABLE_SCHEM='PUBLIC'
+    AND UCASE(TABLE_NAME)=UCASE('@Table_name@')
+}]
+
