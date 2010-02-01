@@ -157,13 +157,13 @@
 	<!-- ProcessLab stuff -->
 	<servlet>
 		<servlet-name>JsonDataSource</servlet-name>
-		<servlet-class>com.inexas.wikibi.DataServlet</servlet-class>
+		<servlet-class>com.inexas.pl.bi.DataServlet</servlet-class>
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 
    <servlet>
        <servlet-name>Spreadsheet</servlet-name>
-       <servlet-class>com.inexas.wikibi.SpreadsheetServlet</servlet-class>
+       <servlet-class>com.inexas.pl.SpreadsheetServlet</servlet-class>
    </servlet>
 
 	<servlet-mapping>

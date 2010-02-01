@@ -31,7 +31,7 @@ import com.ecyrd.jspwiki.attachment.Attachment;
 import com.ecyrd.jspwiki.parser.JSPWikiMarkupParser;
 import com.ecyrd.jspwiki.parser.MarkupParser;
 import com.ecyrd.jspwiki.providers.ProviderException;
-import com.inexas.wikibi.scheduler.*;
+import com.inexas.pl.scheduler.*;
 
 /**
  * Provides page renaming functionality. Note that there used to be a similarly

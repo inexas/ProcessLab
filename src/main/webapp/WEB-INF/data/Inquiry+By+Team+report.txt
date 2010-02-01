@@ -30,7 +30,7 @@ ORDER BY
 !!! Aged inquiries
 
 !! Active
-[{DataView db=demo format=table
+[{DataView db=demo format=table size=s
 
 SELECT
 	received,id,category,firstName AS assignee
@@ -45,7 +45,7 @@ ORDER BY
 }] 
 
 !! Received
-[{DataView db=demo format=table
+[{DataView db=demo format=table size=s
 
 SELECT
 	received,id,category,firstName AS assignee
@@ -60,7 +60,7 @@ ORDER BY
 }] 
 
 !! Cleared
-[{DataView db=demo format=table
+[{DataView db=demo format=table size=s
 
 SELECT
 	received,id,category,firstName AS assignee

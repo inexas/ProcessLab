@@ -1,4 +1,4 @@
--- Script to set up demo database for Wikibi visualizations
+-- Script to set up demo database for ProcessLab visualizations
 -- The script 
 
 DROP VIEW ordersView IF EXISTS;

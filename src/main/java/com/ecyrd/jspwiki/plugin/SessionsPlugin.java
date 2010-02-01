@@ -103,8 +103,8 @@ public class SessionsPlugin
 				Map.Entry entry = (Map.Entry)entries.next();
 				s.append(entry.getKey().toString() + "(" + entry.getValue().toString() + "), ");
 			}
-			// remove the last comma and blank :
-			return s.substring(0, s.length() - 2);
+			// remove the last comma and blank (KW: if there is one)
+			return s.length() > 0 ? s.substring(0, s.length() - 2) : "";
 		}
 
 		return String.valueOf(WikiSession.sessions(engine));

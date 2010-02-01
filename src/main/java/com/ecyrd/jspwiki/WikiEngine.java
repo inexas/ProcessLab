@@ -50,11 +50,11 @@ import com.ecyrd.jspwiki.ui.progress.*;
 import com.ecyrd.jspwiki.url.*;
 import com.ecyrd.jspwiki.util.*;
 import com.ecyrd.jspwiki.workflow.*;
+import com.inexas.pl.bi.*;
+import com.inexas.pl.datacache.*;
+import com.inexas.pl.datasource.*;
+import com.inexas.pl.scheduler.*;
 import com.inexas.util.*;
-import com.inexas.wikibi.*;
-import com.inexas.wikibi.datacache.*;
-import com.inexas.wikibi.datasource.*;
-import com.inexas.wikibi.scheduler.*;
 
 /**
  * Provides Wiki services to the JSP page.

@@ -59,7 +59,7 @@ public abstract class ModuleManager {
 	 * @return True, if the module is compatible.
 	 */
 	public boolean checkCompatibility(@SuppressWarnings("unused") WikiModuleInfo info) {
-		// KW wikibi modification
+		// KW ProcessLab modification
 //		if(!m_loadIncompatibleModules) {
 //			String minVersion = info.getMinVersion();
 //			String maxVersion = info.getMaxVersion();

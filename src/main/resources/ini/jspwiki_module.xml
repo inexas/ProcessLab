@@ -30,7 +30,21 @@
    <plugin class="com.inexas.pl.comment.Comment">
       <author>Keith Whittingham</author>
       <minVersion>0.1</minVersion>
-      <alias>Comment</alias>
+   </plugin>
+
+   <plugin class="com.inexas.pl.bi.DataView">
+      <author>Keith Whittingham</author>
+      <minVersion>0.1</minVersion>
+   </plugin>
+
+   <plugin class="com.inexas.pl.bi.DataUpdate">
+      <author>Keith Whittingham</author>
+      <minVersion>0.1</minVersion>
+   </plugin>
+
+   <plugin class="com.inexas.pl.bi.DataSourceList">
+      <author>Keith Whittingham</author>
+      <minVersion>0.1</minVersion>
    </plugin>
 
 </modules>

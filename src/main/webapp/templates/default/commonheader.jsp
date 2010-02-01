@@ -40,7 +40,7 @@
 <script type="text/javascript" src="<wiki:Link format='url' jsp='scripts/jspwiki-common.js'/>"></script>
 <script type="text/javascript" src="<wiki:Link format='url' jsp='scripts/jspwiki-commonstyles.js'/>"></script>
 
-<script type="text/javascript" src="<wiki:Link format='url' jsp='scripts/wikibi.js'/>"></script>
+<script type="text/javascript" src="<wiki:Link format='url' jsp='scripts/processlab.js'/>"></script>
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
 
