@@ -112,7 +112,7 @@ public class DefaultURLConstructor
 	 *            The page name
 	 * @param absolute
 	 *            If true, %u is always the entire base URL, otherwise it
-	 *            depends on the setting in jspwiki.properties.
+	 *            depends on the setting in processlab.properties.
 	 * @return A replacement.
 	 */
 	protected final String doReplacement(String baseptrn, String name, boolean absolute) {

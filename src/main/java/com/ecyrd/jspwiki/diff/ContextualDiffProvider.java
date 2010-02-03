@@ -66,12 +66,12 @@ public class ContextualDiffProvider implements DiffProvider {
 	private static final Logger log = Logger.getLogger(ContextualDiffProvider.class);
 
 	/**
-	 * A jspwiki.properties value to define how many characters are shown around
+	 * A processlab.properties value to define how many characters are shown around
 	 * the change context. The current value is <tt>{@value}</tt>.
 	 */
 	public static final String PROP_UNCHANGED_CONTEXT_LIMIT = "jspwiki.contextualDiffProvider.unchangedContextLimit";
 
-	// XXX all of these publics can become jspwiki.properties entries...
+	// XXX all of these publics can become processlab.properties entries...
 	// XXX span title= can be used to get hover info...
 
 	public boolean m_emitChangeNextPreviousHyperlinks = true;

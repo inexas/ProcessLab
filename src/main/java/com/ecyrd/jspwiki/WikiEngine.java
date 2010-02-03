@@ -107,7 +107,7 @@ public class WikiEngine implements Serializable {
 	private Properties m_properties;
 
 	/** Property for application name */
-	public static final String PROP_APPNAME = "jspwiki.applicationName";
+	public static final String PROP_APPNAME = "processlab.applicationName";
 
 	/** Property start for any interwiki reference. */
 	public static final String PROP_INTERWIKIREF = "jspwiki.interWikiRef.";
@@ -318,7 +318,7 @@ public class WikiEngine implements Serializable {
 	 *            method.
 	 * @param props
 	 *            A set of properties, or null, if we are to load JSPWiki's
-	 *            default jspwiki.properties (this is the usual case).
+	 *            default processlab.properties (this is the usual case).
 	 * 
 	 * @return One well-behaving WikiEngine instance.
 	 */
@@ -336,7 +336,7 @@ public class WikiEngine implements Serializable {
 	 *            method.
 	 * @param props
 	 *            A set of properties, or null, if we are to load JSPWiki's
-	 *            default jspwiki.properties (this is the usual case).
+	 *            default processlab.properties (this is the usual case).
 	 * 
 	 * @return One fully functional, properly behaving WikiEngine.
 	 * @throws InternalWikiException
@@ -421,7 +421,7 @@ public class WikiEngine implements Serializable {
 			initialize(props);
 			log.info("Root path for this Wiki is: '" + m_rootPath + "'");
 		} catch(Exception e) {
-			String msg = Release.APPNAME + ": Unable to load and setup properties from jspwiki.properties. "
+			String msg = Release.APPNAME + ": Unable to load and setup properties from processlab.properties. "
 			        + e.getMessage();
 			if(context != null) {
 				context.log(msg);
@@ -1046,7 +1046,7 @@ public class WikiEngine implements Serializable {
 	 * .
 	 * </p>
 	 * <p>
-	 * Special pages are defined in jspwiki.properties using the
+	 * Special pages are defined in processlab.properties using the
 	 * jspwiki.specialPage setting. They're typically used to give Wiki page
 	 * names to e.g. custom JSP pages.
 	 * </p>
@@ -1651,7 +1651,7 @@ public class WikiEngine implements Serializable {
 
 	/**
 	 * Writes the WikiText of a page into the page repository. If the
-	 * <code>jspwiki.properties</code> file contains the property
+	 * <code>processlab.properties</code> file contains the property
 	 * <code>jspwiki.approver.workflow.saveWikiPage</code> and its value
 	 * resolves to a valid user, {@link com.ecyrd.jspwiki.auth.authorize.Group}
 	 * or {@link com.ecyrd.jspwiki.auth.authorize.Role}, this method will place
@@ -2058,7 +2058,7 @@ public class WikiEngine implements Serializable {
 
 	/**
 	 * Figure out to which page we are really going to. Considers special page
-	 * names from the jspwiki.properties, and possible aliases. This method
+	 * names from the processlab.properties, and possible aliases. This method
 	 * delgates requests to
 	 * {@link com.ecyrd.jspwiki.WikiContext#getRedirectURL()}.
 	 * 

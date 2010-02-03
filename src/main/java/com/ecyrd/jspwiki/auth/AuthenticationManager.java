@@ -92,13 +92,13 @@ public final class AuthenticationManager {
 	public static final String COOKIE_AUTHENTICATION_MODULE = CookieAuthenticationLoginModule.class.getName();
 
 	/**
-	 * If this jspwiki.properties property is <code>true</code>, logs the IP
+	 * If this processlab.properties property is <code>true</code>, logs the IP
 	 * address of the editor on saving.
 	 */
 	public static final String PROP_STOREIPADDRESS = "jspwiki.storeIPAddress";
 
 	/**
-	 * If this jspwiki.properties property is <code>true</code>, allow cookies
+	 * If this processlab.properties property is <code>true</code>, allow cookies
 	 * to be used for authentication.
 	 */
 	public static final String PROP_ALLOW_COOKIE_AUTH = "jspwiki.cookieAuthentication";
@@ -137,7 +137,7 @@ public final class AuthenticationManager {
 	protected static final String PREFIX_LOGIN_MODULE_OPTIONS = "jspwiki.loginModule.options.";
 
 	/**
-	 * If this jspwiki.properties property is <code>true</code>, allow cookies
+	 * If this processlab.properties property is <code>true</code>, allow cookies
 	 * to be used to assert identities.
 	 */
 	protected static final String PROP_ALLOW_COOKIE_ASSERTIONS = "jspwiki.cookieAssertions";
@@ -722,7 +722,7 @@ public final class AuthenticationManager {
 	/**
 	 * Initializes the options Map supplied to the configured LoginModule every
 	 * time it is invoked by {@link #doLoginModule(Class, CallbackHandler)}. The
-	 * properties and values extracted from <code>jspwiki.properties</code> are
+	 * properties and values extracted from <code>processlab.properties</code> are
 	 * of the form
 	 * <code>jspwiki.loginModule.options.<var>param</var> = <var>value</var>, where
      * <var>param</var> is the key name, and <var>value</var> is the value.

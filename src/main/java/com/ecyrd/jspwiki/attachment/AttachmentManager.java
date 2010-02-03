@@ -101,7 +101,7 @@ public class AttachmentManager {
 	 * @param props
 	 *            A list of properties from which the AttachmentManager will
 	 *            seek its configuration. Typically this is the
-	 *            "jspwiki.properties".
+	 *            "processlab.properties".
 	 */
 
 	// FIXME: Perhaps this should fail somehow.

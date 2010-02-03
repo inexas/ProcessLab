@@ -88,7 +88,7 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
     private static final long serialVersionUID = 6504629220477332480L;
 
 	/**
-	 * The jspwiki.properties property specifying the file system location of
+	 * The processlab.properties property specifying the file system location of
 	 * the user database.
 	 */
 	public static final String PROP_USERDATABASE = "jspwiki.xmlUserDatabaseFile";

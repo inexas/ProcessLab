@@ -94,7 +94,7 @@ import com.ecyrd.jspwiki.url.URLConstructor;
  */
 @SuppressWarnings("unchecked")
 public final class CommandResolver {
-	/** Prefix in jspwiki.properties signifying special page keys. */
+	/** Prefix in processlab.properties signifying special page keys. */
 	private static final String PROP_SPECIALPAGE = "jspwiki.specialPage.";
 
 	/** Private map with request contexts as keys, Commands as values */

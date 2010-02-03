@@ -67,7 +67,7 @@ import com.opensymphony.oscache.base.NeedsRefreshException;
  * <p>
  * This class also manages a rendering cache, i.e. documents are stored between
  * calls. You may control the size of the cache by using the
- * "jspwiki.renderingManager.cacheSize" parameter in jspwiki.properties. The
+ * "jspwiki.renderingManager.cacheSize" parameter in processlab.properties. The
  * property value is the number of items that are stored in the cache. By
  * default, the value of this parameter is taken from the
  * "jspwiki.cachingProvider.cacheSize" parameter (i.e. the rendering cache is
@@ -280,7 +280,7 @@ public class RenderingManager implements WikiEventListener, InternalModule {
 	/**
 	 * Returns a WikiRenderer instance, initialized with the given context and
 	 * doc. The object is an XHTMLRenderer, unless overridden in
-	 * jspwiki.properties with PROP_RENDERER.
+	 * processlab.properties with PROP_RENDERER.
 	 * 
 	 * @param context
 	 *            The WikiContext

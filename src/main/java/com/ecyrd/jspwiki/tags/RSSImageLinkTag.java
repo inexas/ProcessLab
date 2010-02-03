@@ -48,7 +48,7 @@ import com.ecyrd.jspwiki.rss.RSSGenerator;
 
 /**
  * Writes an image link to a JSPWiki RSS file. If RSS generation has been turned
- * off in jspwiki.properties, returns an empty string.
+ * off in processlab.properties, returns an empty string.
  * 
  * @since 2.0
  */

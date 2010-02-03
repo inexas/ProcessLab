@@ -6,7 +6,7 @@ __Variable evaluation order__
 The variables are evaluated in the following order:
 # 'Preset' variables (or constants), as those listed on this page.
 # 'Context' variables, as those set by plugins and tags.
-# 'Property' variables, like those set in jspwiki.properties.
+# 'Property' variables, like those set in processlab.properties.
 # 'Page' variables, like those set using the "SET" directive.
 %% \\
 
@@ -26,7 +26,7 @@ ProcessLab also defines all kinds of other variables, and tags and plugins can a
 
 !applicationname
 
-This is the name of this Wiki.  It has been set by the administrator in "jspwiki.properties". This Wiki is called ''[{$applicationname}]''.
+This is the name of this Wiki.  It has been set by the administrator in "processlab.properties". This Wiki is called ''[{$applicationname}]''.
 
 !baseurl
 

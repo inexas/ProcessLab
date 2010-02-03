@@ -189,7 +189,7 @@ public class EditorManager extends ModuleManager {
 	 * <p>
 	 * Determines the editor to use by the following order of conditions: 1.
 	 * Editor set in User Preferences 2. Default Editor set in
-	 * jspwiki.properties
+	 * processlab.properties
 	 * <p>
 	 * For the PREVIEW context, this method returns the "preview" editor.
 	 * 
@@ -212,7 +212,7 @@ public class EditorManager extends ModuleManager {
 		 * class
 		 */
 		if(editor == null) {
-			// or use the default editor in jspwiki.properties
+			// or use the default editor in processlab.properties
 			try {
 				editor = m_engine.getVariableManager().getValue(context, PROP_EDITORTYPE);
 			} catch(NoSuchVariableException e) {

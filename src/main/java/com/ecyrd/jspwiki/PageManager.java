@@ -105,7 +105,7 @@ public class PageManager extends ModuleManager implements WikiEventListener {
 	public static final String PRESAVE_WIKI_CONTEXT = "wikiContext";
 
 	/**
-	 * The name of the key from jspwiki.properties which defines who shall
+	 * The name of the key from processlab.properties which defines who shall
 	 * approve the workflow of storing a wikipage. Value is <tt>{@value}</tt>
 	 */
 	public static final String SAVE_APPROVER = "workflow.saveWikiPage";

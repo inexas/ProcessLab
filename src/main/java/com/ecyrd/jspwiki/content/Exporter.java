@@ -58,7 +58,7 @@ import com.ecyrd.jspwiki.providers.ProviderException;
  * Exports the contents of the wiki in a JCR System Tree format.
  * 
  * UUIDs that this class generates are based on the jspwiki application name set
- * in jspwiki.properties, and the name of the page. This means that it is
+ * in processlab.properties, and the name of the page. This means that it is
  * possible to get collisions, if you have two wikis with the same appname.
  */
 @SuppressWarnings("unchecked")
@@ -273,7 +273,7 @@ public class Exporter {
 
 	public static void main(String[] argv) throws IOException {
 		if(argv.length < 2) {
-			System.err.println("Usage: com.ecyrd.jspwiki.content.Exporter <path to jspwiki.properties> <filename>");
+			System.err.println("Usage: com.ecyrd.jspwiki.content.Exporter <path to processlab.properties> <filename>");
 			System.exit(1);
 		}
 

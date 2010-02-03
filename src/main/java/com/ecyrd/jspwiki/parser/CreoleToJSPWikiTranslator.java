@@ -58,7 +58,7 @@ import java.util.regex.Pattern;
  * 
  * <p>
  * This translator can be configured through properties defined in
- * jspwiki.properties starting with "creole.*". See the jspwiki.properties file
+ * processlab.properties starting with "creole.*". See the processlab.properties file
  * for an explanation of the properties
  * </p>
  * 

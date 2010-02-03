@@ -62,7 +62,7 @@ public final class Release {
 	/**
 	 * This is the default application name.
 	 */
-	public static final String APPNAME = "ProcessLab";
+	public static String APPNAME = "ProcessLab";
 
 	/**
 	 * This should be empty when doing a release - otherwise keep it as "cvs" so
@@ -76,13 +76,13 @@ public final class Release {
 
 	/** The JSPWiki major version. */
 	// KW Changed
-	public static final int VERSION = 0;
+	public final static int VERSION = 0;
 
 	/** The JSPWiki revision. */
-	public static final int REVISION = 1;
+	public final static int REVISION = 1;
 
 	/** The minor revision. */
-	public static final int MINORREVISION = 3;
+	public final static int MINORREVISION = 4;
 
 	/**
 	 * The build number/identifier. This is a String as opposed to an integer,
@@ -111,6 +111,15 @@ public final class Release {
 	 */
 	private Release() {
 		//
+	}
+	
+
+	/**
+	 * KW This is needed so that we can load the name/verison from the 
+	 * processlab.properties file. It is called by {@link PropertyReader}.
+	 */
+	static void initialize(String applicationName) {
+		APPNAME = applicationName;
 	}
 
 	/**

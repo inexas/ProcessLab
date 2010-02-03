@@ -26,10 +26,10 @@
       non-null values for getUserPrincipal() or getRemoteUser(), WikiSecurityFilter
       will pick the credentials up, and set the user's WikiSession state to
       "authenticated." WikiServletFlter will also set the WikiSession's' state
-      to "authenticated" if jspwiki.properties property "jspwiki.cookieAuthentication"
+      to "authenticated" if processlab.properties property "jspwiki.cookieAuthentication"
       is set to true, and the user possesses the correct authentication cookie.
 
-      Lastly, if jspwiki.properties property "jspwiki.cookieAssertions" is set to true,
+      Lastly, if processlab.properties property "jspwiki.cookieAssertions" is set to true,
       WikiServletFilter will also set WikiSession state to "asserted" if the user
       possesses the correct "assertion cookie."
    -->

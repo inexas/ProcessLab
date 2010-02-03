@@ -30,7 +30,7 @@
            <pre>
                jspwiki-x.adminui.enable=true
            </pre>
-           <p>in your <tt>jspwiki.properties</tt> file.</p>
+           <p>in your <tt>processlab.properties</tt> file.</p>
            <p>Have a nice day.  Don't forget to eat lots of fruits and vegetables.</p>
         </body>
         </html>

@@ -55,10 +55,10 @@ import com.ecyrd.jspwiki.WikiEngine;
  * Contains static methods for sending e-mails to recipients using JNDI-supplied
  * <a href="http://java.sun.com/products/javamail/">JavaMail</a> Sessions
  * supplied by a web container (preferred) or configured via
- * <code>jspwiki.properties</code>; both methods are described below. Because
+ * <code>processlab.properties</code>; both methods are described below. Because
  * most e-mail servers require authentication, for security reasons implementors
  * are <em>strongly</em> encouraged to use container-managed JavaMail Sessions
- * so that passwords are not exposed in <code>jspwiki.properties</code>.
+ * so that passwords are not exposed in <code>processlab.properties</code>.
  * </p>
  * <p>
  * To enable e-mail functions within JSPWiki, administrators must do three
@@ -81,7 +81,7 @@ import com.ecyrd.jspwiki.WikiEngine;
  * <strong>JavaMail configuration</strong>
  * <p>
  * Regardless of the method used for supplying JavaMail sessions (JNDI
- * container-managed or via <code>jspwiki.properties</code>, JavaMail needs
+ * container-managed or via <code>processlab.properties</code>, JavaMail needs
  * certain properties set in order to work correctly. Configurable properties
  * are these:
  * </p>
@@ -151,7 +151,7 @@ import com.ecyrd.jspwiki.WikiEngine;
  * </table>
  * <p>
  * *These defaults apply only if the stand-alone Session factory is used (that
- * is, these values are obtained from <code>jspwiki.properties</code>). If using
+ * is, these values are obtained from <code>processlab.properties</code>). If using
  * a container-managed JNDI Session factory, the container will likely supply
  * its own default values, and you should probably override them (see the next
  * section).
@@ -160,7 +160,7 @@ import com.ecyrd.jspwiki.WikiEngine;
  * <p>
  * You are strongly encouraged to use a container-managed JNDI factory for
  * JavaMail sessions, rather than configuring JavaMail through
- * <code>jspwiki.properties</code>. To do this, you need to two things:
+ * <code>processlab.properties</code>. To do this, you need to two things:
  * uncomment the <code>&lt;resource-ref&gt;</code> block in
  * <code>/WEB-INF/web.xml</code> that enables container-managed JavaMail, and
  * configure your container's JavaMail resource factory. The
@@ -296,7 +296,7 @@ public final class MailUtil {
 	 * <p>
 	 * Sends an e-mail to a specified receiver using a JavaMail Session supplied
 	 * by a JNDI mail session factory (preferred) or a locally initialized
-	 * session based on properties in <code>jspwiki.properties</code>. See the
+	 * session based on properties in <code>processlab.properties</code>. See the
 	 * top-level JavaDoc for this class for a description of required properties
 	 * and their default values.
 	 * </p>
@@ -360,7 +360,7 @@ public final class MailUtil {
 
 	/**
 	 * Gets the Sender's email address from JNDI Session if available, otherwise
-	 * from the jspwiki.properties or lastly the default value.
+	 * from the processlab.properties or lastly the default value.
 	 * 
 	 * @param pSession
 	 *            <code>Session</code>
@@ -381,7 +381,7 @@ public final class MailUtil {
 				c_fromAddress = pProperties.getProperty(PROP_MAIL_SENDER, DEFAULT_SENDER).trim();
 				if(log.isDebugEnabled())
 					log.debug("Attempt to get the sender's mail address from the JNDI mail session failed, will use \""
-					        + c_fromAddress + "\" (configured via jspwiki.properties or the internal default).");
+					        + c_fromAddress + "\" (configured via processlab.properties or the internal default).");
 			} else {
 				if(log.isDebugEnabled())
 					log.debug("Attempt to get the sender's mail address from the JNDI mail session was successful ("
@@ -423,7 +423,7 @@ public final class MailUtil {
 		if(result == null) {
 			if(log.isDebugEnabled())
 				log
-				        .debug("Getting a standalone mail session configured by jspwiki.properties and/or internal default values.");
+				        .debug("Getting a standalone mail session configured by processlab.properties and/or internal default values.");
 			result = getStandaloneMailSession(props);
 		}
 		return result;

@@ -87,7 +87,7 @@ import com.ecyrd.jspwiki.util.ClassUtil;
  * The class name can be shortened, and marked without the package. For example,
  * "FunnyPlugin" would be expanded to "com.ecyrd.jspwiki.plugin.FunnyPlugin"
  * automatically. It is also possible to define other packages, by setting the
- * "jspwiki.plugin.searchPath" property. See the included jspwiki.properties
+ * "jspwiki.plugin.searchPath" property. See the included processlab.properties
  * file for examples.
  * <P>
  * Even though the nominal way of writing the plugin is
@@ -212,7 +212,7 @@ public class PluginManager extends ModuleManager {
 	 * @param engine
 	 *            WikiEngine which owns this manager.
 	 * @param props
-	 *            Contents of a "jspwiki.properties" file.
+	 *            Contents of a "processlab.properties" file.
 	 */
 	public PluginManager(WikiEngine engine, Properties props) {
 		super(engine);

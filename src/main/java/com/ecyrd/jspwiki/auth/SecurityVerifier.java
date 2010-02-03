@@ -557,7 +557,7 @@ public final class SecurityVerifier {
 
 	/**
 	 * Verfies the JAAS configuration. The configuration is valid if value of
-	 * the <code>jspwiki.properties<code> property
+	 * the <code>processlab.properties<code> property
 	 * {@value com.ecyrd.jspwiki.auth.AuthenticationManager#PROP_LOGIN_MODULE}
      * resolves to a valid class on the classpath.
 	 */
@@ -566,7 +566,7 @@ public final class SecurityVerifier {
 		AuthorizationManager authMgr = m_engine.getAuthorizationManager();
 		if(!authMgr.isJAASAuthorized()) {
 			m_session.addMessage(ERROR_JAAS, "JSPWiki's JAAS-based authentication " +
-			        "and authorization system is turned off (your jspwiki.properties file " +
+			        "and authorization system is turned off (your processlab.properties file " +
 			        "contains the setting 'jspwiki.security = container'. This " +
 			        "setting disables authorization checks and is meant for testing " +
 			        "and troubleshooting only. The test results on this page will not " +
@@ -786,7 +786,7 @@ public final class SecurityVerifier {
 		if(db instanceof UserManager.DummyUserDatabase) {
 			m_session.addMessage(ERROR_DB, "UserDatabase is DummyUserDatabase; JSPWiki " +
 			        "may not have been able to initialize the database you supplied in " +
-			        "jspwiki.properties, or you left the 'jspwiki.userdatabase' property " +
+			        "processlab.properties, or you left the 'jspwiki.userdatabase' property " +
 			        "blank. Check the error logs.");
 		}
 

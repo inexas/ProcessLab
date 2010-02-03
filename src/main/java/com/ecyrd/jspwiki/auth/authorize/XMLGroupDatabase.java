@@ -94,7 +94,7 @@ public class XMLGroupDatabase implements GroupDatabase {
 	protected static final Logger log = Logger.getLogger(XMLGroupDatabase.class);
 
 	/**
-	 * The jspwiki.properties property specifying the file system location of
+	 * The processlab.properties property specifying the file system location of
 	 * the group database.
 	 */
 	public static final String PROP_DATABASE = "jspwiki.xmlGroupDatabaseFile";

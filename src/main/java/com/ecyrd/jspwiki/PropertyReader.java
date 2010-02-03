@@ -48,7 +48,7 @@ import javax.servlet.ServletContext;
  * Property Reader for the WikiEngine. Reads the properties for the WikiEngine
  * and implements the feature of cascading properties and variable substitution,
  * which come in handy in a multi wiki installation environment: It reduces the
- * need for (shell) scripting in order to generate different jspwiki.properties
+ * need for (shell) scripting in order to generate different processlab.properties
  * to a minimum.
  * 
  * @author Christoph Sauer
@@ -57,7 +57,7 @@ import javax.servlet.ServletContext;
 @SuppressWarnings("unchecked")
 public final class PropertyReader {
 
-	private static final String DEFAULT_JSPWIKI_PROPERTIES = "/ini/default_jspwiki.properties";
+	private static final String DEFAULT_JSPWIKI_PROPERTIES = "/ini/default_processlab.properties";
 
 	/**
 	 * The web.xml parameter that defines where the config file is to be found.
@@ -76,13 +76,14 @@ public final class PropertyReader {
 	/**
 	 * Path to the default property file. {@value #DEFAULT_PROPERTYFILE}
 	 */
-	public static final String DEFAULT_PROPERTYFILE = "/WEB-INF/jspwiki.properties";
+	public static final String DEFAULT_PROPERTYFILE = "/WEB-INF/processlab.properties";
 
 	private static final String PARAM_VAR_DECLARATION = "var.";
 	private static final String PARAM_VAR_IDENTIFIER = "$";
 
 	/**
 	 * Contains the default properties for JSPWiki.
+	 * KW: Not all of them!
 	 */
 	private static final String[] DEFAULT_PROPERTIES =
 	        { "jspwiki.specialPage.Login", "Login.jsp",
@@ -104,7 +105,7 @@ public final class PropertyReader {
 	/**
 	 * Loads the webapp properties based on servlet context information. Returns
 	 * a Properties object containing the settings, or null if unable to load
-	 * it. (The default file is WEB-INF/jspwiki.properties, and can be
+	 * it. (The default file is WEB-INF/processlab.properties, and can be
 	 * overridden by setting PARAM_PROPERTYFILE in the server or webapp
 	 * configuration.)
 	 * 
@@ -119,9 +120,9 @@ public final class PropertyReader {
 	 * You define a cascade in the context mapping of your servlet container.
 	 * 
 	 * <pre>
-	 *  jspwiki.properties.cascade.1
-	 *  jspwiki.properties.cascade.2
-	 *  jspwiki.properties.cascade.3
+	 *  processlab.properties.cascade.1
+	 *  processlab.properties.cascade.2
+	 *  processlab.properties.cascade.3
 	 * </pre>
 	 * 
 	 * and so on. You have to number your cascade in a descending way starting
@@ -178,11 +179,13 @@ public final class PropertyReader {
 				props.setProperty("jspwiki.workDir", context.getRealPath("WEB-INF/work"));
 			}
 			
-			
+			final String applicationName = (String)props.get("processlab.applicationName");
+			Release.initialize(applicationName);
+		
 			return props;
 		} catch(Exception e) {
 			context.log(Release.APPNAME
-			        + ": Unable to load and setup properties from jspwiki.properties. " + e.getMessage());
+			        + ": Unable to load and setup properties from processlab.properties. " + e.getMessage());
 		} finally {
 			try {
 				if(propertyStream != null)
@@ -302,7 +305,7 @@ public final class PropertyReader {
 	 * @param properties
 	 *            - properties to expand;
 	 */
-	public static void expandVars(Properties properties) {
+	private static void expandVars(Properties properties) {
 		// get variable name/values from properties...
 		Map<String, String> vars = new HashMap<String, String>();
 		Enumeration propertyList = properties.propertyNames();

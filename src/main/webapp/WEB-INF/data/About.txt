@@ -1,7 +1,5 @@
-!!! ProcessLab
-ProcessLab is a Wiki-based Business Intelligence tool. It is a lightweight alternative to classical Business Intelligence solutions. It allows you to publish enterprise knowledge simply, quickly and graphically.
+!!! ProcessLab release notes and roadmap
 
-!!! Release notes etc.
 * [README]
 
 ! Release 0.1.2

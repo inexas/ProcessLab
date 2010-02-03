@@ -364,7 +364,7 @@ public class WikiContext
 
 	/**
 	 * Figure out to which page we are really going to. Considers special page
-	 * names from the jspwiki.properties, and possible aliases. This method
+	 * names from the processlab.properties, and possible aliases. This method
 	 * forwards requests to
 	 * {@link com.ecyrd.jspwiki.ui.CommandResolver#getSpecialPageReference(String)}
 	 * .
@@ -599,7 +599,7 @@ public class WikiContext
 	 * @param page
 	 *            The page to which to link
 	 * @return An URL to the page, honours the absolute/relative setting in
-	 *         jspwiki.properties
+	 *         processlab.properties
 	 */
 	public String getURL(String context,
 	        String page) {

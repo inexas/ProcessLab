@@ -133,7 +133,7 @@ public final class AuthorizationManager implements Serializable {
 	protected static final String DEFAULT_POLICY = "jspwiki.policy";
 
 	/**
-	 * The property name in jspwiki.properties for specifying the external
+	 * The property name in processlab.properties for specifying the external
 	 * {@link Authorizer}.
 	 */
 	public static final String PROP_AUTHORIZER = "jspwiki.authorizer";
@@ -480,7 +480,7 @@ public final class AuthorizationManager implements Serializable {
 	 * initialize.
 	 * 
 	 * @param props
-	 *            jspwiki.properties, containing a
+	 *            processlab.properties, containing a
 	 *            'jspwiki.authorization.provider' class name
 	 * @return a Authorizer used to get page authorization information
 	 * @throws WikiException

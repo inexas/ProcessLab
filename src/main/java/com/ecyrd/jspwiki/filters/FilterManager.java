@@ -206,7 +206,7 @@ public final class FilterManager extends ModuleManager {
 	 * Initializes the filters from an XML file.
 	 * 
 	 * @param props
-	 *            The list of properties. Typically jspwiki.properties
+	 *            The list of properties. Typically processlab.properties
 	 * @throws WikiException
 	 *             If something goes wrong.
 	 */

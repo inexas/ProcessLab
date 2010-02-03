@@ -90,7 +90,7 @@ public final class WorkflowBuilder {
 	 * <p>
 	 * The Principal who approves the activity is determined by looking up the
 	 * property <code>jspwiki.approver.<var>workflowApproverKey</var></code> in
-	 * <code>jspwiki.properties</code>. If that Principal resolves to a known
+	 * <code>processlab.properties</code>. If that Principal resolves to a known
 	 * user, Group Role, a Decision will be placed in the respective workflow
 	 * queue (or multiple queues, if necessary). Only one approver needs to make
 	 * the Decision, and if the request is approved, the completion task will be
@@ -116,7 +116,7 @@ public final class WorkflowBuilder {
 	 * @param workflowApproverKey
 	 *            the key that names the user, Group or Role who must approve
 	 *            the request. The key is looked up in
-	 *            <code>jspwiki.properties</code>, and is derived by prepending
+	 *            <code>processlab.properties</code>, and is derived by prepending
 	 *            <code>jspwiki.approver</code> to the value of
 	 *            <code>workflowApproverKey</code>
 	 * @param prepTask
@@ -167,7 +167,7 @@ public final class WorkflowBuilder {
 		// If Decision required, create a simple approval workflow
 		if(decisionRequired) {
 			// Look up the name of the approver (user or group) listed in
-			// jspwiki.properties;
+			// processlab.properties;
 			// approvals go to the approver's decision cue
 			Principal approverPrincipal = mgr.getApprover(workflowApproverKey);
 			Decision decision = new SimpleDecision(workflow, decisionKey, approverPrincipal);

@@ -462,7 +462,7 @@ public class TemplateManager
 	}
 
 	/**
-	 * List all available timeformats, read from the jspwiki.properties
+	 * List all available timeformats, read from the processlab.properties
 	 * 
 	 * @param pageContext
 	 * @return map of TimeFormats

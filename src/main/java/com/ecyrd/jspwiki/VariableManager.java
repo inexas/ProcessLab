@@ -208,7 +208,7 @@ public class VariableManager {
 	 * <li>HTTP Session
 	 * <li>HTTP Request parameters
 	 * <li>WikiPage variable. As set by the user with the SET directive.
-	 * <li>jspwiki.properties
+	 * <li>processlab.properties
 	 * </ol>
 	 * 
 	 * Use this method only whenever you really need to have a parameter that

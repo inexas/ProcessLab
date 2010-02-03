@@ -68,7 +68,7 @@ public class WorkflowManager implements WikiEventListener {
 	private final List<Workflow> m_completed;
 
 	/**
-	 * The prefix to use for looking up <code>jspwiki.properties</code> approval
+	 * The prefix to use for looking up <code>processlab.properties</code> approval
 	 * roles.
 	 */
 	protected static final String PROPERTY_APPROVER_PREFIX = "jspwiki.approver.";

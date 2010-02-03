@@ -306,7 +306,7 @@ public abstract class AbstractFileProvider
 
 		if(wikipages == null) {
 			log.error("Wikipages directory '" + m_pageDirectory + "' does not exist! Please check " + PROP_PAGEDIR
-			        + " in jspwiki.properties.");
+			        + " in processlab.properties.");
 			throw new InternalWikiException("Page directory does not exist");
 		}
 
