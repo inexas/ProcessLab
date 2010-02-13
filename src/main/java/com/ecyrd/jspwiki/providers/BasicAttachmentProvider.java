@@ -540,8 +540,8 @@ public class BasicAttachmentProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public Attachment getAttachmentInfo(WikiPage page, String name, int version)
-	        throws ProviderException {
+	public Attachment getAttachmentInfo(WikiPage page, String name, int v) throws ProviderException {
+		int version = v;
 		Attachment att = new Attachment(m_engine, page.getName(), name);
 		File dir = findAttachmentDir(att);
 

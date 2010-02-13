@@ -61,7 +61,8 @@ public class FileSystemProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public void putPageText(WikiPage page, String text)
+	@Override
+    public void putPageText(WikiPage page, String text)
 	        throws ProviderException {
 		try {
 			super.putPageText(page, text);
@@ -136,7 +137,8 @@ public class FileSystemProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public WikiPage getPageInfo(String page, int version)
+	@Override
+    public WikiPage getPageInfo(String page, int version)
 	        throws ProviderException {
 		WikiPage p = super.getPageInfo(page, version);
 
@@ -155,7 +157,8 @@ public class FileSystemProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public void deletePage(String pageName) throws ProviderException {
+	@Override
+    public void deletePage(String pageName) throws ProviderException {
 		super.deletePage(pageName);
 
 		File file = new File(getPageDirectory(),

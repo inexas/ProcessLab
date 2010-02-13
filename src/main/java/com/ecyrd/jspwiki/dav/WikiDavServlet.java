@@ -62,7 +62,8 @@ public class WikiDavServlet extends WebdavServlet {
 	private DavProvider m_rootProvider;
 	private DavProvider m_htmlProvider;
 
-	public void init(ServletConfig config)
+	@Override
+    public void init(ServletConfig config)
 	        throws ServletException {
 		super.init(config);
 
@@ -82,7 +83,8 @@ public class WikiDavServlet extends WebdavServlet {
 		return m_rootProvider;
 	}
 
-	public void doPropFind(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doPropFind(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		StopWatch sw = new StopWatch();
 		sw.start();
@@ -106,7 +108,8 @@ public class WikiDavServlet extends WebdavServlet {
 		log.debug("Propfind done for path " + path + ", took " + sw);
 	}
 
-	protected void doOptions(HttpServletRequest req, HttpServletResponse res) {
+	@Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse res) {
 		log.debug("DAV doOptions for path " + req.getPathInfo());
 
 		res.setHeader("DAV", "1"); // We support only Class 1
@@ -114,7 +117,8 @@ public class WikiDavServlet extends WebdavServlet {
 		res.setStatus(HttpServletResponse.SC_OK);
 	}
 
-	public void doMkCol(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    public void doMkCol(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getContentLength() > 0) {
 			response.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Message may contain no body");
 		} else {
@@ -122,31 +126,37 @@ public class WikiDavServlet extends WebdavServlet {
 		}
 	}
 
-	public void doPropPatch(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+	@Override
+    public void doPropPatch(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 	        IOException {
 		// DavMethod dm = new PropPatchMethod( m_rawProvider );
 
 		// dm.execute( request, response );
 	}
 
-	public void doCopy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    public void doCopy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only.");
 	}
 
-	public void doMove(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    public void doMove(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only.");
 
 	}
 
-	protected void doDelete(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doDelete(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only.");
 	}
 
-	protected void doPost(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doPost(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only.");
 	}
 
-	protected void doPut(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doPut(HttpServletRequest arg0, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only.");
 	}
 
@@ -154,7 +164,8 @@ public class WikiDavServlet extends WebdavServlet {
 	 * GET /dav/raw/WikiPage.txt GET /dav/html/WikiPage.html GET
 	 * /dav/pdf/WikiPage.pdf GET /dav/raw/WikiPage/attachment1.png
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
 	        throws ServletException, IOException {
 		// Do the "sanitize url" trick
 		// String p = new String(req.getPathInfo().getBytes("ISO-8859-1"),

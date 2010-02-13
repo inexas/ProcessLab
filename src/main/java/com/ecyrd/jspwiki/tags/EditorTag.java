@@ -55,12 +55,14 @@ public class EditorTag
         extends WikiBodyTag {
 	private static final long serialVersionUID = 0L;
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		return SKIP_BODY;
 	}
 
-	public int doEndTag() throws JspException {
+	@Override
+    public int doEndTag() throws JspException {
 		WikiEngine engine = m_wikiContext.getEngine();
 		EditorManager mgr = engine.getEditorManager();
 

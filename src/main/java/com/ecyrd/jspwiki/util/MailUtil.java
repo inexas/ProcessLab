@@ -541,7 +541,8 @@ public final class MailUtil {
 		 * 
 		 * @return <code>PasswordAuthentication</code>
 		 */
-		public PasswordAuthentication getPasswordAuthentication() {
+		@Override
+        public PasswordAuthentication getPasswordAuthentication() {
 			if(BLANK.equals(m_pass)) {
 				return null;
 			}

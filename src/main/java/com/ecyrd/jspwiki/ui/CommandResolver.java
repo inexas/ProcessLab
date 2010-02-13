@@ -481,7 +481,8 @@ public final class CommandResolver {
 	 *            the name of the page to look up; this page <em>must</em> exist
 	 * @return the wiki page
 	 */
-	protected final WikiPage resolvePage(HttpServletRequest request, String page) {
+	protected final WikiPage resolvePage(HttpServletRequest request, String p) {
+		String page = p;
 		// See if the user included a version parameter
 		WikiPage wikipage;
 		int version = WikiProvider.LATEST_VERSION;

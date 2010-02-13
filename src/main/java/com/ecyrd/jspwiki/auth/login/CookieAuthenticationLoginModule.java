@@ -114,7 +114,8 @@ public class CookieAuthenticationLoginModule extends AbstractLoginModule {
 	 * 
 	 *      {@inheritDoc}
 	 */
-	public boolean login() throws LoginException {
+	@Override
+    public boolean login() throws LoginException {
 		// Otherwise, let's go and look for the cookie!
 		HttpRequestCallback hcb = new HttpRequestCallback();
 		// UserDatabaseCallback ucb = new UserDatabaseCallback();

@@ -125,7 +125,8 @@ public class PluginContent extends Text {
 	 * 
 	 * @return HTML
 	 */
-	public String getValue() {
+	@Override
+    public String getValue() {
 		return getText();
 	}
 
@@ -137,7 +138,8 @@ public class PluginContent extends Text {
 	 * @return The plugin rendered according to the options set in the
 	 *         WikiContext.
 	 */
-	public String getText() {
+	@Override
+    public String getText() {
 		String result;
 
 		WikiDocument doc = (WikiDocument)getDocument();

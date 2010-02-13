@@ -72,7 +72,8 @@ public class DiffLinkTag
 	private String m_version = VER_LATEST;
 	private String m_newVersion = VER_LATEST;
 
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_version = m_newVersion = VER_LATEST;
 	}
@@ -93,7 +94,8 @@ public class DiffLinkTag
 		m_newVersion = arg;
 	}
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiEngine engine = m_wikiContext.getEngine();
 		String pageName = m_pageName;

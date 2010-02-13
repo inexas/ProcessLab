@@ -159,7 +159,8 @@ public class ContentTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException,
 	        ProviderException {
 		return SKIP_BODY;
@@ -168,7 +169,8 @@ public class ContentTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public final int doEndTag()
+	@Override
+    public final int doEndTag()
 	        throws JspException {
 		try {
 			// Check the overridden templates first

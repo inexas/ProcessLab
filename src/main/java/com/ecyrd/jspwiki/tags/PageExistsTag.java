@@ -52,7 +52,8 @@ public class PageExistsTag
         extends NoSuchPageTag {
 	private static final long serialVersionUID = 0L;
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException,
 	        ProviderException {
 		return (super.doWikiStartTag() == SKIP_BODY) ? EVAL_BODY_INCLUDE : SKIP_BODY;

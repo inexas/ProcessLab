@@ -98,7 +98,8 @@ class Parameters {
 		/**
 		 * Non-string parameters render without apostrophes
 		 */
-		void toJavaScript(StringBuilder sb) {
+		@Override
+        void toJavaScript(StringBuilder sb) {
 			sb.append(googleName);
 			sb.append(':');
 			sb.append(value.toString());
@@ -114,7 +115,8 @@ class Parameters {
 			super(toCopy, value);
 		}
 
-		void toJavaScript(StringBuilder sb) {
+		@Override
+        void toJavaScript(StringBuilder sb) {
 			sb.append(googleName);
 			sb.append(":'");
 			// todo Think about escaping any apostrophes

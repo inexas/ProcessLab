@@ -198,7 +198,8 @@ public class CookieTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public void release() {
+	@Override
+    public void release() {
 		m_name = m_item = m_var = m_value = m_clear = m_scope = null;
 		super.release();
 	}
@@ -229,7 +230,8 @@ public class CookieTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doEndTag() {
+	@Override
+    public int doEndTag() {
 		String out = null;
 		Cookie cookie = findCookie(m_name);
 		boolean changed = false;

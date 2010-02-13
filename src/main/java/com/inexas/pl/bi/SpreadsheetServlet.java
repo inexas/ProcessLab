@@ -27,7 +27,8 @@ public class SpreadsheetServlet extends HttpServlet {
 		NUMBER
 	}
 
-	public void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
+	@Override
+    public void doGet(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
 	throws ServletException, IOException {
 		
 		final StringBuilder sb = new StringBuilder();

@@ -60,7 +60,8 @@ public abstract class WikiBodyTag extends BodyTagSupport
 	protected WikiContext m_wikiContext;
 	static Logger log = Logger.getLogger(WikiBodyTag.class);
 
-	public int doStartTag() throws JspException {
+	@Override
+    public int doStartTag() throws JspException {
 		try {
 			m_wikiContext = (WikiContext)pageContext.getAttribute(WikiTagBase.ATTR_CONTEXT,
 			        PageContext.REQUEST_SCOPE);

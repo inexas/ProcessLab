@@ -146,7 +146,8 @@ public class Group {
 	 *            the object to compare
 	 * @return the comparison
 	 */
-	public boolean equals(Object o) {
+	@Override
+    public boolean equals(Object o) {
 		if(o == null || !(o instanceof Group))
 			return false;
 
@@ -175,7 +176,8 @@ public class Group {
 	 * 
 	 * @return the hash code
 	 */
-	public int hashCode() {
+	@Override
+    public int hashCode() {
 		int hc = 0;
 		for(Principal member : m_members) {
 			hc ^= member.hashCode();

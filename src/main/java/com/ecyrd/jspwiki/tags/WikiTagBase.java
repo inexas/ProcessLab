@@ -73,7 +73,8 @@ public abstract class WikiTagBase
 	 * for a tag to initialize itself before any of the setXXX() methods are
 	 * called.
 	 */
-	public void setPageContext(PageContext arg0) {
+	@Override
+    public void setPageContext(PageContext arg0) {
 		super.setPageContext(arg0);
 
 		initTag();
@@ -91,7 +92,8 @@ public abstract class WikiTagBase
 		return;
 	}
 
-	public int doStartTag()
+	@Override
+    public int doStartTag()
 	        throws JspException {
 		try {
 			m_wikiContext = (WikiContext)pageContext.getAttribute(ATTR_CONTEXT,
@@ -114,7 +116,8 @@ public abstract class WikiTagBase
 	 */
 	public abstract int doWikiStartTag() throws Exception;
 
-	public int doEndTag()
+	@Override
+    public int doEndTag()
 	        throws JspException {
 		return EVAL_PAGE;
 	}
@@ -127,7 +130,8 @@ public abstract class WikiTagBase
 		m_wikiContext = null;
 	}
 
-	public void setId(String id) {
+	@Override
+    public void setId(String id) {
 		super.setId(TextUtil.replaceEntities(id));
 	}
 

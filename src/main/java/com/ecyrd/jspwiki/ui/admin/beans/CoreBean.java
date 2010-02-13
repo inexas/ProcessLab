@@ -85,15 +85,18 @@ public class CoreBean
 		return CORE;
 	}
 
-	public String getId() {
+	@Override
+    public String getId() {
 		return "corebean";
 	}
 
-	public String[] getAttributeNames() {
+	@Override
+    public String[] getAttributeNames() {
 		return ATTRIBUTES;
 	}
 
-	public String[] getMethodNames() {
+	@Override
+    public String[] getMethodNames() {
 		return METHODS;
 	}
 

@@ -18,4 +18,8 @@ public class UnexpectedCallException extends RuntimeException {
 	public UnexpectedCallException() {
 		super("I should never have been called");
     }
+
+	public UnexpectedCallException(String string) {
+		super("I should never have been called: " + string);
+    }
 }

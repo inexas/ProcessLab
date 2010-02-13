@@ -47,7 +47,8 @@ import javax.servlet.jsp.tagext.VariableInfo;
  * @since 2.0
  */
 public class HistoryIteratorInfo extends TagExtraInfo {
-	public VariableInfo[] getVariableInfo(TagData data) {
+	@Override
+    public VariableInfo[] getVariableInfo(TagData data) {
 		VariableInfo[] var = { new VariableInfo(data.getAttributeString("id"),
 		        "com.ecyrd.jspwiki.WikiPage",
 		        true,

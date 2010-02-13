@@ -93,7 +93,8 @@ public class InternationalizationManager {
 	 *             If the key cannot be located at all, even from the default
 	 *             locale.
 	 */
-	public ResourceBundle getBundle(String bundle, Locale locale) throws MissingResourceException {
+	public ResourceBundle getBundle(String bundle, Locale l) throws MissingResourceException {
+		Locale locale = l;
 		if(locale == null)
 			locale = Locale.getDefault();
 

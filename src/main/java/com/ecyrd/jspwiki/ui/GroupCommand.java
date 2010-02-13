@@ -112,7 +112,8 @@ public final class GroupCommand extends AbstractCommand {
 	 *            the GroupPrincipal to combine into the current Command
 	 * @return the new, targeted command
 	 */
-	public final Command targetedCommand(Object target) {
+	@Override
+    public final Command targetedCommand(Object target) {
 		if(!(target != null && target instanceof GroupPrincipal)) {
 			throw new IllegalArgumentException("Target must non-null and of type GroupPrincipal.");
 		}
@@ -127,7 +128,8 @@ public final class GroupCommand extends AbstractCommand {
 	 * @return the name
 	 * @see com.ecyrd.jspwiki.ui.Command#getName()
 	 */
-	public final String getName() {
+	@Override
+    public final String getName() {
 		Object target = getTarget();
 		if(target == null) {
 			return getJSPFriendlyName();

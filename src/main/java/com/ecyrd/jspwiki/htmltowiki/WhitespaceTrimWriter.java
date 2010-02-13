@@ -94,8 +94,7 @@ public class WhitespaceTrimWriter extends Writer {
 			}
 		}
 		m.appendTail(sb);
-		s = sb.toString();
-		return s;
+		return sb.toString();
 	}
 
 	/**

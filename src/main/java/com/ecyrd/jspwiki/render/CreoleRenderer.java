@@ -186,7 +186,8 @@ public class CreoleRenderer extends WikiRenderer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getString() throws IOException {
+	@Override
+    public String getString() throws IOException {
 		StringBuffer sb = new StringBuffer(1000);
 
 		Element ce = m_document.getRootElement();

@@ -428,8 +428,9 @@ public class WeblogPlugin
 	 *             If something goes wrong
 	 */
 	public List findBlogEntries(PageManager mgr,
-	        String baseName, Date start, Date end)
+	        String bn, Date start, Date end)
 	        throws ProviderException {
+		String baseName = bn;
 		Collection everyone = mgr.getAllPages();
 		ArrayList<WikiPage> result = new ArrayList<WikiPage>();
 

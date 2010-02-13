@@ -88,7 +88,8 @@ public class SearchResultIteratorTag
 		m_start = arg;
 	}
 
-	public final int doStartTag() {
+	@Override
+    public final int doStartTag() {
 		//
 		// Do lazy eval if the search results have not been set.
 		//
@@ -134,7 +135,8 @@ public class SearchResultIteratorTag
 		return SKIP_BODY;
 	}
 
-	public int doAfterBody() {
+	@Override
+    public int doAfterBody() {
 		if(bodyContent != null) {
 			try {
 				JspWriter out = getPreviousOut();
@@ -149,7 +151,8 @@ public class SearchResultIteratorTag
 		return nextResult();
 	}
 
-	public int doEndTag() {
+	@Override
+    public int doEndTag() {
 		m_iterator = null;
 
 		return super.doEndTag();

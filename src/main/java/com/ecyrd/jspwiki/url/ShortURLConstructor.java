@@ -71,7 +71,8 @@ public class ShortURLConstructor
 	public static final String PROP_PREFIX = "jspwiki.shortURLConstructor.prefix";
 
 	/** {@inheritDoc} */
-	public void initialize(WikiEngine engine,
+	@Override
+    public void initialize(WikiEngine engine,
 	        Properties properties) {
 		super.initialize(engine, properties);
 
@@ -146,10 +147,12 @@ public class ShortURLConstructor
 	/**
 	 * {@inheritDoc}
 	 */
-	public String makeURL(String context,
+	@Override
+    public String makeURL(String context,
 	        String name,
 	        boolean absolute,
-	        String parameters) {
+	        String p) {
+		String parameters = p;
 		if(parameters != null && parameters.length() > 0) {
 			if(context.equals(WikiContext.ATTACH) || context.equals(WikiContext.VIEW)) {
 				parameters = "?" + parameters;
@@ -167,7 +170,8 @@ public class ShortURLConstructor
 	/**
 	 * {@inheritDoc}
 	 */
-	public String parsePage(String context,
+	@Override
+    public String parsePage(String context,
 	        HttpServletRequest request,
 	        String encoding)
 	        throws UnsupportedEncodingException {
@@ -183,7 +187,8 @@ public class ShortURLConstructor
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getForwardPage(HttpServletRequest req) {
+	@Override
+    public String getForwardPage(HttpServletRequest req) {
 		String jspPage = req.getParameter("do");
 		if(jspPage == null)
 			jspPage = "Wiki";

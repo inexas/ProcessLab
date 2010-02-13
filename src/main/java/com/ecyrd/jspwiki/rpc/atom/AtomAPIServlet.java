@@ -74,8 +74,8 @@ public class AtomAPIServlet extends HttpServlet {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void init(ServletConfig config)
-	        throws ServletException {
+	@Override
+    public void init(ServletConfig config) throws ServletException {
 		m_engine = WikiEngine.getInstance(config);
 	}
 
@@ -113,8 +113,8 @@ public class AtomAPIServlet extends HttpServlet {
 	 * @throws ServletException
 	 *             {@inheritDoc}
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException {
+	@Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		log.debug("Received POST to AtomAPIServlet");
 
 		try {
@@ -179,8 +179,8 @@ public class AtomAPIServlet extends HttpServlet {
 	 * 
 	 * {@inheritDoc}
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException {
+	@Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		log.debug("Received HTTP GET to AtomAPIServlet");
 
 		String blogid = getPageName(request);
@@ -313,7 +313,8 @@ public class AtomAPIServlet extends HttpServlet {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doDelete(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    public void doDelete(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException {
 		log.debug("Received HTTP DELETE");
 	}
@@ -321,7 +322,8 @@ public class AtomAPIServlet extends HttpServlet {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doPut(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    public void doPut(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException {
 		log.debug("Received HTTP PUT");
 	}

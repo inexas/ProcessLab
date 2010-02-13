@@ -55,16 +55,19 @@ public class UserBean extends SimpleAdminBean {
 		super();
 	}
 
-	public String[] getAttributeNames() {
+	@Override
+    public String[] getAttributeNames() {
 		return new String[0];
 	}
 
 	// FIXME: We don't yet support MBean for this kind of stuff.
-	public String[] getMethodNames() {
+	@Override
+    public String[] getMethodNames() {
 		return new String[0];
 	}
 
-	public String doPost(WikiContext context) {
+	@Override
+    public String doPost(WikiContext context) {
 		HttpServletRequest request = context.getHttpRequest();
 		WikiSession session = context.getWikiSession();
 		UserManager mgr = context.getEngine().getUserManager();

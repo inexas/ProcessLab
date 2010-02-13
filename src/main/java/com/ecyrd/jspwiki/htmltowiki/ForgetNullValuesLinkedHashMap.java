@@ -55,7 +55,8 @@ public class ForgetNullValuesLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public V put(K key, V value) {
+	@Override
+    public V put(K key, V value) {
 		if(value != null) {
 			return super.put(key, value);
 		}

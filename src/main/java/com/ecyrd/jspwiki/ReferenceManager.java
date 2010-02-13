@@ -542,7 +542,8 @@ public class ReferenceManager
 	 * @param content
 	 *            {@inheritDoc}
 	 */
-	public void postSave(WikiContext context, String content) {
+	@Override
+    public void postSave(WikiContext context, String content) {
 		WikiPage page = context.getPage();
 
 		updateReferences(page.getName(),

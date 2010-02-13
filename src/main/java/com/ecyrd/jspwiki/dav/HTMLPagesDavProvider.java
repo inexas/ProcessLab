@@ -82,7 +82,8 @@ public class HTMLPagesDavProvider extends RawPagesDavProvider {
 		return davItems;
 	}
 
-	protected DavItem getItemNoCache(DavPath path) {
+	@Override
+    protected DavItem getItemNoCache(DavPath path) {
 		String pname = path.filePart();
 
 		//
@@ -123,7 +124,8 @@ public class HTMLPagesDavProvider extends RawPagesDavProvider {
 		return null;
 	}
 
-	public String getURL(DavPath path) {
+	@Override
+    public String getURL(DavPath path) {
 		return m_engine.getURL(WikiContext.NONE, DavUtil.combineURL("dav/html", path.getPath()),
 		        null, true);
 	}

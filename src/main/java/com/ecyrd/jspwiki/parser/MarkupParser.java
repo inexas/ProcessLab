@@ -296,7 +296,8 @@ public abstract class MarkupParser {
 	 * 
 	 * @since 2.6
 	 */
-	public static String cleanLink(String link, String allowedChars) {
+	public static String cleanLink(String l, String allowedChars) {
+		String link = l;
 		if(link == null)
 			return null;
 

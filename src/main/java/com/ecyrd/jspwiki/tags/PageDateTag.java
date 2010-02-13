@@ -66,7 +66,8 @@ public class PageDateTag
 
 	private String m_format = null;
 
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_format = null;
 	}
@@ -79,7 +80,8 @@ public class PageDateTag
 		m_format = arg;
 	}
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiPage page = m_wikiContext.getPage();
 

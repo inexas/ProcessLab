@@ -88,12 +88,14 @@ public class WikiJSPFilter extends WikiServletFilter {
 	private Boolean m_useOutputStream;
 
 	/** {@inheritDoc} */
+    @Override
     public void init(FilterConfig config) throws ServletException {
 		super.init(config);
 		ServletContext context = config.getServletContext();
 		m_useOutputStream = UtilJ2eeCompat.useOutputStream(context.getServerInfo());
 	}
 
+    @Override
     public void doFilter(ServletRequest request,
 	        ServletResponse response,
 	        FilterChain chain)
@@ -212,7 +214,8 @@ public class WikiJSPFilter extends WikiServletFilter {
 	 *            Type identifier for insertion
 	 * @return The filtered string.
 	 */
-	private String insertResources(WikiContext wikiContext, String string, String type) {
+	private String insertResources(WikiContext wikiContext, String s, String type) {
+		String string = s;
 		if(wikiContext == null) {
 			return string;
 		}

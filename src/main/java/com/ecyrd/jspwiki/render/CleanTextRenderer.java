@@ -75,7 +75,8 @@ public class CleanTextRenderer
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getString()
+	@Override
+    public String getString()
 	        throws IOException {
 		StringBuffer sb = new StringBuffer();
 

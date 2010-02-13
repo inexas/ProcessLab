@@ -54,11 +54,13 @@ public class PluginBean extends SimpleAdminBean {
 		m_engine = engine;
 	}
 
-	public String[] getAttributeNames() {
+	@Override
+    public String[] getAttributeNames() {
 		return new String[0];
 	}
 
-	public String[] getMethodNames() {
+	@Override
+    public String[] getMethodNames() {
 		return new String[0];
 	}
 
@@ -70,7 +72,8 @@ public class PluginBean extends SimpleAdminBean {
 		return CORE;
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public String doGet(WikiContext context) {
 		Collection<WikiPluginInfo> plugins = m_engine.getPluginManager().modules();
 

@@ -95,7 +95,8 @@ public final class RedirectCommand extends AbstractCommand {
 	 * @throws IllegalArgumentException
 	 *             if the target is not of the correct type
 	 */
-	public final Command targetedCommand(Object target) {
+	@Override
+    public final Command targetedCommand(Object target) {
 		if(!(target != null && target instanceof String)) {
 			throw new IllegalArgumentException("Target must non-null and of type String.");
 		}
@@ -105,7 +106,8 @@ public final class RedirectCommand extends AbstractCommand {
 	/**
 	 * @see com.ecyrd.jspwiki.ui.Command#getName()
 	 */
-	public final String getName() {
+	@Override
+    public final String getName() {
 		Object target = getTarget();
 		if(target == null) {
 			return getJSPFriendlyName();

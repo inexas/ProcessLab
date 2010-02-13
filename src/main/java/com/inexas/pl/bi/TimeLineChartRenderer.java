@@ -50,7 +50,8 @@ public class TimeLineChartRenderer extends GoogleChartRenderer {
 		}
 	}
 
-	public int[] getLimits() {
+	@Override
+    public int[] getLimits() {
 		return limits;
 	}
 

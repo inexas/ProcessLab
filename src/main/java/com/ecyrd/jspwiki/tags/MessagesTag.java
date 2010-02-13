@@ -74,7 +74,8 @@ public class MessagesTag extends WikiTagBase {
 
 	private static final String CLEAR = "clear";
 
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_action = m_topic = null;
 		m_prefix = "";
@@ -97,7 +98,8 @@ public class MessagesTag extends WikiTagBase {
 		m_action = action.toLowerCase();
 	}
 
-	public final int doWikiStartTag() throws IOException {
+	@Override
+    public final int doWikiStartTag() throws IOException {
 		WikiSession session = m_wikiContext.getWikiSession();
 		if(CLEAR.equals(m_action)) {
 			if(m_topic == null) {

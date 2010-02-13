@@ -123,7 +123,8 @@ public class CachingProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public void initialize(WikiEngine engine, Properties properties)
+	@SuppressWarnings("deprecation")
+    public void initialize(WikiEngine engine, Properties properties)
 	        throws NoRequiredPropertyException,
 	        IOException {
 		log.debug("Initing CachingProvider");

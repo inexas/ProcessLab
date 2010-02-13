@@ -74,7 +74,8 @@ public class HTMLPageDavItem extends PageDavItem {
 	/**
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getHref()
 	 */
-	public String getHref() {
+	@Override
+    public String getHref() {
 		return m_provider.getURL(m_path);
 	}
 
@@ -84,7 +85,8 @@ public class HTMLPageDavItem extends PageDavItem {
 	 * 
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getContentType()
 	 */
-	public String getContentType() {
+	@Override
+    public String getContentType() {
 		return "text/html; charset=UTF-8";
 	}
 
@@ -106,7 +108,8 @@ public class HTMLPageDavItem extends PageDavItem {
 		}
 	}
 
-	public InputStream getInputStream() {
+	@Override
+    public InputStream getInputStream() {
 		byte[] text = getText();
 
 		ByteArrayInputStream in = new ByteArrayInputStream(text);
@@ -114,7 +117,8 @@ public class HTMLPageDavItem extends PageDavItem {
 		return in;
 	}
 
-	public long getLength() {
+	@Override
+    public long getLength() {
 		if(m_cachedLength == -1) {
 			byte[] text = getText();
 
@@ -124,7 +128,8 @@ public class HTMLPageDavItem extends PageDavItem {
 		return m_cachedLength;
 	}
 
-	public Collection getPropertySet() {
+	@Override
+    public Collection getPropertySet() {
 		Collection<Element> set = getCommonProperties();
 
 		//

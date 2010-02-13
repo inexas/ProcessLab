@@ -368,21 +368,24 @@ public class JDBCUserDatabase extends AbstractUserDatabase {
 	/**
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByEmail(java.lang.String)
 	 */
-	public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
 		return findByPreparedStatement(m_findByEmail, index);
 	}
 
 	/**
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByFullName(java.lang.String)
 	 */
-	public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
 		return findByPreparedStatement(m_findByFullName, index);
 	}
 
 	/**
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByLoginName(java.lang.String)
 	 */
-	public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
 		return findByPreparedStatement(m_findByLoginName, index);
 	}
 
@@ -396,7 +399,8 @@ public class JDBCUserDatabase extends AbstractUserDatabase {
 	/**
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByWikiName(String)
 	 */
-	public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
 		return findByPreparedStatement(m_findByWikiName, index);
 	}
 
@@ -442,7 +446,8 @@ public class JDBCUserDatabase extends AbstractUserDatabase {
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#initialize(com.ecyrd.jspwiki.WikiEngine,
 	 *      java.util.Properties)
 	 */
-	public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
+	@Override
+    public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
 		String jndiName = props.getProperty(PROP_DB_DATASOURCE, DEFAULT_DB_JNDI_NAME);
 		try {
 			Context initCtx = new InitialContext();
@@ -632,7 +637,8 @@ public class JDBCUserDatabase extends AbstractUserDatabase {
 	/**
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#save(com.ecyrd.jspwiki.auth.user.UserProfile)
 	 */
-	public void save(UserProfile profile) throws WikiSecurityException {
+	@Override
+    public void save(UserProfile profile) throws WikiSecurityException {
 		// Figure out which prepared statement to use & execute it
 		String loginName = profile.getLoginName();
 		PreparedStatement ps = null;

@@ -337,8 +337,6 @@ public class IfPlugin implements WikiPlugin {
 		if(content == null || matchPattern == null)
 			return false;
 
-		matchPattern = "^" + matchPattern + "$";
-
-		return doMatch(content, matchPattern);
+		return doMatch(content, "^" + matchPattern + "$");
 	}
 }

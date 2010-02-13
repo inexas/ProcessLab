@@ -199,9 +199,9 @@ public class CalendarTag
 
 	}
 
-	private String getMonthNaviLink(Calendar day, String txt, String queryString) {
+	private String getMonthNaviLink(Calendar day, String txt, String q) {
 		String result = "";
-		queryString = TextUtil.replaceEntities(queryString);
+		String queryString = TextUtil.replaceEntities(q);
 		Calendar nextMonth = Calendar.getInstance();
 		nextMonth.set(Calendar.DATE, 1);
 		nextMonth.add(Calendar.DATE, -1);

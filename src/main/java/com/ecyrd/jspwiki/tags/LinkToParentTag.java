@@ -59,7 +59,8 @@ public class LinkToParentTag
         extends LinkToTag {
 	private static final long serialVersionUID = 0L;
 
-	public int doWikiStartTag()
+	@Override
+    public int doWikiStartTag()
 	        throws IOException {
 		WikiPage p = m_wikiContext.getPage();
 

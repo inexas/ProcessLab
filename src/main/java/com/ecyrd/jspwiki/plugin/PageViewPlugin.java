@@ -545,7 +545,8 @@ public class PageViewPlugin implements WikiPlugin, InitializablePlugin {
 		 *            String in which offset points.
 		 * @return int Adjusted offset into value.
 		 */
-		private int skipWhitespace(int offset, String value) {
+		private int skipWhitespace(int off, String value) {
+			int offset = off;
 			while(Character.isWhitespace(value.charAt(offset))) {
 				offset++;
 			}
@@ -726,7 +727,8 @@ public class PageViewPlugin implements WikiPlugin, InitializablePlugin {
 		/**
 		 * @return String String representation of the count.
 		 */
-		public String toString() {
+		@Override
+        public String toString() {
 			return String.valueOf(count);
 		}
 	}
@@ -762,7 +764,8 @@ public class PageViewPlugin implements WikiPlugin, InitializablePlugin {
 		/**
 		 * Save the page counters to file.
 		 */
-		public void backgroundTask() {
+		@Override
+        public void backgroundTask() {
 
 			if(manager.isRunning(this)) {
 				manager.storeCounters();

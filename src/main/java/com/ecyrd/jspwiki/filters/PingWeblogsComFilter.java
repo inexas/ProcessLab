@@ -68,14 +68,16 @@ public class PingWeblogsComFilter
 	/**
 	 * {@inheritDoc}
 	 */
-	public void initialize(WikiEngine engine, Properties props) {
+	@Override
+    public void initialize(WikiEngine engine, Properties props) {
 		m_pingURL = props.getProperty(PROP_PINGURL, "http://rpc.weblogs.com/RPC2");
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void postSave(WikiContext context, String pagecontent) {
+	@Override
+    public void postSave(WikiContext context, String pagecontent) {
 		String blogName = context.getPage().getName();
 		WikiEngine engine = context.getEngine();
 

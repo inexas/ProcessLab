@@ -204,7 +204,7 @@ public class ReferredPagesPlugin implements WikiPlugin {
 
 		Collection<String> allPages = mgr.findRefersTo(pagename);
 
-		handleLinks(context, allPages, ++depth, pagename);
+		handleLinks(context, allPages, depth + 1, pagename);
 	}
 
 	private void handleLinks(WikiContext context, Collection<String> links, int depth, String pagename) {

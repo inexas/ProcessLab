@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.inexas.processlab</groupId>
   <artifactId>processlab</artifactId>
-  <packaging>war</packaging>
-  <version>0.1.4-SNAPSHOT</version>
   <name>ProcessLab</name>
+  <version>0.1.4-SNAPSHOT</version>
+  <packaging>war</packaging>
   <description>ProcessLab main</description>
-  <url>http://www.inexas.org/Wiki.jsp?page=ModuleProcessLab</url>
+  <url>http://www.inexas.org/Wiki.jsp?page=ModuleProduction</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -23,8 +23,8 @@
   		<url>http://inexas.org/mvn2repo/</url>
   	</repository>
   </repositories>
+  
   <dependencies>
-
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
@@ -167,8 +167,9 @@
     </dependency>
     <dependency>
     	<groupId>org.antlr</groupId>
-    	<artifactId>antlr</artifactId>
+    	<artifactId>antlr-runtime</artifactId>
     	<version>3.2</version>
+    	<scope>compile</scope>
     </dependency>
   </dependencies>
   <issueManagement>
@@ -197,6 +198,8 @@
   </organization>
   <build>
   
+    <defaultGoal>package</defaultGoal>
+    
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -207,18 +210,18 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <plugin>
+	<plugin>
 		<groupId>org.antlr</groupId>
 		<artifactId>antlr3-maven-plugin</artifactId>
-		<version>3.1.3-1</version>
+		<version>3.2</version>
 		<executions>
-		<execution>
-		<goals>
-		<goal>antlr</goal>
-		</goals>
-		</execution>
+			<execution>
+				<goals>
+					<goal>antlr</goal>
+				</goals>
+			</execution>
 		</executions>
-      </plugin>
+	</plugin>
     </plugins>
     <finalName>processlab</finalName>
   </build>

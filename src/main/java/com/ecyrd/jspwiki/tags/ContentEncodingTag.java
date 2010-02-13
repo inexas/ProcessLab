@@ -52,7 +52,8 @@ public class ContentEncodingTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiEngine engine = m_wikiContext.getEngine();
 

@@ -197,7 +197,8 @@ public final class HttpUtil {
 	 * @return Possibly a valid URI
 	 * @since 2.2.8
 	 */
-	public static String guessValidURI(String uri) {
+	public static String guessValidURI(String u) {
+		String uri = u;
 		if(uri.indexOf('@') != -1) {
 			if(!uri.startsWith("mailto:")) {
 				// Assume this is an email address

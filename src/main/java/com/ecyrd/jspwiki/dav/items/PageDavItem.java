@@ -89,7 +89,8 @@ public class PageDavItem extends DavItem {
 	 * 
 	 * @see com.ecyrd.jspwiki.dav.DavItem#getPropertySet(int)
 	 */
-	public Collection getPropertySet() {
+	@Override
+    public Collection getPropertySet() {
 		Collection<Element> set = getCommonProperties();
 
 		set.add(new Element("getcontentlength", m_davns).setText(Long.toString(getLength())));
@@ -98,7 +99,8 @@ public class PageDavItem extends DavItem {
 		return set;
 	}
 
-	public String getHref() {
+	@Override
+    public String getHref() {
 		return m_provider.getURL(m_path);
 	}
 
@@ -107,7 +109,8 @@ public class PageDavItem extends DavItem {
 	 * 
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getContentType()
 	 */
-	public String getContentType() {
+	@Override
+    public String getContentType() {
 		return "text/plain; charset=UTF-8";
 	}
 
@@ -116,7 +119,8 @@ public class PageDavItem extends DavItem {
 	 * 
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getInputStream()
 	 */
-	public InputStream getInputStream() {
+	@Override
+    public InputStream getInputStream() {
 		String text = ((WikiDavProvider)m_provider).getEngine().getPureText(m_page);
 
 		try {
@@ -130,7 +134,8 @@ public class PageDavItem extends DavItem {
 		return null;
 	}
 
-	public long getLength() {
+	@Override
+    public long getLength() {
 		// FIXME: Use getBytes()
 		String text = ((WikiDavProvider)m_provider).getEngine().getPureText(m_page);
 		return text.length();

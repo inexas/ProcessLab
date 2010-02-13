@@ -80,7 +80,8 @@ public class UserDatabaseLoginModule extends AbstractLoginModule {
 	 * 
 	 *      {@inheritDoc}
 	 */
-	public boolean login() throws LoginException {
+	@Override
+    public boolean login() throws LoginException {
 		UserDatabaseCallback ucb = new UserDatabaseCallback();
 		NameCallback ncb = new NameCallback("User name");
 		PasswordCallback pcb = new PasswordCallback("Password", false);

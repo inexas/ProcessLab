@@ -75,7 +75,8 @@ public class TabTag extends WikiTagBase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doFinally() {
+	@Override
+    public void doFinally() {
 		super.doFinally();
 
 		m_accesskey = null;
@@ -130,7 +131,8 @@ public class TabTag extends WikiTagBase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doWikiStartTag() throws JspTagException {
+	@Override
+    public int doWikiStartTag() throws JspTagException {
 		TabbedSectionTag parent = (TabbedSectionTag)findAncestorWithClass(this, TabbedSectionTag.class);
 
 		//
@@ -170,7 +172,8 @@ public class TabTag extends WikiTagBase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doEndTag() throws javax.servlet.jsp.JspTagException {
+	@Override
+    public int doEndTag() throws javax.servlet.jsp.JspTagException {
 		TabbedSectionTag parent = (TabbedSectionTag)findAncestorWithClass(this, TabbedSectionTag.class);
 
 		StringBuffer sb = new StringBuffer();

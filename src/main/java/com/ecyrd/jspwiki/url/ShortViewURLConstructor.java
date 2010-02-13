@@ -54,7 +54,8 @@ public class ShortViewURLConstructor
 	/**
 	 * {@inheritDoc}
 	 */
-	public void initialize(WikiEngine engine,
+	@Override
+    public void initialize(WikiEngine engine,
 	        Properties properties) {
 		super.initialize(engine, properties);
 	}
@@ -81,10 +82,12 @@ public class ShortViewURLConstructor
 	/**
 	 * {@inheritDoc}
 	 */
-	public String makeURL(String context,
+	@Override
+    public String makeURL(String context,
 	        String name,
 	        boolean absolute,
-	        String parameters) {
+	        String p) {
+		String parameters = p;
 		if(parameters != null && parameters.length() > 0) {
 			if(context.equals(WikiContext.ATTACH) || context.equals(WikiContext.VIEW) || name == null) {
 				parameters = "?" + parameters;
@@ -107,7 +110,8 @@ public class ShortViewURLConstructor
 	 *            The HTTP Request that was used to end up in this page.
 	 * @return always returns "Wiki.jsp"
 	 */
-	public String getForwardPage(HttpServletRequest request) {
+	@Override
+    public String getForwardPage(HttpServletRequest request) {
 		return "Wiki.jsp";
 	}
 }

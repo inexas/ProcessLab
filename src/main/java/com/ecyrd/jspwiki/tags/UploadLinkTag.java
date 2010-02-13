@@ -60,7 +60,8 @@ public class UploadLinkTag
         extends WikiLinkTag {
 	private static final long serialVersionUID = 0L;
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		String pageName = m_pageName;
 

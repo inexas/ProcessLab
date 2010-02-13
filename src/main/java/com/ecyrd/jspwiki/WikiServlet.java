@@ -60,7 +60,8 @@ public class WikiServlet
 	/**
 	 * {@inheritDoc}
 	 */
-	public void init(ServletConfig config)
+	@Override
+    public void init(ServletConfig config)
 	        throws ServletException {
 		super.init(config);
 
@@ -78,7 +79,8 @@ public class WikiServlet
 	 * 
 	 * @see javax.servlet.GenericServlet#destroy()
 	 */
-	public void destroy() {
+	@Override
+    public void destroy() {
 		log.info("WikiServlet shutdown.");
 		m_engine.shutdown();
 		super.destroy();
@@ -87,7 +89,8 @@ public class WikiServlet
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doPost(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		doGet(req, res);
 	}
@@ -95,7 +98,8 @@ public class WikiServlet
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		String pageName = DefaultURLConstructor.parsePageFromURL(req,
 		        m_engine.getContentEncoding());

@@ -97,7 +97,8 @@ public abstract class Task extends AbstractStep {
 	 * 
 	 * @return the system principal
 	 */
-	public final Principal getActor() {
+	@Override
+    public final Principal getActor() {
 		return SystemPrincipal.SYSTEM_USER;
 	}
 

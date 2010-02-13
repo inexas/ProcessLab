@@ -442,6 +442,7 @@ public class RCSFileProvider
 	 * {@inheritDoc}
 	 */
 	// FIXME: Put the rcs date formats into properties as well.
+    @Override
     public List getVersionHistory(String page) {
 		PatternMatcher matcher = new Perl5Matcher();
 		PatternCompiler compiler = new Perl5Compiler();

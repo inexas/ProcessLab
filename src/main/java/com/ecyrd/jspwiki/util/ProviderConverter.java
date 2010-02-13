@@ -72,15 +72,15 @@ public class ProviderConverter {
 	        "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9"
 	        };
 
-	protected String mangleName(String pagename) {
-		pagename = TextUtil.urlEncode(pagename, "UTF-8");
+	protected String mangleName(String pn) {
+		String pagename = TextUtil.urlEncode(pn, "UTF-8");
 
 		pagename = TextUtil.replaceString(pagename, "/", "%2F");
 
 		if(SystemUtils.IS_OS_WINDOWS) {
-			String pn = pagename.toLowerCase();
+			String pn1 = pagename.toLowerCase();
 			for(int i = 0; i < WINDOWS_DEVICE_NAMES.length; i++) {
-				if(WINDOWS_DEVICE_NAMES[i].equals(pn)) {
+				if(WINDOWS_DEVICE_NAMES[i].equals(pn1)) {
 					pagename = "$$$" + pagename;
 				}
 			}

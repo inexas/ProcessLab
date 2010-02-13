@@ -72,7 +72,8 @@ public class PageInfoLinkTag
 		m_accesskey = access;
 	}
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiEngine engine = m_wikiContext.getEngine();
 		String pageName = m_pageName;

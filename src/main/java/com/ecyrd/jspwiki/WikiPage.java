@@ -394,7 +394,8 @@ public class WikiPage
 	/**
 	 * {@inheritDoc}
 	 */
-	public int hashCode() {
+	@Override
+    public int hashCode() {
 		return m_name.hashCode() * m_version;
 	}
 }

@@ -130,7 +130,8 @@ public class AttachmentServlet
 	 * 
 	 * {@inheritDoc}
 	 */
-	public void init(ServletConfig config)
+	@Override
+    public void init(ServletConfig config)
 	        throws ServletException {
 		super.init(config);
 
@@ -205,7 +206,8 @@ public class AttachmentServlet
 	 * @throws ServletException
 	 *             If the servlet has issues
 	 */
-	public void doPropFind(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doPropFind(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		DavMethod dm = new PropFindMethod(m_attachmentProvider);
 
@@ -225,7 +227,8 @@ public class AttachmentServlet
 	 *            The servlet response
 	 */
 
-	protected void doOptions(HttpServletRequest req, HttpServletResponse res) {
+	@Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse res) {
 		res.setHeader("DAV", "1"); // We support only Class 1
 		res.setHeader("Allow", "GET, PUT, POST, OPTIONS, PROPFIND, PROPPATCH, MOVE, COPY, DELETE");
 		res.setStatus(HttpServletResponse.SC_OK);
@@ -239,7 +242,8 @@ public class AttachmentServlet
 	 */
 
 	// FIXME: Messages would need to be localized somehow.
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doGet(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		WikiContext context = m_engine.createContext(req, WikiContext.ATTACH);
 
@@ -456,7 +460,8 @@ public class AttachmentServlet
 	 * 
 	 * {@inheritDoc}
 	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doPost(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		try {
 			String nextPage = upload(req);
@@ -474,7 +479,8 @@ public class AttachmentServlet
 	/**
 	 * {@inheritDoc}
 	 */
-	public void doPut(HttpServletRequest req, HttpServletResponse res)
+	@Override
+    public void doPut(HttpServletRequest req, HttpServletResponse res)
 	        throws IOException, ServletException {
 		String errorPage = m_engine.getURL(WikiContext.ERROR, "", null, false); // If
 																				// something
@@ -834,7 +840,8 @@ public class AttachmentServlet
 			m_totalBytes = totalBytes;
 		}
 
-		public int getProgress() {
+		@Override
+        public int getProgress() {
 			return (int)(((float)m_currentBytes / m_totalBytes) * 100 + 0.5);
 		}
 	}

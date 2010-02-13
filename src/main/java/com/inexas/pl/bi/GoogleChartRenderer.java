@@ -158,7 +158,8 @@ abstract class GoogleChartRenderer extends Renderer {
 		}
 	}
 
-	public void render() {
+	@Override
+    public void render() {
 		final StringBuilder sb = plugin.sb;
 
 		// Is there a drill-down link?..

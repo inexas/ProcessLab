@@ -73,7 +73,8 @@ public class InsertDiffTag
 	protected String m_pageName;
 
 	/** {@inheritDoc} */
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_pageName = null;
 	}
@@ -98,7 +99,8 @@ public class InsertDiffTag
 	}
 
 	/** {@inheritDoc} */
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiEngine engine = m_wikiContext.getEngine();
 		WikiContext ctx;

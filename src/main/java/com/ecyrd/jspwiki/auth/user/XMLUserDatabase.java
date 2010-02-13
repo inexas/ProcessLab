@@ -164,7 +164,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @return the user profile
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByEmail(String)
 	 */
-	public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
 		UserProfile profile = findByAttribute(EMAIL, index);
 		if(profile != null) {
 			return profile;
@@ -183,7 +184,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @return the user profile
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByFullName(java.lang.String)
 	 */
-	public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
 		UserProfile profile = findByAttribute(FULL_NAME, index);
 		if(profile != null) {
 			return profile;
@@ -202,7 +204,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @return the user profile
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByLoginName(java.lang.String)
 	 */
-	public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
 		UserProfile profile = findByAttribute(LOGIN_NAME, index);
 		if(profile != null) {
 			return profile;
@@ -232,7 +235,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @return the user profile
 	 * @see com.ecyrd.jspwiki.auth.user.UserDatabase#findByWikiName(java.lang.String)
 	 */
-	public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
+	@Override
+    public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
 		UserProfile profile = findByAttribute(WIKI_NAME, index);
 		if(profile != null) {
 			return profile;
@@ -278,7 +282,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @throws NoRequiredPropertyException
 	 *             if the user database cannot be located, parsed, or opened
 	 */
-	public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
+	@Override
+    public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
 //		File defaultFile = null;
 //		if(engine.getRootPath() == null) {
 //			log.warn("Cannot identify JSPWiki root path");
@@ -480,7 +485,8 @@ public class XMLUserDatabase extends AbstractUserDatabase implements Serializabl
 	 * @throws WikiSecurityException
 	 *             if the profile cannot be saved
 	 */
-	public synchronized void save(UserProfile profile) throws WikiSecurityException {
+	@Override
+    public synchronized void save(UserProfile profile) throws WikiSecurityException {
 		if(c_dom == null) {
 			log.fatal("Could not save profile " + profile + " database does not exist");
 			throw new IllegalStateException("FATAL: database does not exist");

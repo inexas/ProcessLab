@@ -147,7 +147,8 @@ public final class WikiPermission extends Permission implements Serializable {
 	 * @return the result
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public final boolean equals(Object obj) {
+	@Override
+    public final boolean equals(Object obj) {
 		if(!(obj instanceof WikiPermission)) {
 			return false;
 		}
@@ -163,7 +164,8 @@ public final class WikiPermission extends Permission implements Serializable {
 	 * @return the actions
 	 * @see java.security.Permission#getActions()
 	 */
-	public final String getActions() {
+	@Override
+    public final String getActions() {
 		return m_actionString;
 	}
 
@@ -182,7 +184,8 @@ public final class WikiPermission extends Permission implements Serializable {
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public final int hashCode() {
+	@Override
+    public final int hashCode() {
 		return m_mask + ((13 * m_actionString.hashCode()) * 23 * m_wiki.hashCode());
 	}
 
@@ -199,7 +202,8 @@ public final class WikiPermission extends Permission implements Serializable {
 	 *         <code>false</code> otherwise
 	 * @see java.security.Permission#implies(java.security.Permission)
 	 */
-	public final boolean implies(Permission permission) {
+	@Override
+    public final boolean implies(Permission permission) {
 		// Permission must be a WikiPermission
 		if(!(permission instanceof WikiPermission)) {
 			return false;
@@ -221,7 +225,8 @@ public final class WikiPermission extends Permission implements Serializable {
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public PermissionCollection newPermissionCollection() {
+	@Override
+    public PermissionCollection newPermissionCollection() {
 		return new AllPermissionCollection();
 	}
 

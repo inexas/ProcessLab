@@ -508,9 +508,9 @@ public class JSPWikiMarkupParser
 	 * @return An A element.
 	 * @since 2.4.78
 	 */
-	protected Element createAnchor(int type, String link, String text, String section) {
-		text = escapeHTMLEntities(text);
-		section = escapeHTMLEntities(section);
+	protected Element createAnchor(int type, String link, String t, String s) {
+		final String text = escapeHTMLEntities(t);
+		final String section = escapeHTMLEntities(s);
 		Element el = new Element("a");
 		el.setAttribute("class", CLASS_TYPES[type]);
 		el.setAttribute("href", link + section);
@@ -518,7 +518,10 @@ public class JSPWikiMarkupParser
 		return el;
 	}
 
-	private Element makeLink(int type, String link, String text, String section, Iterator attributes) {
+	private Element makeLink(int ty, String link, String t, String s, Iterator attributes) {
+		int type = ty;
+		String text = t;
+		String section = s;
 		Element el = null;
 
 		if(text == null)

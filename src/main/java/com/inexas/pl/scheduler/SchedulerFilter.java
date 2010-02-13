@@ -85,7 +85,8 @@ public class SchedulerFilter extends BasicPageFilter implements WikiEventListene
 	 * @param content
 	 *            {@inheritDoc}
 	 */
-	public void postSave(WikiContext context, String content) {
+	@Override
+    public void postSave(WikiContext context, String content) {
 		pageUpdated(context, content);
 	}
 

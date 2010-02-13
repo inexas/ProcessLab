@@ -166,7 +166,8 @@ public abstract class Decision extends AbstractStep {
 	 * @throws WikiException
 	 *             never
 	 */
-	public Outcome execute() throws WikiException {
+	@Override
+    public Outcome execute() throws WikiException {
 		if(getOutcome().isCompletion()) {
 			return getOutcome();
 		}
@@ -184,7 +185,8 @@ public abstract class Decision extends AbstractStep {
 	/**
 	 * {@inheritDoc}
 	 */
-	public final Principal getActor() {
+	@Override
+    public final Principal getActor() {
 		return m_actor;
 	}
 

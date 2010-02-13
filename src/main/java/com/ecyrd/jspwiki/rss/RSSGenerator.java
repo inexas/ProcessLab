@@ -211,7 +211,8 @@ public class RSSGenerator {
 	 * @return A formatted string.
 	 */
 	// FIXME: Replicates Feed.format().
-	public static String format(String s) {
+	public static String format(String string) {
+		String s = string;
 		s = TextUtil.replaceString(s, "&", "&amp;");
 		s = TextUtil.replaceString(s, "<", "&lt;");
 		s = TextUtil.replaceString(s, "]]>", "]]&gt;");

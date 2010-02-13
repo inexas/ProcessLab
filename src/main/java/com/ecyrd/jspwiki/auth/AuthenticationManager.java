@@ -618,8 +618,6 @@ public final class AuthenticationManager {
 	 *            the file to obtain, <em>e.g.</em>, <code>jspwiki.policy</code>
 	 * @return the URL to the file
 	 */
-	@SuppressWarnings("deprecation")
-	// KW
 	protected static final URL findConfigFile(WikiEngine engine, String name) {
 		// Try creating an absolute path first
 		File defaultFile = null;

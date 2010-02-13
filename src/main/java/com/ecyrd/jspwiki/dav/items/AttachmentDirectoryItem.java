@@ -47,13 +47,15 @@ public class AttachmentDirectoryItem extends DirectoryItem {
 		super(provider, parentpage);
 	}
 
-	public String getHref() {
+	@Override
+    public String getHref() {
 		return "";
 		// return m_provider.getEngine().getURL( WikiContext.ATTACH, "", null,
 		// true );
 	}
 
-	public Collection getPropertySet() {
+	@Override
+    public Collection getPropertySet() {
 		// XXX Auto-generated method stub
 		return super.getPropertySet();
 	}

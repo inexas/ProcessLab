@@ -58,7 +58,8 @@ public class EditorIteratorTag
 
 	static Logger log = Logger.getLogger(EditorIteratorTag.class);
 
-	public final int doStartTag() {
+	@Override
+    public final int doStartTag() {
 		m_wikiContext = WikiContext.findContext(pageContext);
 
 		WikiEngine engine = m_wikiContext.getEngine();

@@ -115,12 +115,13 @@ public class DefaultURLConstructor
 	 *            depends on the setting in processlab.properties.
 	 * @return A replacement.
 	 */
-	protected final String doReplacement(String baseptrn, String name, boolean absolute) {
+	protected final String doReplacement(String bp, String name, boolean absolute) {
 		String baseurl = m_pathPrefix;
 
 		if(absolute)
 			baseurl = m_engine.getBaseURL();
 
+		String baseptrn = bp;
 		baseptrn = TextUtil.replaceString(baseptrn, "%u", baseurl);
 		baseptrn = TextUtil.replaceString(baseptrn, "%U", m_engine.getBaseURL());
 		baseptrn = TextUtil.replaceString(baseptrn, "%n", encodeURI(name));
@@ -135,7 +136,8 @@ public class DefaultURLConstructor
 	 * 
 	 * We also convert any %2F's back to slashes to make nicer-looking URLs.
 	 */
-	private final String encodeURI(String uri) {
+	private final String encodeURI(String u) {
+		String uri = u;
 		uri = m_engine.encodeName(uri);
 
 		uri = StringUtils.replace(uri, "+", "%20");
@@ -185,10 +187,8 @@ public class DefaultURLConstructor
 	 * 
 	 *            {@inheritDoc}
 	 */
-	public String makeURL(String context,
-	        String name,
-	        boolean absolute,
-	        String parameters) {
+	public String makeURL(String context, String name, boolean absolute, String p) {
+		String parameters = p;
 		if(parameters != null && parameters.length() > 0) {
 			if(context.equals(WikiContext.ATTACH)) {
 				parameters = "?" + parameters;

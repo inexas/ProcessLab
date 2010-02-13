@@ -449,7 +449,8 @@ public final class FilterManager extends ModuleManager {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Collection modules() {
+	@Override
+    public Collection modules() {
 		ArrayList modules = new ArrayList();
 
 		modules.addAll(m_pageFilters);

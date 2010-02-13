@@ -14,26 +14,26 @@
 
   The original file and contents are licensed under a separate license:
   see below.
-*/
+ */
 /* 
-    JSPWiki - a JSP-based WikiWiki clone.
+ JSPWiki - a JSP-based WikiWiki clone.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+ http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.  
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.  
  */
 package com.ecyrd.jspwiki.xmlrpc;
 
@@ -83,8 +83,9 @@ public class RPCHandlerUTF8
 	/**
 	 * Encodes a single wiki page info into a Hashtable.
 	 */
+	@Override
 	@SuppressWarnings("boxing")
-    protected Hashtable<String, Object> encodeWikiPage(WikiPage page) {
+	protected Hashtable<String, Object> encodeWikiPage(WikiPage page) {
 		Hashtable<String, Object> ht = new Hashtable<String, Object>();
 
 		ht.put("name", page.getName());
@@ -114,6 +115,7 @@ public class RPCHandlerUTF8
 		return ht;
 	}
 
+	@Override
 	public Vector getRecentChanges(Date since) {
 		checkPermission(PagePermission.VIEW);
 
@@ -129,12 +131,12 @@ public class RPCHandlerUTF8
 		cal.add(Calendar.MILLISECOND,
 		        (cal.get(Calendar.ZONE_OFFSET) +
 		        (cal.getTimeZone().inDaylightTime(since) ? cal.get(Calendar.DST_OFFSET) : 0)));
-		since = cal.getTime();
+		final Date newSince = cal.getTime();
 
 		for(Iterator i = pages.iterator(); i.hasNext();) {
 			WikiPage page = (WikiPage)i.next();
 
-			if(page.getLastModified().after(since) && !(page instanceof Attachment)) {
+			if(page.getLastModified().after(newSince) && !(page instanceof Attachment)) {
 				result.add(encodeWikiPage(page));
 			}
 		}
@@ -152,8 +154,7 @@ public class RPCHandlerUTF8
 	 * @throws XmlRpcException
 	 *             , if there is something wrong with the page.
 	 */
-	private String parsePageCheckCondition(String pagename)
-	        throws XmlRpcException {
+	private String parsePageCheckCondition(String pagename) throws XmlRpcException {
 		if(!m_engine.pageExists(pagename)) {
 			throw new XmlRpcException(ERR_NOPAGE, "No such page '" + pagename + "' found, o master.");
 		}
@@ -164,53 +165,39 @@ public class RPCHandlerUTF8
 		return pagename;
 	}
 
-	public Hashtable getPageInfo(String pagename)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
-		return encodeWikiPage(m_engine.getPage(pagename));
+	public Hashtable getPageInfo(String pagename) throws XmlRpcException {
+		final String pn = parsePageCheckCondition(pagename);
+		return encodeWikiPage(m_engine.getPage(pn));
 	}
 
-	public Hashtable getPageInfoVersion(String pagename, int version)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
+	public Hashtable getPageInfoVersion(String pn, int version) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
 		return encodeWikiPage(m_engine.getPage(pagename, version));
 	}
 
-	public String getPage(String pagename)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
-		String text = m_engine.getPureText(pagename, -1);
-
+	public String getPage(String pn) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
+		final String text = m_engine.getPureText(pagename, -1);
 		return text;
 	}
 
-	public String getPageVersion(String pagename, int version)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
+	public String getPageVersion(String pn, int version) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
 		return m_engine.getPureText(pagename, version);
 	}
 
-	public String getPageHTML(String pagename)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
+	public String getPageHTML(String pn) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
 		return m_engine.getHTML(pagename);
 	}
 
-	public String getPageHTMLVersion(String pagename, int version)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
-
+	public String getPageHTMLVersion(String pn, int version) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
 		return m_engine.getHTML(pagename, version);
 	}
 
-	public Vector listLinks(String pagename)
-	        throws XmlRpcException {
-		pagename = parsePageCheckCondition(pagename);
+	public Vector listLinks(String pn) throws XmlRpcException {
+		final String pagename = parsePageCheckCondition(pn);
 
 		WikiPage page = m_engine.getPage(pagename);
 		String pagedata = m_engine.getPureText(page);

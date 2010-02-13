@@ -85,7 +85,8 @@ public class AnonymousLoginModule extends AbstractLoginModule {
 	 * @see javax.security.auth.spi.LoginModule#login()
 	 * @throws {@inheritDoc}
 	 */
-	public boolean login() throws LoginException {
+	@Override
+    public boolean login() throws LoginException {
 		// Let's go and make a Principal based on the IP address
 		HttpRequestCallback hcb = new HttpRequestCallback();
 		Callback[] callbacks = new Callback[]

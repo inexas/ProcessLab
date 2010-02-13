@@ -81,9 +81,10 @@ public class PageRenamer {
 	 */
 	public String renamePage(WikiContext context,
 	        String renameFrom,
-	        String renameTo,
+	        String r,
 	        boolean changeReferrers)
 	        throws WikiException {
+		String renameTo = r;
 		//
 		// Sanity checks first
 		//

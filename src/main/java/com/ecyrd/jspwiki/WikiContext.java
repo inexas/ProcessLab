@@ -648,7 +648,8 @@ public class WikiContext
 	 * @since 2.1.37.
 	 * @return A shallow clone of the WikiContext
 	 */
-	public Object clone() {
+	@Override
+    public Object clone() {
 		try {
 			// super.clone() must always be called to make sure that inherited
 			// objects

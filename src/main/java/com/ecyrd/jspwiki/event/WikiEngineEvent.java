@@ -101,7 +101,8 @@ public class WikiEngineEvent extends WikiEvent {
 	 * @param type
 	 *            the type of this WikiEngineEvent.
 	 */
-	protected void setType(int type) {
+	@Override
+    protected void setType(int type) {
 		if(type >= INITIALIZING && type <= STOPPED) {
 			super.setType(type);
 		} else {
@@ -144,7 +145,8 @@ public class WikiEngineEvent extends WikiEvent {
 	 * 
 	 * @return a String representation of the type
 	 */
-	public final String eventName() {
+	@Override
+    public final String eventName() {
 		switch (getType()){
 		case INITIALIZING:
 			return "INITIALIZING";
@@ -164,7 +166,8 @@ public class WikiEngineEvent extends WikiEvent {
 	 * 
 	 * @return a String description of the type
 	 */
-	public final String getTypeDescription() {
+	@Override
+    public final String getTypeDescription() {
 		switch (getType()){
 		case INITIALIZING:
 			return "wiki engine initializing";

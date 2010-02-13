@@ -628,7 +628,8 @@ public class PageManager extends ModuleManager implements WikiEventListener {
 			setName("JSPWiki Lock Reaper");
 		}
 
-		public void backgroundTask() throws Exception {
+		@Override
+        public void backgroundTask() throws Exception {
 			synchronized(m_pageLocks) {
 				Collection entries = m_pageLocks.values();
 

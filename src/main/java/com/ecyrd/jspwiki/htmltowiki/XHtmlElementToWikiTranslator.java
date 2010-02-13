@@ -116,8 +116,7 @@ public class XHtmlElementToWikiTranslator {
 	}
 
 	private void print(String s) {
-		s = StringEscapeUtils.unescapeHtml(s);
-		m_out.print(s);
+		m_out.print(StringEscapeUtils.unescapeHtml(s));
 	}
 
 	private void print(Object element) throws IOException, JDOMException {
@@ -807,7 +806,8 @@ public class XHtmlElementToWikiTranslator {
 		return m;
 	}
 
-	private String trimLink(String ref) {
+	private String trimLink(String r) {
+		String ref = r;
 		if(ref == null) {
 			return null;
 		}

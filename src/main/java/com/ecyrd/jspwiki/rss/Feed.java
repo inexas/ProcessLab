@@ -192,7 +192,8 @@ public abstract class Feed {
 	 * @return A formatted string.
 	 */
 	// FIXME: Should probably be replaced by a library method.
-	public static String format(String s) {
+	public static String format(String string) {
+		String s = string;
 		if(s != null) {
 			s = TextUtil.replaceString(s, "&", "&amp;");
 			s = TextUtil.replaceString(s, "<", "&lt;");

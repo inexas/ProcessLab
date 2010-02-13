@@ -53,7 +53,8 @@ public class NoSuchPageTag
 
 	private String m_pageName;
 
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_pageName = null;
 	}
@@ -66,7 +67,8 @@ public class NoSuchPageTag
 		return m_pageName;
 	}
 
-	public int doWikiStartTag()
+	@Override
+    public int doWikiStartTag()
 	        throws IOException,
 	        ProviderException {
 		WikiEngine engine = m_wikiContext.getEngine();

@@ -594,7 +594,8 @@ public final class UserManager implements Serializable {
 		 * @throws WikiSecurityException
 		 *             never...
 		 */
-		@SuppressWarnings("deprecation")
+		@Override
+        @SuppressWarnings("deprecation")
 		public void commit() throws WikiSecurityException {
 			// No operation
 		}
@@ -620,7 +621,8 @@ public final class UserManager implements Serializable {
 		 * @throws NoSuchPrincipalException
 		 *             never...
 		 */
-		public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
+		@Override
+        public UserProfile findByEmail(String index) throws NoSuchPrincipalException {
 			throw new NoSuchPrincipalException("No user profiles available");
 		}
 
@@ -633,7 +635,8 @@ public final class UserManager implements Serializable {
 		 * @throws NoSuchPrincipalException
 		 *             never...
 		 */
-		public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
+		@Override
+        public UserProfile findByFullName(String index) throws NoSuchPrincipalException {
 			throw new NoSuchPrincipalException("No user profiles available");
 		}
 
@@ -646,7 +649,8 @@ public final class UserManager implements Serializable {
 		 * @throws NoSuchPrincipalException
 		 *             never...
 		 */
-		public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
+		@Override
+        public UserProfile findByLoginName(String index) throws NoSuchPrincipalException {
 			throw new NoSuchPrincipalException("No user profiles available");
 		}
 
@@ -672,7 +676,8 @@ public final class UserManager implements Serializable {
 		 * @throws NoSuchPrincipalException
 		 *             never...
 		 */
-		public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
+		@Override
+        public UserProfile findByWikiName(String index) throws NoSuchPrincipalException {
 			throw new NoSuchPrincipalException("No user profiles available");
 		}
 
@@ -697,7 +702,8 @@ public final class UserManager implements Serializable {
 		 * @throws NoRequiredPropertyException
 		 *             never...
 		 */
-		public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
+		@Override
+        public void initialize(WikiEngine engine, Properties props) throws NoRequiredPropertyException {
 			//
 		}
 
@@ -725,7 +731,8 @@ public final class UserManager implements Serializable {
 		 * @throws WikiSecurityException
 		 *             never...
 		 */
-		public void save(UserProfile profile) throws WikiSecurityException {
+		@Override
+        public void save(UserProfile profile) throws WikiSecurityException {
 			//
 		}
 
@@ -767,7 +774,8 @@ public final class UserManager implements Serializable {
 		 * @throws WikiException
 		 *             if the save did not complete for some reason
 		 */
-		public Outcome execute() throws WikiException {
+		@Override
+        public Outcome execute() throws WikiException {
 			// Retrieve user profile
 			UserProfile profile = (UserProfile)getWorkflow().getAttribute(SAVED_PROFILE);
 

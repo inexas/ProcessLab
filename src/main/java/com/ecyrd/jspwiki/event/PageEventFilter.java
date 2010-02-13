@@ -88,8 +88,8 @@ public class PageEventFilter extends BasicPageFilter {
 	 * @param content
 	 *            WikiMarkup.
 	 */
-	public String preTranslate(WikiContext wikiContext, String content)
-	        throws FilterException {
+	@Override
+    public String preTranslate(WikiContext wikiContext, String content) throws FilterException {
 		fireEvent(WikiPageEvent.PRE_TRANSLATE, wikiContext);
 		return content;
 	}
@@ -100,8 +100,8 @@ public class PageEventFilter extends BasicPageFilter {
 	 * If you want to do any of your own WikiMarkup2HTML translation, do it
 	 * here.
 	 */
-	public String postTranslate(WikiContext wikiContext, String htmlContent)
-	        throws FilterException {
+	@Override
+    public String postTranslate(WikiContext wikiContext, String htmlContent) throws FilterException {
 		fireEvent(WikiPageEvent.POST_TRANSLATE, wikiContext);
 		return htmlContent;
 	}
@@ -109,8 +109,8 @@ public class PageEventFilter extends BasicPageFilter {
 	/**
 	 * This method is called before the page has been saved to the PageProvider.
 	 */
-	public String preSave(WikiContext wikiContext, String content)
-	        throws FilterException {
+	@Override
+    public String preSave(WikiContext wikiContext, String content) throws FilterException {
 		fireEvent(WikiPageEvent.PRE_SAVE, wikiContext);
 		return content;
 	}
@@ -122,8 +122,8 @@ public class PageEventFilter extends BasicPageFilter {
 	 * Since the result is discarded from this method, this is only useful for
 	 * things like counters, etc.
 	 */
-	public void postSave(WikiContext wikiContext, String content)
-	        throws FilterException {
+	@Override
+    public void postSave(WikiContext wikiContext, String content) throws FilterException {
 		fireEvent(WikiPageEvent.POST_SAVE, wikiContext);
 	}
 

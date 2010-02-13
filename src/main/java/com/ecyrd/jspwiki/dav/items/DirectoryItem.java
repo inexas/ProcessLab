@@ -57,15 +57,18 @@ public class DirectoryItem extends DavItem {
 		super(provider, path);
 	}
 
-	public String getContentType() {
+	@Override
+    public String getContentType() {
 		return "text/plain; charset=UTF-8";
 	}
 
-	public long getLength() {
+	@Override
+    public long getLength() {
 		return -1;
 	}
 
-	public Collection getPropertySet() {
+	@Override
+    public Collection getPropertySet() {
 		ArrayList<Element> ts = new ArrayList<Element>();
 		Namespace davns = Namespace.getNamespace("DAV:");
 
@@ -82,7 +85,8 @@ public class DirectoryItem extends DavItem {
 		return ts;
 	}
 
-	public String getHref() {
+	@Override
+    public String getHref() {
 		return m_provider.getURL(m_path);
 	}
 
@@ -90,7 +94,6 @@ public class DirectoryItem extends DavItem {
 		m_items.add(di);
 	}
 
-	@SuppressWarnings("unchecked")
 	public void addDavItems(Collection c) {
 		m_items.addAll(c);
 	}
@@ -100,7 +103,8 @@ public class DirectoryItem extends DavItem {
 	 * 
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getInputStream()
 	 */
-	public InputStream getInputStream() {
+	@Override
+    public InputStream getInputStream() {
 		// XXX Auto-generated method stub
 		return null;
 	}

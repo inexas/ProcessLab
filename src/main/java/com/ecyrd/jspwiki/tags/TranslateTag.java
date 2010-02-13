@@ -53,7 +53,8 @@ public class TranslateTag
 
 	static Logger log = Logger.getLogger(TranslateTag.class);
 
-	public final int doAfterBody()
+	@Override
+    public final int doAfterBody()
 	        throws JspException {
 		try {
 			WikiContext context = (WikiContext)pageContext.getAttribute(WikiTagBase.ATTR_CONTEXT,

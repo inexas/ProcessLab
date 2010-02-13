@@ -240,7 +240,8 @@ public final class PagePermission extends Permission implements Serializable {
 	 *            {@inheritDoc}
 	 * @return {@inheritDoc}
 	 */
-	public final boolean equals(Object obj) {
+	@Override
+    public final boolean equals(Object obj) {
 		if(!(obj instanceof PagePermission)) {
 			return false;
 		}
@@ -256,7 +257,8 @@ public final class PagePermission extends Permission implements Serializable {
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public final String getActions() {
+	@Override
+    public final String getActions() {
 		return m_actionString;
 	}
 
@@ -284,7 +286,8 @@ public final class PagePermission extends Permission implements Serializable {
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public final int hashCode() {
+	@Override
+    public final int hashCode() {
 		// If the wiki has not been set, uses a dummy value for the hashcode
 		// calculation. This may occur if the page given does not refer
 		// to any particular wiki
@@ -317,7 +320,8 @@ public final class PagePermission extends Permission implements Serializable {
 	 *            {@inheritDoc}
 	 * @return {@inheritDoc}
 	 */
-	public final boolean implies(Permission permission) {
+	@Override
+    public final boolean implies(Permission permission) {
 		// Permission must be a PagePermission
 		if(!(permission instanceof PagePermission)) {
 			return false;

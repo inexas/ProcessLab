@@ -67,11 +67,13 @@ public class SearchManagerBean extends SimpleAdminBean {
 		initialize(engine);
 	}
 
-	public String[] getAttributeNames() {
+	@Override
+    public String[] getAttributeNames() {
 		return new String[0];
 	}
 
-	public String[] getMethodNames() {
+	@Override
+    public String[] getMethodNames() {
 		return METHODS;
 	}
 
@@ -91,14 +93,16 @@ public class SearchManagerBean extends SimpleAdminBean {
 				int m_count;
 				int m_max;
 
-				public void startupTask() throws Exception
+				@Override
+                public void startupTask() throws Exception
 				    {
 					super.startupTask();
 
 					setName("Reindexer started");
 				}
 
-				@SuppressWarnings("unchecked")
+				@Override
+                @SuppressWarnings("unchecked")
 				public void backgroundTask() throws Exception
 				    {
 					Collection<WikiPage> allPages = m_engine.getPageManager().getAllPages();
@@ -107,7 +111,8 @@ public class SearchManagerBean extends SimpleAdminBean {
 					m_max = allPages.size();
 
 					ProgressItem pi = new ProgressItem() {
-						public int getProgress()
+						@Override
+                        public int getProgress()
 						    {
 							return 100 * m_count / m_max;
 						}
@@ -136,7 +141,8 @@ public class SearchManagerBean extends SimpleAdminBean {
 		return CORE;
 	}
 
-	public String doGet(WikiContext context) {
+	@Override
+    public String doGet(WikiContext context) {
 		if(m_updater != null) {
 			return "Update already in progress (" +
 			        context.getEngine().getProgressManager().getProgress(PROGRESS_ID) +
@@ -148,7 +154,8 @@ public class SearchManagerBean extends SimpleAdminBean {
 		        "<div class='description'>Forces JSPWiki search engine to reindex all pages.  Use this if you think some pages are not being found even if they should.</div>";
 	}
 
-	public String doPost(WikiContext context) {
+	@Override
+    public String doPost(WikiContext context) {
 		String val = context.getHttpParameter("searchmanagerbean-reload");
 
 		if(val != null) {

@@ -56,7 +56,8 @@ public class IncludeTag
 
 	protected String m_page;
 
-	public void initTag() {
+	@Override
+    public void initTag() {
 		super.initTag();
 		m_page = null;
 	}
@@ -69,7 +70,8 @@ public class IncludeTag
 		return m_page;
 	}
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException,
 	        ProviderException {
 		// WikiEngine engine = m_wikiContext.getEngine();
@@ -77,7 +79,8 @@ public class IncludeTag
 		return SKIP_BODY;
 	}
 
-	public final int doEndTag()
+	@Override
+    public final int doEndTag()
 	        throws JspException {
 		try {
 			String page = m_wikiContext.getEngine().getTemplateManager().findJSP(pageContext,

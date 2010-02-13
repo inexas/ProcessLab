@@ -1,8 +1,8 @@
 /**
- * Entity: A recognizer for 
+ * Entity: A recognizer for PL
  *
  * This grammar defines a simple language to define Entities in
- * terms of tuples and KTCVs
+ * terms of tuples and KTCVs.
  */
 grammar Entity;
 
@@ -12,13 +12,10 @@ options {
 }
 
 tokens {
-	ENTITY = 'Entity';
-	INTEGER = 'Integer';
-	KTCV = 'Ktcv';
-	TUPLE = 'Tuple';
-	TYPE = 'Type';
+	ENTITY;
+	KTCV;
+	TUPLE;
 	CONSTRAINTS = 'Constraints';
-	VALUE = 'Value';
 	// Data types
 	BOOLEAN = 'Boolean';
 	DATE = 'Date';
@@ -42,15 +39,15 @@ tokens {
 }
 
 parse
-	:	entity EOF
+	:	entity EOF -> entity
 	;
 
 entity
-	:	tuple
+	:	tuple -> ^(ENTITY tuple)
 	;
 
 tuple
-	:	id Cardinality? '{'! tupleMembers '}'!
+	:	id Cardinality? '{' tupleMembers '}' -> ^(TUPLE id Cardinality? tupleMembers)
 	;
 
 tupleMembers
@@ -58,7 +55,7 @@ tupleMembers
 	;
 
 ktcv
-	:	id tcv* ';'!
+	:	id tcv* ';' -> ^(KTCV id tcv*)
 	;
 
 tcv
@@ -67,7 +64,7 @@ tcv
 	|	'='! id
 	;
 
-id 	:	Id | dataType
+id 	:	Id^ | dataType
 	;
 	
 dataType
@@ -88,7 +85,7 @@ Cardinality
 	;
 
 Id
-	:	Letter ( Letter | Digit | '_' )+
+	:	Letter ( Letter | Digit | '_' )*
 	;
 
 String

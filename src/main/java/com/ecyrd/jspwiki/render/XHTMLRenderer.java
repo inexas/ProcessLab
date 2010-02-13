@@ -70,7 +70,8 @@ public class XHTMLRenderer
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getString()
+	@Override
+    public String getString()
 	        throws IOException {
 		m_document.setContext(m_context);
 

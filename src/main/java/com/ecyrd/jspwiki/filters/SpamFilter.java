@@ -307,7 +307,8 @@ public class SpamFilter
 	private static final int ACCEPT = 1;
 	private static final int NOTE = 2;
 
-	private static String log(WikiContext ctx, int type, String source, String message) {
+	private static String log(WikiContext ctx, int type, String source, String m) {
+		String message = m;
 		message = TextUtil.replaceString(message, "\r\n", "\\r\\n");
 		message = TextUtil.replaceString(message, "\"", "\\\"");
 
@@ -337,8 +338,8 @@ public class SpamFilter
 	}
 
 	/** {@inheritDoc} */
-	public String preSave(WikiContext context, String content)
-	        throws RedirectException {
+	@Override
+    public String preSave(WikiContext context, String content) throws RedirectException {
 		cleanBanList();
 		refreshBlacklists(context);
 

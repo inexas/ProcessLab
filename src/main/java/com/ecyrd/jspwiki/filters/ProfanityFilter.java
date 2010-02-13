@@ -91,7 +91,9 @@ public class ProfanityFilter extends BasicPageFilter {
 	/**
 	 * {@inheritDoc}
 	 */
-	public String preTranslate(WikiContext context, String content) {
+	@Override
+    public String preTranslate(WikiContext context, String c) {
+		String content = c;
 		for(int i = 0; i < c_profanities.length; i++) {
 			String word = c_profanities[i];
 			String replacement = word.charAt(0) + "*" + word.charAt(word.length() - 1);

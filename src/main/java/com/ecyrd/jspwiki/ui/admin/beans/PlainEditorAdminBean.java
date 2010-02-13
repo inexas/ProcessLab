@@ -119,11 +119,13 @@ public class PlainEditorAdminBean
 		return m_checked;
 	}
 
-	public String[] getAttributeNames() {
+	@Override
+    public String[] getAttributeNames() {
 		return ATTRIBUTES;
 	}
 
-	public String[] getMethodNames() {
+	@Override
+    public String[] getMethodNames() {
 		return METHODS;
 	}
 

@@ -90,7 +90,8 @@ public class WebContainerLoginModule extends AbstractLoginModule {
 	 * @return {@inheritDoc}
 	 * @throws {@inheritDoc}
 	 */
-	public boolean login() throws LoginException {
+	@Override
+    public boolean login() throws LoginException {
 		HttpRequestCallback rcb = new HttpRequestCallback();
 		Callback[] callbacks = new Callback[] { rcb };
 		String userId = null;

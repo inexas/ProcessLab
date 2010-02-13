@@ -153,7 +153,8 @@ public class WysiwygEditingRenderer
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getString()
+	@Override
+    public String getString()
 	        throws IOException {
 		Element rootElement = m_document.getRootElement();
 		processChildren(rootElement);

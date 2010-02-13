@@ -73,14 +73,16 @@ public class CreoleFilter extends BasicPageFilter {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void initialize(WikiEngine engine, Properties props) throws FilterException {
+	@Override
+    public void initialize(WikiEngine engine, Properties props) throws FilterException {
 		//
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String preSave(WikiContext wikiContext, String content)
+	@Override
+    public String preSave(WikiContext wikiContext, String content)
 	        throws FilterException {
 		try {
 			String username = wikiContext.getCurrentUser().getName();
@@ -96,7 +98,8 @@ public class CreoleFilter extends BasicPageFilter {
 	 * {@inheritDoc}
 	 */
 
-	public String preTranslate(WikiContext wikiContext, String content)
+	@Override
+    public String preTranslate(WikiContext wikiContext, String content)
 	        throws FilterException {
 		try {
 			Properties prop = wikiContext.getEngine().getWikiProperties();

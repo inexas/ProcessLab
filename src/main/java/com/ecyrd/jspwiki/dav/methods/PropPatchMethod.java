@@ -61,7 +61,8 @@ public class PropPatchMethod
 		super(provider);
 	}
 
-	public void execute(HttpServletRequest req, HttpServletResponse res, DavPath dp) throws ServletException,
+	@Override
+    public void execute(HttpServletRequest req, HttpServletResponse res, DavPath dp) throws ServletException,
 	        IOException {
 		res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JSPWiki is read-only");
 	}

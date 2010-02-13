@@ -51,10 +51,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.queryParser.QueryParser;
-import org.apache.lucene.search.Hits;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.Searcher;
+import org.apache.lucene.search.*;
 import org.apache.lucene.search.highlight.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -175,7 +172,8 @@ public class LuceneSearchProvider implements SearchProvider {
 	 * @throws IOException
 	 *             If there's a problem during indexing
 	 */
-	protected void doFullLuceneReindex()
+	@SuppressWarnings("deprecation")
+    protected void doFullLuceneReindex()
 	        throws IOException {
 		File dir = new File(m_luceneDirectory);
 
@@ -345,7 +343,8 @@ public class LuceneSearchProvider implements SearchProvider {
 	 * @param text
 	 *            The page text to index.
 	 */
-	protected synchronized void updateLuceneIndex(WikiPage page, String text) {
+	@SuppressWarnings("deprecation")
+    protected synchronized void updateLuceneIndex(WikiPage page, String text) {
 		IndexWriter writer = null;
 
 		log.debug("Updating Lucene index for page '" + page.getName() + "'...");
@@ -399,7 +398,8 @@ public class LuceneSearchProvider implements SearchProvider {
 	 * @throws IOException
 	 *             If there's an indexing problem
 	 */
-	protected Document luceneIndexPage(WikiPage page, String text, IndexWriter writer)
+	@SuppressWarnings("deprecation")
+    protected Document luceneIndexPage(WikiPage page, String text, IndexWriter writer)
 	        throws IOException {
 		if(log.isDebugEnabled())
 			log.debug("Indexing " + page.getName() + "...");
@@ -463,7 +463,8 @@ public class LuceneSearchProvider implements SearchProvider {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void pageRemoved(WikiPage page) {
+	@SuppressWarnings("deprecation")
+    public void pageRemoved(WikiPage page) {
 		try {
 			// Must first remove existing version of page.
 			IndexReader reader = IndexReader.open(m_luceneDirectory);
@@ -528,7 +529,8 @@ public class LuceneSearchProvider implements SearchProvider {
 	 * @throws ProviderException
 	 *             if there is a problem with the backend
 	 */
-	public Collection findPages(String query, int flags)
+	@SuppressWarnings("deprecation")
+    public Collection findPages(String query, int flags)
 	        throws ProviderException {
 		Searcher searcher = null;
 		ArrayList<SearchResult> list = null;
@@ -647,7 +649,8 @@ public class LuceneSearchProvider implements SearchProvider {
 			setName("JSPWiki Lucene Indexer");
 		}
 
-		public void startupTask() throws Exception {
+		@Override
+        public void startupTask() throws Exception {
 			m_watchdog = getEngine().getCurrentWatchDog();
 
 			// Sleep initially...
@@ -663,7 +666,8 @@ public class LuceneSearchProvider implements SearchProvider {
 			m_watchdog.exitState();
 		}
 
-		public void backgroundTask() throws Exception {
+		@Override
+        public void backgroundTask() throws Exception {
 			m_watchdog.enterState("Emptying index queue", 60);
 
 			synchronized(m_provider.m_updates) {

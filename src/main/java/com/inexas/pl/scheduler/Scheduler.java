@@ -119,7 +119,8 @@ public class Scheduler {
 		updateNamedSchedules(wikiEngine);
 
 		scavengerTimer.scheduleAtFixedRate(new TimerTask() {
-			public void run() {
+			@Override
+            public void run() {
 				reload();
 			}
 		},

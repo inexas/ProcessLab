@@ -211,7 +211,8 @@ public final class GroupPermission extends Permission implements Serializable {
 	 * @return the result of the comparison
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public final boolean equals(Object obj) {
+	@Override
+    public final boolean equals(Object obj) {
 		if(!(obj instanceof GroupPermission)) {
 			return false;
 		}
@@ -227,7 +228,8 @@ public final class GroupPermission extends Permission implements Serializable {
 	 * @return the actions
 	 * @see java.security.Permission#getActions()
 	 */
-	public final String getActions() {
+	@Override
+    public final String getActions() {
 		return m_actionString;
 	}
 
@@ -256,7 +258,8 @@ public final class GroupPermission extends Permission implements Serializable {
 	 * @return the hash code
 	 * @see java.lang.Object#hashCode()
 	 */
-	public final int hashCode() {
+	@Override
+    public final int hashCode() {
 		// If the wiki has not been set, uses a dummy value for the hashcode
 		// calculation. This may occur if the page given does not refer
 		// to any particular wiki
@@ -289,7 +292,8 @@ public final class GroupPermission extends Permission implements Serializable {
 	 *         Permission; <code>false</code> otherwise
 	 * @see java.security.Permission#implies(java.security.Permission)
 	 */
-	public final boolean implies(Permission permission) {
+	@Override
+    public final boolean implies(Permission permission) {
 		// Permission must be a GroupPermission
 		if(!(permission instanceof GroupPermission)) {
 			return false;

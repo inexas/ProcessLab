@@ -364,7 +364,8 @@ public class VersioningFileProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public synchronized void putPageText(WikiPage page, String text)
+	@Override
+    public synchronized void putPageText(WikiPage page, String text)
 	        throws ProviderException {
 		//
 		// This is a bit complicated. We'll first need to
@@ -451,7 +452,8 @@ public class VersioningFileProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public WikiPage getPageInfo(String page, int version)
+	@Override
+    public WikiPage getPageInfo(String page, int version)
 	        throws ProviderException {
 		int latest = findLatestVersion(page);
 		int realVersion;
@@ -603,7 +605,8 @@ public class VersioningFileProvider
 	/**
 	 * {@inheritDoc}
 	 */
-	public void deleteVersion(String page, int version)
+	@Override
+    public void deleteVersion(String page, int version)
 	        throws ProviderException {
 		File dir = findOldPageDir(page);
 
@@ -683,7 +686,8 @@ public class VersioningFileProvider
 	 * {@inheritDoc}
 	 */
 	// FIXME: This is kinda slow, we should need to do this only once.
-	public Collection getAllPages() throws ProviderException {
+	@Override
+    public Collection getAllPages() throws ProviderException {
 		Collection pages = super.getAllPages();
 		Collection<WikiPage> returnedPages = new ArrayList<WikiPage>();
 

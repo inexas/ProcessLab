@@ -80,7 +80,8 @@ public class WikiRequestWrapper extends HttpServletRequestWrapper {
 	 * , this method returns the name of the principal returned by
 	 * {@link WikiSession#getLoginPrincipal()}.
 	 */
-	public String getRemoteUser() {
+	@Override
+    public String getRemoteUser() {
 		if(super.getRemoteUser() != null) {
 			return super.getRemoteUser();
 		}
@@ -100,7 +101,8 @@ public class WikiRequestWrapper extends HttpServletRequestWrapper {
 	 * <code>true</code>, this method returns the value of
 	 * {@link WikiSession#getLoginPrincipal()}.
 	 */
-	public Principal getUserPrincipal() {
+	@Override
+    public Principal getUserPrincipal() {
 		if(super.getUserPrincipal() != null) {
 			return super.getUserPrincipal();
 		}
@@ -120,7 +122,8 @@ public class WikiRequestWrapper extends HttpServletRequestWrapper {
 	 * AUTHENTICATED) returned by {@link WikiSession#getRoles()} and checks to
 	 * see if any of these principals' names match the supplied role.
 	 */
-	public boolean isUserInRole(String role) {
+	@Override
+    public boolean isUserInRole(String role) {
 		boolean hasContainerRole = super.isUserInRole(role);
 		if(hasContainerRole) {
 			return true;

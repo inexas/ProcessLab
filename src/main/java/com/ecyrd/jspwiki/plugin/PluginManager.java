@@ -937,7 +937,8 @@ public class PluginManager extends ModuleManager {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Collection modules() {
+	@Override
+    public Collection modules() {
 		TreeSet<WikiModuleInfo> ls = new TreeSet<WikiModuleInfo>();
 
 		for(Iterator i = m_pluginClassMap.values().iterator(); i.hasNext();) {

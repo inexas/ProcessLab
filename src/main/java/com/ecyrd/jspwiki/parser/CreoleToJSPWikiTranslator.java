@@ -340,7 +340,8 @@ public class CreoleToJSPWikiTranslator {
 		return result.toString();
 	}
 
-	private String translateVariables(String result, boolean blogLineBreaks) {
+	private String translateVariables(String r, boolean blogLineBreaks) {
+		String result = r;
 		result = result.replace("[{$creolepagefilter.version}]", VAR_VERSION);
 		result = result.replace("[{$creolepagefilter.creoleversion}]", VAR_CREOLE_VERSION);
 		String linebreaks = blogLineBreaks ? VAR_LINEBREAK_BLOGLIKE : VAR_LINEBREAK_C2LIKE;
@@ -354,7 +355,8 @@ public class CreoleToJSPWikiTranslator {
 	 * 
 	 * @see #protectMarkup(String)
 	 */
-	private String unprotectMarkup(String content, boolean replacePlugins) {
+	private String unprotectMarkup(String c, boolean replacePlugins) {
+		String content = c;
 		Object[] it = this.m_hashList.toArray();
 
 		for(int i = it.length - 1; i >= 0; i--) {
@@ -384,7 +386,8 @@ public class CreoleToJSPWikiTranslator {
 	 * @param content
 	 * @return The content with protection
 	 */
-	private String protectMarkup(String content) {
+	private String protectMarkup(String c) {
+		String content = c;
 		c_protectionMap.clear();
 		m_hashList = new ArrayList<String>();
 		content = protectMarkup(content, PREFORMATTED_PROTECTED, "", "");

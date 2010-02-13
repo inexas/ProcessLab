@@ -136,7 +136,8 @@ public abstract class WikiBackgroundThread extends Thread implements WikiEventLi
 	 * 
 	 * @see java.lang.Thread#run()
 	 */
-	public final void run() {
+	@Override
+    public final void run() {
 		try {
 			// Perform the initial startup task
 			final String name = getName();

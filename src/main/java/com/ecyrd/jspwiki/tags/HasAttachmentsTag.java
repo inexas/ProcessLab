@@ -52,7 +52,8 @@ public class HasAttachmentsTag
         extends WikiTagBase {
 	private static final long serialVersionUID = 0L;
 
-	public final int doWikiStartTag()
+	@Override
+    public final int doWikiStartTag()
 	        throws IOException {
 		WikiEngine engine = m_wikiContext.getEngine();
 		WikiPage page = m_wikiContext.getPage();

@@ -121,7 +121,8 @@ public class SearchManager
 		 *            maximum number of suggestions
 		 * @return the suggestions
 		 */
-        public List getSuggestions(String wikiName, int maxLength) {
+        public List getSuggestions(String w, int maxLength) {
+        	String wikiName = w;
 			StopWatch sw = new StopWatch();
 			sw.start();
 			List<String> list = new ArrayList<String>(maxLength);
@@ -215,7 +216,8 @@ public class SearchManager
 	 * @throws FilterException
 	 *             if the search provider failed to initialize
 	 */
-	public void initialize(WikiEngine engine, Properties properties)
+	@Override
+    public void initialize(WikiEngine engine, Properties properties)
 	        throws FilterException {
 		m_engine = engine;
 
@@ -298,9 +300,7 @@ public class SearchManager
 	 */
 	public Collection findPages(String query)
 	        throws ProviderException, IOException {
-		if(query == null)
-			query = "";
-		Collection c = m_searchProvider.findPages(query);
+		Collection c = m_searchProvider.findPages(query == null ? "" : query);
 
 		return c;
 	}

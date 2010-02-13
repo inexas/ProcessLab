@@ -117,7 +117,8 @@ public class AllPermissionCollection extends PermissionCollection {
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public boolean implies(Permission permission) {
+	@Override
+    public boolean implies(Permission permission) {
 		// If nothing in the collection yet, fail fast
 		if(!m_notEmpty) {
 			return false;
@@ -142,14 +143,16 @@ public class AllPermissionCollection extends PermissionCollection {
 	/**
 	 * {@inheritDoc}
 	 */
-	public boolean isReadOnly() {
+	@Override
+    public boolean isReadOnly() {
 		return m_readOnly;
 	}
 
 	/**
 	 * @see java.security.PermissionCollection#setReadOnly()
 	 */
-	public void setReadOnly() {
+	@Override
+    public void setReadOnly() {
 		m_readOnly = true;
 	}
 }

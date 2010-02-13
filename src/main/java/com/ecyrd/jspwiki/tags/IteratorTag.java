@@ -124,7 +124,8 @@ public abstract class IteratorTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doStartTag() {
+	@Override
+    public int doStartTag() {
 		m_wikiContext = WikiContext.findContext(pageContext);
 
 		resetIterator();
@@ -166,7 +167,8 @@ public abstract class IteratorTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doEndTag() {
+	@Override
+    public int doEndTag() {
 		// Return back to the original.
 		pageContext.setAttribute(WikiTagBase.ATTR_CONTEXT,
 		        m_wikiContext,
@@ -178,7 +180,8 @@ public abstract class IteratorTag
 	/**
 	 * {@inheritDoc}
 	 */
-	public int doAfterBody() {
+	@Override
+    public int doAfterBody() {
 		if(bodyContent != null) {
 			try {
 				JspWriter out = getPreviousOut();

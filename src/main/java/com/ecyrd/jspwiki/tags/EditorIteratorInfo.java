@@ -48,7 +48,8 @@ import javax.servlet.jsp.tagext.VariableInfo;
  * @since 2.4.12
  */
 public class EditorIteratorInfo extends TagExtraInfo {
-	public VariableInfo[] getVariableInfo(TagData data) {
+	@Override
+    public VariableInfo[] getVariableInfo(TagData data) {
 		VariableInfo[] var = { new VariableInfo(data.getAttributeString("id"),
 		        "com.ecyrd.jspwiki.ui.Editor",
 		        true,

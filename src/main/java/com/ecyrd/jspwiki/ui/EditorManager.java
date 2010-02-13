@@ -307,7 +307,8 @@ public class EditorManager extends ModuleManager {
 			return info;
 		}
 
-		protected void initializeFromXML(Element el) {
+		@Override
+        protected void initializeFromXML(Element el) {
 			super.initializeFromXML(el);
 			m_path = el.getChildText("path");
 		}
@@ -321,7 +322,8 @@ public class EditorManager extends ModuleManager {
 		}
 	}
 
-	public Collection modules() {
+	@Override
+    public Collection modules() {
 		ArrayList<WikiModuleInfo> ls = new ArrayList<WikiModuleInfo>();
 
 		ls.addAll(m_editors.values());

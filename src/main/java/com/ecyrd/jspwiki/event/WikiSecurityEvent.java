@@ -306,7 +306,8 @@ public final class WikiSecurityEvent extends WikiEvent {
 	 * 
 	 * @return a String description of the type
 	 */
-	public final String getTypeDescription() {
+	@Override
+    public final String getTypeDescription() {
 		switch (getType()){
 		case LOGIN_AUTHENTICATED:
 			return "login authenticated";

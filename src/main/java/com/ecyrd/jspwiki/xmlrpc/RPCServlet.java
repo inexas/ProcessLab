@@ -96,7 +96,8 @@ public class RPCServlet extends HttpServlet {
 	/**
 	 * Initializes the servlet.
 	 */
-	public void init(ServletConfig config)
+	@Override
+    public void init(ServletConfig config)
 	        throws ServletException {
 		m_engine = WikiEngine.getInstance(config);
 
@@ -126,7 +127,8 @@ public class RPCServlet extends HttpServlet {
 	 * Handle HTTP POST. This is an XML-RPC call, and we'll just forward the
 	 * query to an XmlRpcServer.
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException {
 		log.debug("Received POST to RPCServlet");
 
@@ -162,7 +164,8 @@ public class RPCServlet extends HttpServlet {
 	 * Handles HTTP GET. However, we do not respond to GET requests, other than
 	 * to show an explanatory text.
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	@Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException {
 		log.debug("Received HTTP GET to RPCServlet");
 

@@ -68,7 +68,8 @@ public class HistoryIteratorTag
 
 	static Logger log = Logger.getLogger(HistoryIteratorTag.class);
 
-	public final int doStartTag() {
+	@Override
+    public final int doStartTag() {
 		m_wikiContext = (WikiContext)pageContext.getAttribute(WikiTagBase.ATTR_CONTEXT,
 		        PageContext.REQUEST_SCOPE);
 
@@ -110,7 +111,8 @@ public class HistoryIteratorTag
 		return SKIP_BODY;
 	}
 
-	public final int doAfterBody() {
+	@Override
+    public final int doAfterBody() {
 		if(bodyContent != null) {
 			try {
 				JspWriter out = getPreviousOut();

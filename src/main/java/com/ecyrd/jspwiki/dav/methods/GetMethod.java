@@ -59,7 +59,8 @@ public class GetMethod extends DavMethod {
 		super(provider);
 	}
 
-	public void execute(HttpServletRequest req, HttpServletResponse res, DavPath dp)
+	@Override
+    public void execute(HttpServletRequest req, HttpServletResponse res, DavPath dp)
 	        throws IOException {
 		DavItem di = m_provider.getItem(dp);
 

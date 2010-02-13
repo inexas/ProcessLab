@@ -72,7 +72,8 @@ public class AttachmentItem extends PageDavItem {
 	 * @return the attachment properties
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getPropertySet()
 	 */
-	public Collection getPropertySet() {
+	@Override
+    public Collection getPropertySet() {
 		Collection<Element> set = getCommonProperties();
 
 		set.add(new Element("getcontentlength", m_davns).setText(Long.toString(getLength())));
@@ -81,7 +82,8 @@ public class AttachmentItem extends PageDavItem {
 		return set;
 	}
 
-	public String getHref() {
+	@Override
+    public String getHref() {
 		return m_provider.getURL(m_path);
 	}
 
@@ -91,7 +93,8 @@ public class AttachmentItem extends PageDavItem {
 	 * 
 	 * @return the content type
 	 */
-	public String getContentType() {
+	@Override
+    public String getContentType() {
 		ServletContext ctx = ((AttachmentDavProvider)m_provider).getEngine().getServletContext();
 
 		if(ctx != null) {
@@ -110,7 +113,8 @@ public class AttachmentItem extends PageDavItem {
 	 * @return the length
 	 * @see com.ecyrd.jspwiki.dav.items.DavItem#getLength()
 	 */
-	public long getLength() {
+	@Override
+    public long getLength() {
 		return m_page.getSize();
 	}
 }

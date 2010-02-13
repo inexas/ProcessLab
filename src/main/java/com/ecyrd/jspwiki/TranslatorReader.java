@@ -315,19 +315,22 @@ public class TranslatorReader extends Reader {
 	}
 
 	/** {@inheritDoc} */
-	public int read(char[] buf, int off, int len)
+	@Override
+    public int read(char[] buf, int off, int len)
 	        throws IOException {
 		return m_data.read(buf, off, len);
 	}
 
 	/** {@inheritDoc} */
-	public boolean ready()
+	@Override
+    public boolean ready()
 	        throws IOException {
 		return m_data.ready();
 	}
 
 	/** {@inheritDoc} */
-	public void close() {
+	@Override
+    public void close() {
 		//
 	}
 

@@ -101,7 +101,8 @@ public final class DefaultUserProfile implements UserProfile {
 	/**
 	 * {@inheritDoc}
 	 */
-	public boolean equals(Object o) {
+	@Override
+    public boolean equals(Object o) {
 		if((o != null) && (o instanceof UserProfile)) {
 			DefaultUserProfile u = (DefaultUserProfile)o;
 			return same(m_fullname, u.m_fullname) && same(m_password, u.m_password)
@@ -112,7 +113,8 @@ public final class DefaultUserProfile implements UserProfile {
 		return false;
 	}
 
-	public int hashCode() {
+	@Override
+    public int hashCode() {
 		return (m_fullname != null ? m_fullname.hashCode() : 0) ^
 		        (m_password != null ? m_password.hashCode() : 0) ^
 		        (m_loginName != null ? m_loginName.hashCode() : 0) ^

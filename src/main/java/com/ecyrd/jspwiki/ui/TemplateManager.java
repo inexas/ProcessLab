@@ -186,7 +186,8 @@ public class TemplateManager
 	 *            The name of the resource
 	 * @return The name of the resource which was found.
 	 */
-	private static String findResource(ServletContext sContext, String name) {
+	private static String findResource(ServletContext sContext, String n) {
+		String name = n;
 		InputStream is = sContext.getResourceAsStream(name);
 
 		if(is == null) {
@@ -250,7 +251,8 @@ public class TemplateManager
 	/**
 	 * Removes the template part of a name.
 	 */
-	private static final String removeTemplatePart(String name) {
+	private static final String removeTemplatePart(String n) {
+		String name = n;
 		int idx = 0;
 		if(name.startsWith("/"))
 			idx = 1;
@@ -790,7 +792,8 @@ public class TemplateManager
 	 * 
 	 * @return {@inheritDoc}
 	 */
-	public Collection modules() {
+	@Override
+    public Collection modules() {
 		return new ArrayList();
 	}
 }

@@ -299,7 +299,8 @@ public class LinkTag
 		return addTo + buf.toString();
 	}
 
-	private String makeBasicURL(String context, String page, String parms, @SuppressWarnings("unused") boolean absolute) {
+	private String makeBasicURL(String context, String page, String p, @SuppressWarnings("unused") boolean absolute) {
+		String parms = p;
 		String url;
 		WikiEngine engine = m_wikiContext.getEngine();
 
