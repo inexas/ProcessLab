@@ -18,8 +18,12 @@ public class BasicCache<Key, Referent> {
 	 * 
 	 * @param name the name of the cache
 	 */
-	public BasicCache(String name) {
-		ceiling = Config.instance.getInt(name + ".ceiling", 512);
+	public BasicCache() {
+		ceiling = 512;
+	}
+
+	public BasicCache(int ceiling) {
+		this.ceiling = ceiling;
 	}
 
 	public void put(Key key, Referent referent) {

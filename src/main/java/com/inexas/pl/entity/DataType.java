@@ -18,10 +18,16 @@ public enum DataType {
 	private static Map<String, DataType> typeLookup = new HashMap<String, DataType>();
 	private static Class<?> classes[];
 	static {
-		typeLookup.put("Short", DataType.SHORT);
-		typeLookup.put("java.lang.Short", DataType.SHORT);
-		typeLookup.put("short", DataType.SHORT);
-
+		typeLookup.put("Boolean", DataType.BOOLEAN);
+		typeLookup.put("java.lang.Boolean", DataType.BOOLEAN);
+		typeLookup.put("boolean", DataType.BOOLEAN);
+		
+		typeLookup.put("Date", DataType.DATE);
+		
+		typeLookup.put("Double", DataType.DOUBLE);
+		typeLookup.put("java.lang.Double", DataType.DOUBLE);
+		typeLookup.put("double", DataType.DOUBLE);
+		
 		typeLookup.put("Integer", DataType.INTEGER);
 		typeLookup.put("java.lang.Integer", DataType.INTEGER);
 		typeLookup.put("integer", DataType.INTEGER);
@@ -30,18 +36,12 @@ public enum DataType {
 		typeLookup.put("java.lang.Long", DataType.LONG);
 		typeLookup.put("long", DataType.LONG);
 
-		typeLookup.put("Double", DataType.DOUBLE);
-		typeLookup.put("java.lang.Double", DataType.DOUBLE);
-		typeLookup.put("double", DataType.DOUBLE);
-
-		typeLookup.put("Boolean", DataType.BOOLEAN);
-		typeLookup.put("java.lang.Boolean", DataType.BOOLEAN);
-		typeLookup.put("boolean", DataType.BOOLEAN);
-
+		typeLookup.put("Short", DataType.SHORT);
+		typeLookup.put("java.lang.Short", DataType.SHORT);
+		typeLookup.put("short", DataType.SHORT);
+		
 		typeLookup.put("String", DataType.STRING);
 		typeLookup.put("string", DataType.STRING);
-
-		typeLookup.put("Date", DataType.DATE);
 
 		typeLookup.put("tuple", DataType.TUPLE);
 

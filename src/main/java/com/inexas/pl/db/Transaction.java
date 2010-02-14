@@ -19,7 +19,7 @@ public class Transaction {
 			connection = DriverManager.getConnection(Site.getDbUrl(), Site.getDbUserId(), Site.getDbPassword());
 			sqlBundle = new TextBundle(Site.getDbSqlBundleName());
 		} catch(final Exception e) {
-			throw new RuntimeException("Error creating connection: " + Site.asString(), e);
+			throw new DbRuntimeException("Error creating connection: " + Site.asString(), e);
 		}
 	}
 
@@ -49,14 +49,15 @@ public class Transaction {
 	}
 	
 	void doUpdate(String sql) {
+		if(Db.logging) {
+			Db.logger.info("U: " + sql);
+		}
 		try {
-	        if(Db.logging) {
-	        	Db.logger.info("U: " + sql);
-	        }
-	        final Statement statement = connection.createStatement();
+			final Statement statement = connection.createStatement();
 	        statement.executeUpdate(sql);
+	        statement.close();
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error executing: " + sql, e);
+        	throw new DbRuntimeException("Error executing: " + sql, e);
         }
     }
 	
@@ -73,15 +74,16 @@ public class Transaction {
 	 * @return
 	 */
 	public ResultSet query(String sqlKey, String...  parameters) {
+        final String sql = loadAndParameterize(sqlKey, parameters);
         if(Db.logging) {
         	Db.logger.info("Q: " + sqlKey);
+        	Db.logger.info("Q: " + sql);
         }
-		final String sql = loadAndParameterize(sqlKey, parameters);
 		try {
 	        final Statement statement = connection.createStatement();
 	        return statement.executeQuery(sql);
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error executing: " + sql, e);
+        	throw new DbRuntimeException("Error executing: " + sql, e);
         }
 	}
 
@@ -93,7 +95,7 @@ public class Transaction {
 	        final Statement statement = connection.createStatement();
 	        return statement.executeQuery(sql);
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error executing: " + sql, e);
+        	throw new DbRuntimeException("Error executing: " + sql, e);
         }
 	}
 
@@ -111,7 +113,7 @@ public class Transaction {
 	        }
 	        return new Transaction(this);
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error starting transaction", e);
+        	throw new DbRuntimeException("Error starting transaction", e);
         }
 	}
 	
@@ -122,7 +124,7 @@ public class Transaction {
 	public void commit(Transaction transaction) {
 		try {
 			if(transaction.parent != this) {
-				throw new RuntimeException("Transaction nesting error: " + transaction);
+				throw new DbRuntimeException("Transaction nesting error: " + transaction);
 			}
 			
 	        // Only if we're the root transaction
@@ -138,7 +140,7 @@ public class Transaction {
 				}
 	        }
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error commiting transaction", e);
+        	throw new DbRuntimeException("Error commiting transaction", e);
         }
 	}
 	
@@ -149,7 +151,7 @@ public class Transaction {
 	public void rollback(Transaction transaction) {
 		try {
 			if(transaction.parent != this) {
-				throw new RuntimeException("Transaction nesting error: " + transaction);
+				throw new DbRuntimeException("Transaction nesting error: " + transaction);
 			}
 			
 	        // Only if we're the root transaction
@@ -161,7 +163,7 @@ public class Transaction {
 	        	connection.setAutoCommit(true);
 	        }
         } catch(final SQLException e) {
-        	throw new RuntimeException("Error rolling back transaction", e);
+        	throw new DbRuntimeException("Error rolling back transaction", e);
         }
 	}
 
@@ -191,7 +193,7 @@ public class Transaction {
 		for(int i = 0; i < parameters.length; i += 2) {
 			final String parameterName = parameters[i];
 			if(!(parameterName.startsWith("{") && parameterName.endsWith("}"))) {
-				throw new RuntimeException("Parameter name missing {Brackets}: " + parameterName);
+				throw new DbRuntimeException("Parameter name missing {Brackets}: " + parameterName);
 			}
 			if(sql.indexOf(parameterName) < 0) {
 				if(sb.length() > 0) {
@@ -201,7 +203,7 @@ public class Transaction {
 			}
 		}
 		if(sb.length() > 0) {
-			throw new RuntimeException(
+			throw new DbRuntimeException(
 					"There are missing parameters in SQL template, (sqlKey:sqltemplate:missing-parameters): " +
 					sqlKey + ':' + sql + ':' + sb.toString());
 		}
@@ -217,7 +219,7 @@ public class Transaction {
 			// todo Recurse through children
 	        connection.close();
         } catch(SQLException e) {
-        	throw new RuntimeException("Error exiting", e);
+        	throw new DbRuntimeException("Error exiting", e);
         }
     }
 

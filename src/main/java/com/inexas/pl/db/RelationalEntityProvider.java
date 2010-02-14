@@ -1,8 +1,8 @@
-package com.inexas.pl.entity;
+package com.inexas.pl.db;
 
 import java.sql.*;
 import java.util.*;
-import com.inexas.pl.db.*;
+import com.inexas.pl.entity.*;
 import com.inexas.util.*;
 
 /**
@@ -14,7 +14,7 @@ public class RelationalEntityProvider implements EntityProvider {
 	private final int MAX_NAME_LENGTH, PART1LENGTH, PART2LENGTH;
 	private final Map<String, String> reservedNames = new HashMap<String, String>();
 	private final Map<String, String> tableNameMap = new HashMap<String, String>();
-	private final BasicCache<String, BagOfTricks> bots = new BasicCache<String, BagOfTricks>("tuple.cache");
+	private final BasicCache<String, BagOfTricks> bots = new BasicCache<String, BagOfTricks>();
 
 	public RelationalEntityProvider() {
 		// Load the reserved names...

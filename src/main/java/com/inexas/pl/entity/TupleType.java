@@ -5,6 +5,7 @@ import java.util.*;
 
 public class TupleType extends AbstractType {
 	private final List<AbstractType> members;
+	private String tableName;
 
 //	/**
 //	 * Load from an XML element
@@ -156,6 +157,14 @@ public class TupleType extends AbstractType {
 		return members;
 	}
 
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+    }
+	
+	public String getTableName() {
+		return tableName;
+	}
+	
 //	/**
 //	 * Recursively insert the tuples
 //	 * 

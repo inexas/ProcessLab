@@ -13,7 +13,7 @@ public class EntityStore {
 		return instance;
 	}
 
-	private Subsystem relationalSubsystem;
+	private RelationalSubsystem relationalSubsystem;
 	private Subsystem accordionSubsystem;
 
 	private EntityStore() {
@@ -71,5 +71,9 @@ public class EntityStore {
 			accordionSubsystem.delete(entity);
 		}
 	}
+
+	public void create(EntityType entityType) {
+		relationalSubsystem.create(entityType);
+    }
 
 }

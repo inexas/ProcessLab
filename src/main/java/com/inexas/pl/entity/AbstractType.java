@@ -4,6 +4,7 @@ package com.inexas.pl.entity;
 
 public abstract class AbstractType {
 	protected final DataType dataType;
+	// todo key should be lifted out to the entity type
 	protected final String key;
 	protected final Cardinality cardinality;
 	protected TupleType parent;
