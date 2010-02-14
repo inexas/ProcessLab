@@ -74,17 +74,11 @@ public class Transaction {
 	 * @return
 	 */
 	public ResultSet query(String sqlKey, String...  parameters) {
-        final String sql = loadAndParameterize(sqlKey, parameters);
         if(Db.logging) {
         	Db.logger.info("Q: " + sqlKey);
-        	Db.logger.info("Q: " + sql);
         }
-		try {
-	        final Statement statement = connection.createStatement();
-	        return statement.executeQuery(sql);
-        } catch(final SQLException e) {
-        	throw new DbRuntimeException("Error executing: " + sql, e);
-        }
+        final String sql = loadAndParameterize(sqlKey, parameters);
+        return doQuery(sql);
 	}
 
 	ResultSet doQuery(String sql) {

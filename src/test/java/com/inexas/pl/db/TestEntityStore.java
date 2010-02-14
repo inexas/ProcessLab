@@ -20,9 +20,10 @@ public class TestEntityStore extends AbstractProcessLabTest {
 		final List<AbstractType> members = new ArrayList<AbstractType>();
 		final KtcvType<?> ktcv = KtcvType.getKtcvType(DataType.STRING, "String");
 		members.add(ktcv);
-		final EntityType entityType = new EntityType("TestPage:1:TestTuple", Cardinality.ONE2MANY, members );
-		store.create(entityType);
-		assertEquals("TESTTUPLE_0",  entityType.getTableName());
+		final EntityType entity = new EntityType("TestPage:1:TestTuple", Cardinality.ONE2MANY, members );
+		store.create(entity);
+		
+		store.delete(entity);
 	}
 
 }

@@ -24,25 +24,63 @@ public class RelationalSubsystem implements Subsystem {
 
 	public void create(EntityType entity) {
 		final Db db = Db.reserveInstance();
-		final Transaction transaction = db.startTransaction();
-    	try {
-    		// Create the entry in the EntityType table...
-    		
-    		// EntityTypeInsert=\
-    		// INSERT INTO EntityType(Id,NextId,Relational,Markup)\
-    		// VALUES({Id},1,'R',{Markup})
-    		final String entityKey = entity.getKey();
-    		transaction.update("EntityTypeInsert",
-    				"{Id}", entityKey,
-    				"{Markup}", entity.toString());
-    		
-    		// And create the TupleTableName records recursively
-    		createTuple(transaction, entity, entityKey);
-        } catch(final SQLException e) {
-        	db.rollback(transaction);
-        	throw new DbRuntimeException("Error creating EntityType: " + entity, e);
-        }
+		final String entityKey = entity.getKey();
+		db.update("EntityTypeInsert",
+				"{Id}", entityKey,
+				"{Markup}", entity.toString());
     	Db.releaseInstance(db);
+//		final Transaction transaction = db.startTransaction();
+//    	try {
+//    		// Create the entry in the EntityType table...
+//    		
+//    		// EntityTypeInsert=\
+//    		// INSERT INTO EntityType(Id,NextId,Relational,Markup)\
+//    		// VALUES({Id},1,'R',{Markup})
+//    		
+//    		// And create the TupleTableName records recursively
+////    		createTuple(transaction, entity, entityKey);
+//    		
+//    		db.commit(transaction);
+//        } catch(final SQLException e) {
+//        	db.rollback(transaction);
+//        	throw new DbRuntimeException("Error creating EntityType: " + entity, e);
+//        }
+    }
+
+	public void delete(EntityType entity) {
+		final Db db = Db.reserveInstance();
+		final Transaction transaction = db.startTransaction();
+		// Delete any entities...
+		
+		// TupleTableNameRead=\
+		// SELECT Name FROM TupleTableName WHERE Owner='{Owner}'
+		final String entityKey = entity.getKey();
+		final ResultSet rs = transaction.query("TupleTableNameRead", "{Owner}", entityKey);
+		try {
+			// Drop the entity tables (and their contents!)
+	        while(rs.next()) {
+	        	// EnityDropTable=\
+	        	// DROP TABLE {TableName}
+	        	transaction.update("EnityDropTable", "{TableName}", rs.getString(1));
+	        }
+	        
+	        // Delete the table entries
+	        // TupleTableNameDelete=\
+	    	// DELETE FROM TupleTableName WHERE Owner='{Key}'
+        	transaction.update("TupleTableNameDelete", "{Owner}", entityKey);
+        	
+        	// Drop the entity type record
+        	// EntityTypeDelete=\
+        	// DELETE FROM EntityType WHERE Id={Id}
+        	transaction.update("EntityTypeDelete", "{Id}", entityKey);
+
+	        db.commit(transaction);
+        } catch(final SQLException e) {
+	        db.rollback(transaction);
+	        throw new DbRuntimeException("Error deleting: " + entity, e);
+        }
+		
+		Db.releaseInstance(db);
     }
 
 	private void createTuple(Transaction transaction, TupleType tuple, String entityKey)
@@ -72,13 +110,13 @@ public class RelationalSubsystem implements Subsystem {
 		while(true) {
 			sb.append(disambiguator);
 			// TupleTableNameInsert=\
-			// INSERT INTO TupleTableName(Name,OwnerKey,Path)\
-			// VALUES('{Name}','{OwnerKey}','{Path}')
+			// INSERT INTO TupleTableName(Name,Owner,Path)\
+			// VALUES('{Name}','{Owner}','{Path}')
 			try {
 				final String tableName = sb.toString();
 	            transaction.update("TupleTableNameInsert",
 	            		"{Name}", tableName,
-	            		"{OwnerKey}", entityKey,
+	            		"{Owner}", entityKey,
 	            		"{Path}", tuplePath);
 	            // If we get here we inserted the record so the table name
 	            // must be unique

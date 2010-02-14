@@ -76,4 +76,8 @@ public class EntityStore {
 		relationalSubsystem.create(entityType);
     }
 
+	public void delete(EntityType entity) {
+		relationalSubsystem.delete(entity);
+	}
+
 }
