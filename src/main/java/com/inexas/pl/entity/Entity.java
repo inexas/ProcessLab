@@ -1,7 +1,10 @@
 package com.inexas.pl.entity;
 
+import java.util.*;
+
 public class Entity extends Tuple {
 	private EntityType entityType;
+	private Set<Tuple> deletedTuples = new HashSet<Tuple>(); 
 
 	public Entity(EntityType entityType) {
 	    super(entityType);
@@ -14,6 +17,10 @@ public class Entity extends Tuple {
 
 	public EntityType getEntityType() {
 	    return entityType;
+    }
+
+	public Collection<Tuple> getDeletedTuples() {
+		return deletedTuples;
     }
 
 }

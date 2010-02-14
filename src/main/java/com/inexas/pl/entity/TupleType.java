@@ -6,6 +6,7 @@ import java.util.*;
 public class TupleType extends AbstractType {
 	private final List<AbstractType> members;
 	private String tableName;
+	private final Map<String, String> columnNameMap = new HashMap<String, String>();
 
 //	/**
 //	 * Load from an XML element
@@ -164,6 +165,10 @@ public class TupleType extends AbstractType {
 	public String getTableName() {
 		return tableName;
 	}
+
+	public Map<String, String> getColumnNameMap() {
+		return columnNameMap ;
+    }
 	
 //	/**
 //	 * Recursively insert the tuples

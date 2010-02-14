@@ -55,10 +55,6 @@ public class Ktcv<T> extends Instance implements TupleMember, ChangeListener {
 		// nothing to do...
 	}
 
-	public void accept(Visitor visitor) {
-		visitor.visit(this);
-	}
-
 	/**
 	 * Set a new value. The value is checked to be valid.
 	 * 

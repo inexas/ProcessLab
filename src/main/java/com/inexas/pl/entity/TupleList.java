@@ -55,11 +55,9 @@ public class TupleList extends Instance implements TupleMember, Iterable<Tuple> 
 	}
 
 	public void accept(Visitor visitor) {
-		visitor.enter(this);
-		for(final Visited visited : tuples) {
-			visited.accept(visitor);
+		for(final Tuple tuple : tuples) {
+			tuple.accept(visitor);
 		}
-		visitor.exit(this);
 	}
 
 	public int size() {

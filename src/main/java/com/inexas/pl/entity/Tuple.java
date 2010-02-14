@@ -7,7 +7,7 @@ public class Tuple extends Instance implements Visited {
 	private final TupleType tupleType;
 	private final TupleList parentTupleList;
 	private int id, ordinal;
-	private boolean dirty;
+	private boolean dirty, deleted;
 
 	public Tuple(TupleType type) {
 		this(type, null, null);
@@ -53,8 +53,10 @@ public class Tuple extends Instance implements Visited {
 
 	public void accept(Visitor visitor) {
 		visitor.enter(this);
-		for(final Visited toVisit : members.values()) {
-			toVisit.accept(visitor);
+		for(final TupleMember member : members.values()) {
+			if(member instanceof TupleList) {
+				((TupleList)member).accept(visitor);
+			}
 		}
 		visitor.exit(this);
 	}
@@ -127,8 +129,17 @@ public class Tuple extends Instance implements Visited {
 	}
 
 	public Entity getEntity() {
-	    // !todo Implement me
-	    throw new RuntimeException("How about implementing me?!");
+		final Entity result;
+		if(parentTuple == null) {
+			result = (Entity)this;
+		} else {
+			result = parentTuple.getEntity();
+		}
+		return result;
+    }
+
+	public boolean isDeleted() {
+		return deleted || parentTuple.isDeleted();
     }
 
 }

@@ -44,10 +44,6 @@ public class Instances<T> extends Instance implements TupleMember, Iterable<T> {
 		// nothing to do...
 	}
 
-	public void accept(Visitor visitor) {
-		visitor.visit(this);
-	}
-
 	public boolean set(int index, T newValue) {
 		final boolean result;
 		final T oldValue = values.get(index);

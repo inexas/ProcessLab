@@ -1,6 +1,6 @@
 package com.inexas.pl.entity;
 
-public interface TupleMember extends Visited {
+public interface TupleMember {
 
 	String getKey();
 
