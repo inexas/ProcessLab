@@ -26,88 +26,89 @@ public class RelationalSubsystem implements Subsystem {
 		final Db db = Db.reserveInstance();
 		final String entityKey = entity.getKey();
 		db.update("EntityTypeInsert",
-				"{Id}", entityKey,
-				"{Markup}", entity.toString());
-    	Db.releaseInstance(db);
-//		final Transaction transaction = db.startTransaction();
-//    	try {
-//    		// Create the entry in the EntityType table...
-//    		
-//    		// EntityTypeInsert=\
-//    		// INSERT INTO EntityType(Id,NextId,Relational,Markup)\
-//    		// VALUES({Id},1,'R',{Markup})
-//    		
-//    		// And create the TupleTableName records recursively
-////    		createTuple(transaction, entity, entityKey);
-//    		
-//    		db.commit(transaction);
-//        } catch(final SQLException e) {
-//        	db.rollback(transaction);
-//        	throw new DbRuntimeException("Error creating EntityType: " + entity, e);
-//        }
-    }
+		        "{Id}", entityKey,
+		        "{Markup}", entity.toString());
+		Db.releaseInstance(db);
+		// final Transaction transaction = db.startTransaction();
+		// try {
+		// // Create the entry in the EntityType table...
+		//    		
+		// // EntityTypeInsert=\
+		// // INSERT INTO EntityType(Id,NextId,Relational,Markup)\
+		// // VALUES({Id},1,'R',{Markup})
+		//    		
+		// // And create the TupleTableName records recursively
+		// // createTuple(transaction, entity, entityKey);
+		//    		
+		// db.commit(transaction);
+		// } catch(final SQLException e) {
+		// db.rollback(transaction);
+		// throw new DbRuntimeException("Error creating EntityType: " + entity,
+		// e);
+		// }
+	}
 
 	public void delete(EntityType entity) {
 		final Db db = Db.reserveInstance();
 		final Transaction transaction = db.startTransaction();
 		// Delete any entities...
-		
+
 		// TupleTableNameRead=\
 		// SELECT Name FROM TupleTableName WHERE Owner='{Owner}'
 		final String entityKey = entity.getKey();
 		final ResultSet rs = transaction.query("TupleTableNameRead", "{Owner}", entityKey);
 		try {
 			// Drop the entity tables (and their contents!)
-	        while(rs.next()) {
-	        	// EnityDropTable=\
-	        	// DROP TABLE {TableName}
-	        	transaction.update("EnityDropTable", "{TableName}", rs.getString(1));
-	        }
-	        
-	        // Delete the table entries
-	        // TupleTableNameDelete=\
-	    	// DELETE FROM TupleTableName WHERE Owner='{Key}'
-        	transaction.update("TupleTableNameDelete", "{Owner}", entityKey);
-        	
-        	// Drop the entity type record
-        	// EntityTypeDelete=\
-        	// DELETE FROM EntityType WHERE Id={Id}
-        	transaction.update("EntityTypeDelete", "{Id}", entityKey);
+			while(rs.next()) {
+				// EnityDropTable=\
+				// DROP TABLE {TableName}
+				transaction.update("EnityDropTable", "{TableName}", rs.getString(1));
+			}
 
-	        db.commit(transaction);
-        } catch(final SQLException e) {
-	        db.rollback(transaction);
-	        throw new DbRuntimeException("Error deleting: " + entity, e);
-        }
-		
+			// Delete the table entries
+			// TupleTableNameDelete=\
+			// DELETE FROM TupleTableName WHERE Owner='{Key}'
+			transaction.update("TupleTableNameDelete", "{Owner}", entityKey);
+
+			// Drop the entity type record
+			// EntityTypeDelete=\
+			// DELETE FROM EntityType WHERE Id={Id}
+			transaction.update("EntityTypeDelete", "{Id}", entityKey);
+
+			db.commit(transaction);
+		} catch(final SQLException e) {
+			db.rollback(transaction);
+			throw new DbRuntimeException("Error deleting: " + entity, e);
+		}
+
 		Db.releaseInstance(db);
-    }
+	}
 
 	public void create(Entity entity) {
 		final Db db = Db.reserveInstance();
 		final Transaction transaction = db.startTransaction();
-		
+
 		try {
 			final EntityType entityType = entity.getEntityType();
-			
-	        // Might we need to create the tables for the entity?
-	        if(entityType.getTableName() == null) {
-	        	createTables(transaction, entityType, entityType.getKey());
-	        }
-	        
-	        update(transaction, entity);
-	        
-	        db.commit(transaction);
-        } catch(final Exception e) {
-	        db.rollback(transaction);
-	        throw new DbRuntimeException("Error creating entity: " + entity, e);
-        } finally {
-        	Db.releaseInstance(db);
-        }
+
+			// Might we need to create the tables for the entity?
+			if(entityType.getTableName() == null) {
+				createTables(transaction, entityType, entityType.getKey());
+			}
+
+			update(transaction, entity);
+
+			db.commit(transaction);
+		} catch(final Exception e) {
+			db.rollback(transaction);
+			throw new DbRuntimeException("Error creating entity: " + entity, e);
+		} finally {
+			Db.releaseInstance(db);
+		}
 	}
 
 	private void createTuple(Transaction transaction, TupleType tuple, String entityKey)
-	throws SQLException {
+	        throws SQLException {
 		// Create the TupleTableName records by trying to insert
 		// a candidate until we don't get a primary key violation...
 
@@ -138,37 +139,36 @@ public class RelationalSubsystem implements Subsystem {
 				// INSERT INTO TupleTableName(Name,Owner,Path)\
 				// VALUES('{Name}','{Owner}','{Path}')
 				final String tableName = sb.toString();
-	            transaction.update("TupleTableNameInsert",
-	            		"{Name}", tableName,
-	            		"{Owner}", entityKey,
-	            		"{Path}", tuplePath);
-	            // If we get here we inserted the record so the table name
-	            // must be unique
-	            tuple.setTableName(tableName);
-	            
-	            // Now create the table itself...
-	            
-	            
-	            break;
-            } catch(DbRuntimeException e) {
-            	// todo Can we find a way of checking for PK violations
-            	if(disambiguator > 1000) {
-            		throw new DbRuntimeException(
-            				"Too many attempts to find an unambiguous name, change the tuple type name");
-            	}
-            	disambiguator ++;
-            	sb.setLength(stemLength);
-            }
+				transaction.update("TupleTableNameInsert",
+				        "{Name}", tableName,
+				        "{Owner}", entityKey,
+				        "{Path}", tuplePath);
+				// If we get here we inserted the record so the table name
+				// must be unique
+				tuple.setTableName(tableName);
+
+				// Now create the table itself...
+
+				break;
+			} catch(DbRuntimeException e) {
+				// todo Can we find a way of checking for PK violations
+				if(disambiguator > 1000) {
+					throw new DbRuntimeException(
+					        "Too many attempts to find an unambiguous name, change the tuple type name");
+				}
+				disambiguator++;
+				sb.setLength(stemLength);
+			}
 		}
-		
+
 		// Now recurse through child tuple types...
 		final Iterator<TupleType> childTuples = tuple.getTupleTypeMemberIterator();
 		while(childTuples.hasNext()) {
 			final TupleType childTuple = childTuples.next();
 			createTuple(transaction, childTuple, entityKey);
 		}
-    }
-	
+	}
+
 	private void createTables(Transaction transaction, TupleType tuple, String entityKey) throws SQLException {
 		// Create the TupleTableName records by trying to insert
 		// a candidate until we don't get a primary key violation...
@@ -200,29 +200,28 @@ public class RelationalSubsystem implements Subsystem {
 				// INSERT INTO TupleTableName(Name,Owner,Path)\
 				// VALUES('{Name}','{Owner}','{Path}')
 				final String tableName = sb.toString();
-	            transaction.update("TupleTableNameInsert",
-	            		"{Name}", tableName,
-	            		"{Owner}", entityKey,
-	            		"{Path}", tuplePath);
-	            // If we get here we inserted the record so the table name
-	            // must be unique
-	            tuple.setTableName(tableName);
-	            
-	            // Now create the table itself...
-	            
-	            
-	            break;
-            } catch(DbRuntimeException e) {
-            	// todo Can we find a way of checking for PK violations
-            	if(disambiguator > 1000) {
-            		throw new DbRuntimeException(
-            				"Too many attempts to find an unambiguous name, change the tuple type name");
-            	}
-            	disambiguator ++;
-            	sb.setLength(stemLength);
-            }
+				transaction.update("TupleTableNameInsert",
+				        "{Name}", tableName,
+				        "{Owner}", entityKey,
+				        "{Path}", tuplePath);
+				// If we get here we inserted the record so the table name
+				// must be unique
+				tuple.setTableName(tableName);
+
+				// Now create the table itself...
+
+				break;
+			} catch(DbRuntimeException e) {
+				// todo Can we find a way of checking for PK violations
+				if(disambiguator > 1000) {
+					throw new DbRuntimeException(
+					        "Too many attempts to find an unambiguous name, change the tuple type name");
+				}
+				disambiguator++;
+				sb.setLength(stemLength);
+			}
 		}
-		
+
 		// Now recurse through child tuple types...
 		final Iterator<TupleType> childTuples = tuple.getTupleTypeMemberIterator();
 		while(childTuples.hasNext()) {
@@ -254,10 +253,10 @@ public class RelationalSubsystem implements Subsystem {
 		// {NonRootColumns}\
 		// {KtcvColumns}\
 		transaction.update(
-				"TupleCreateTable",
-				"{TableName}", tuple.getTableName(),
-				"{NonRootColumns}", nonRootColumns,
-				"{KtcvColumns}", ktcvColumns.toString());
+		        "TupleCreateTable",
+		        "{TableName}", tuple.getTableName(),
+		        "{NonRootColumns}", nonRootColumns,
+		        "{KtcvColumns}", ktcvColumns.toString());
 
 		// Now create the child tuples recursively...
 		final Iterator<TupleType> tupleLists = tuple.getTupleTypeMemberIterator();
@@ -268,13 +267,14 @@ public class RelationalSubsystem implements Subsystem {
 		}
 	}
 
-
 	public void update(Entity entity) {
-		// !todo Check entity has been created, throw if not
-		
+		if(entity.getId() == 0) {
+			throw new DbRuntimeException("Entity has not been created or retrieved, ID is 0");
+		}
+
 		final Db db = Db.reserveInstance();
 		final Transaction transaction = db.startTransaction();
-		
+
 		try {
 			// Delete any deleted tuples...
 			final Collection<Tuple> deletedTuples = entity.getDeletedTuples();
@@ -284,19 +284,19 @@ public class RelationalSubsystem implements Subsystem {
 				// TupleDelete=\
 				// DELETE FROM {TableName} WHERE Id={Id}
 				transaction.update("TupleDelete",
-						"{TableName}", tuple.getTupleType().getTableName(),
-						"{Id}", Integer.toString(tuple.getId()));
+				        "{TableName}", tuple.getTupleType().getTableName(),
+				        "{Id}", Integer.toString(tuple.getId()));
 			}
-			
-	        update(transaction, entity);
-	        
-	        db.commit(transaction);
-        } catch(final Exception e) {
-	        db.rollback(transaction);
-	        throw new DbRuntimeException("Error creating entity: " + entity, e);
-        } finally {
-        	Db.releaseInstance(db);
-        }
+
+			update(transaction, entity);
+
+			db.commit(transaction);
+		} catch(final Exception e) {
+			db.rollback(transaction);
+			throw new DbRuntimeException("Error creating entity: " + entity, e);
+		} finally {
+			Db.releaseInstance(db);
+		}
 	}
 
 	private Map<String, String> getColumnNameMap(TupleType tupleType) {
@@ -311,7 +311,7 @@ public class RelationalSubsystem implements Subsystem {
 				if(sb.length() > MAX_NAME_LENGTH) {
 					sb.setLength(MAX_NAME_LENGTH);
 				}
-				
+
 				String uniqueName = sb.toString();
 				if(reservedNames.contains(uniqueName) || result.containsValue(uniqueName)) {
 					sb.append('_');
@@ -334,11 +334,11 @@ public class RelationalSubsystem implements Subsystem {
 	}
 
 	/**
-	 * This method is called both to update a changed entity as well as
-	 * to create (insert) a new entity. The entity's members are marked 
-	 * with dirty flags to let us know what needs to be updated and 
-	 * deleted.
-	 * @throws SQLException 
+	 * This method is called both to update a changed entity as well as to
+	 * create (insert) a new entity. The entity's members are marked with dirty
+	 * flags to let us know what needs to be updated and deleted.
+	 * 
+	 * @throws SQLException
 	 */
 	private void update(Transaction transaction, Tuple tuple) throws SQLException {
 
@@ -346,11 +346,11 @@ public class RelationalSubsystem implements Subsystem {
 		final TupleType tupleType = tuple.getTupleType();
 		final Map<String, String> columnNameMap = getColumnNameMap(tupleType);
 		final String tableName = tupleType.getTableName();
-		
+
 		// If the ID is 0 then we need to insert else we do an update...
 		if(tuple.getId() == 0) {
 			// Generated the ID...
-			
+
 			// TupleGetNextId=\
 			// SELECT NextId FROM EntityType WHERE Id={Id}
 			final EntityType entityType = tuple.getEntity().getEntityType();
@@ -361,12 +361,12 @@ public class RelationalSubsystem implements Subsystem {
 			// TupleUpdateNextId=\
 			// UPDATE EntityType SET NextId={NextId} WHERE Id={Id}
 			transaction.update("TupleUpdateNextId",
-					"{Id}", entityTypeId,
-					"{NextId}", Integer.toString(id + 1));
+			        "{Id}", entityTypeId,
+			        "{NextId}", Integer.toString(id + 1));
 			tuple.setId(id);
 
 			// Now insert a new tuple record...
-			
+
 			// INSERT INTO {TableName}(Rsvd_Id{NonRootFieldNames}{Names})
 			// VALUES({Id}{NonRootFields}{Values})
 			final String nonRootFieldNames, nonRootFields;
@@ -401,11 +401,11 @@ public class RelationalSubsystem implements Subsystem {
 			// INSERT INTO {TableName}(Rsvd_Id{NonRootFieldNames}{Names})\
 			// VALUES({Id}{NonRootFields}{Values})
 			transaction.update(
-					"TupleInsert",
-					"{TableName}", tableName,
-					"{NonRootFieldNames}", nonRootFieldNames,
-					"{Names}", names.toString(),
-					"{Id}", Integer.toString(id),
+			        "TupleInsert",
+			        "{TableName}", tableName,
+			        "{NonRootFieldNames}", nonRootFieldNames,
+			        "{Names}", names.toString(),
+			        "{Id}", Integer.toString(id),
 			        "{NonRootFields}", nonRootFields,
 			        "{Values}", values.toString());
 			tuple.setClean();
@@ -445,12 +445,12 @@ public class RelationalSubsystem implements Subsystem {
 			}
 			if(nameValueList.length() > 0) {
 				transaction.update(
-						"tupleUpdate",
-						"{Id}", Integer.toString(tuple.getId()),
-						"{TableName}", tableName,
-						"{NameValueList}", nameValueList.toString());
+				        "tupleUpdate",
+				        "{Id}", Integer.toString(tuple.getId()),
+				        "{TableName}", tableName,
+				        "{NameValueList}", nameValueList.toString());
 			}
-			
+
 			// Visit the tuple lists...
 			final Iterator<TupleList> tupleLists = tuple.getTupleListIterator();
 			while(tupleLists.hasNext()) {
@@ -459,26 +459,26 @@ public class RelationalSubsystem implements Subsystem {
 				bot.updateRecursively(tupleList, transaction);
 			}
 		}
-    }
+	}
 
 	public void delete(Entity entity) {
 		final Db db = Db.reserveInstance();
 		final Transaction transaction = db.startTransaction();
-		
+
 		try {
-	        delete(transaction, entity);
-	        
-	        db.commit(transaction);
-        } catch(final Exception e) {
-	        db.rollback(transaction);
-	        throw new DbRuntimeException("Error deleting entity: " + entity, e);
-        } finally {
-        	Db.releaseInstance(db);
-        }
+			delete(transaction, entity);
+
+			db.commit(transaction);
+		} catch(final Exception e) {
+			db.rollback(transaction);
+			throw new DbRuntimeException("Error deleting entity: " + entity, e);
+		} finally {
+			Db.releaseInstance(db);
+		}
 	}
 
-    private void delete(Transaction transaction, Tuple tuple) throws SQLException {
-    	assert tuple.getId() != 0;
+	private void delete(Transaction transaction, Tuple tuple) throws SQLException {
+		assert tuple.getId() != 0;
 
 		// Women and children first...
 		final Iterator<TupleList> tupleLists = tuple.getTupleListIterator();
@@ -492,23 +492,23 @@ public class RelationalSubsystem implements Subsystem {
 		// TupleDelete=\
 		// DELETE FROM {TableName} WHERE Rsvd_Id={Id}
 		transaction.update(
-				"TupleDelete",
-				"{TableName}", tuple.getTupleType().getTableName(),
-				"{Id}", Integer.toString(tuple.getId()));
-		
+		        "TupleDelete",
+		        "{TableName}", tuple.getTupleType().getTableName(),
+		        "{Id}", Integer.toString(tuple.getId()));
+
 		tuple.setId(0);
 	}
 
-	
 	public void install(Transaction transaction) {
 		// Create the tables for all relational tuples...
-//        final ResultSet rs = transaction.query("tupleTypeReadRelationalEntities");
-//        while(rs.next()) {
-//        	final String key = rs.getString("key");
-//        	final EntityType entityType = entityTypes.get(key);
-//        	final BagOfTricks bot = getBot(transaction, entityType);
-//        	bot.createTables(entityType, transaction);
-//        }
+		// final ResultSet rs =
+		// transaction.query("tupleTypeReadRelationalEntities");
+		// while(rs.next()) {
+		// final String key = rs.getString("key");
+		// final EntityType entityType = entityTypes.get(key);
+		// final BagOfTricks bot = getBot(transaction, entityType);
+		// bot.createTables(entityType, transaction);
+		// }
 	}
 
 	public Entity read(int id) {
@@ -531,42 +531,42 @@ public class RelationalSubsystem implements Subsystem {
 		}
 		return result;
 	}
-	
+
 	private String generateTableName(Transaction transaction, TupleType tupleType) throws SQLException {
 		final StringBuilder sb = new StringBuilder();
-		
+
 		// Build the stem: "TUPLENAME_"
 		sb.append(tupleType.getKey().toUpperCase());
 		if(sb.length() > MAX_NAME_LENGTH) {
 			sb.setLength(MAX_NAME_LENGTH);
 		}
 		sb.append('_');
-		
+
 		// Load the matching names...
-		// SELECT TableName FROM TupleType WHERE TupleName LIKE '{TableNameStem}%'
-        final ResultSet rs = transaction.query(
-        		"TupleGetMatchingNames",
-        		"{TableNameStem}", sb.toString());
-        final Set<String> usedNames = new HashSet<String>();
-        while(rs.next()) {
-        	usedNames.add(rs.getString(1));
-        }
+		// SELECT TableName FROM TupleType WHERE TupleName LIKE
+		// '{TableNameStem}%'
+		final ResultSet rs = transaction.query(
+		        "TupleGetMatchingNames",
+		        "{TableNameStem}", sb.toString());
+		final Set<String> usedNames = new HashSet<String>();
+		while(rs.next()) {
+			usedNames.add(rs.getString(1));
+		}
 		rs.close();
-		
+
 		// Now generate the _0 postfix...
 		final int stemLength = sb.length();
-		for(int i = 0; ; i++) {
+		for(int i = 0;; i++) {
 			sb.setLength(stemLength);
 			sb.append(Integer.toString(i));
 			if(!usedNames.contains(sb.toString())) {
 				break;
 			}
 		}
-		
-		return sb.toString();
-    }
 
-	
+		return sb.toString();
+	}
+
 	private String getSqlValue(Ktcv<?> ktcv) {
 		final String result;
 		final String string = ktcv.getValueAsString();
@@ -594,7 +594,7 @@ public class RelationalSubsystem implements Subsystem {
 		 *            for this tuple type
 		 * @param sqlNameLookup
 		 *            the SQL name lookup map
-		 * @throws SQLException 
+		 * @throws SQLException
 		 * @throws SQLException
 		 *             in the event of a SQL failure
 		 */
@@ -614,7 +614,7 @@ public class RelationalSubsystem implements Subsystem {
 		 * Recursively insert a tuple and it's children
 		 * 
 		 * @param tuple
-		 * @throws SQLException 
+		 * @throws SQLException
 		 */
 		void insertRecursively(Tuple tuple, Transaction transaction) throws SQLException {
 			// INSERT INTO {TableName}(Rsvd_id{NonRootFieldNames}{Names})
@@ -655,11 +655,11 @@ public class RelationalSubsystem implements Subsystem {
 			// INSERT INTO {TableName}(Rsvd_Id{NonRootFieldNames}{Names})\
 			// VALUES({Id}{NonRootFields}{Values})
 			transaction.update(
-					"TupleInsert",
-					"{TableName}", tableName,
-					"{NonRootFieldNames}", nonRootFieldNames,
-					"{Names}", names.toString(),
-					"{Id}", Integer.toString(id),
+			        "TupleInsert",
+			        "{TableName}", tableName,
+			        "{NonRootFieldNames}", nonRootFieldNames,
+			        "{Names}", names.toString(),
+			        "{Id}", Integer.toString(id),
 			        "{NonRootFields}", nonRootFields,
 			        "{Values}", values.toString());
 
@@ -704,12 +704,12 @@ public class RelationalSubsystem implements Subsystem {
 				}
 				if(nameValueList.length() > 0) {
 					transaction.update(
-							"tupleUpdate",
-							"{Id}", Integer.toString(tuple.getId()),
-							"{TableName}", tableName,
-							"{NameValueList}", nameValueList.toString());
+					        "tupleUpdate",
+					        "{Id}", Integer.toString(tuple.getId()),
+					        "{TableName}", tableName,
+					        "{NameValueList}", nameValueList.toString());
 				}
-				
+
 				// Visit the tuple lists...
 				final Iterator<TupleList> tupleLists = tuple.getTupleListIterator();
 				while(tupleLists.hasNext()) {
@@ -718,7 +718,7 @@ public class RelationalSubsystem implements Subsystem {
 					bot.updateRecursively(tupleList, transaction);
 				}
 			}
-        }
+		}
 
 		private void updateRecursively(TupleList tupleList, Transaction transaction) throws SQLException {
 			// Delete any deleted tuples...
@@ -733,17 +733,17 @@ public class RelationalSubsystem implements Subsystem {
 					tupleIdList.append(tuple.getId());
 				}
 				transaction.update("tupleDeleteList",
-						"{TableName}", tableName,
-						"{TupleIdList}", tupleIdList.toString());
+				        "{TableName}", tableName,
+				        "{TupleIdList}", tupleIdList.toString());
 				deletedTuples.clear();
 			}
-			
+
 			// Now visit the tuples...
 			for(final Tuple tuple : tupleList) {
 				updateRecursively(tuple, transaction);
 			}
-			
-        }
+
+		}
 
 		private String truncate(String string, int truncateLength) {
 			final int currentLength = string.length();
@@ -751,10 +751,10 @@ public class RelationalSubsystem implements Subsystem {
 		}
 
 		@SuppressWarnings("unused")
-        void createTables(EntityType entityType, Transaction transaction) throws SQLException {
+		void createTables(EntityType entityType, Transaction transaction) throws SQLException {
 			createTables((TupleType)entityType, transaction);
 		}
-		
+
 		private void createTables(TupleType tuple, Transaction transaction) throws SQLException {
 			// CREATE TABLE {TableName}(\
 			// Rsvd_id INT PRIMARY KEY\
@@ -778,10 +778,10 @@ public class RelationalSubsystem implements Subsystem {
 			}
 
 			transaction.update(
-					"tupleTypeCreateTable",
-					"{TableName}", tableName,
-					"{NonRootColumns}", nonRootColumns,
-					"{KtcvColumns}", ktcvColumns.toString());
+			        "tupleTypeCreateTable",
+			        "{TableName}", tableName,
+			        "{NonRootColumns}", nonRootColumns,
+			        "{KtcvColumns}", ktcvColumns.toString());
 
 			// Now create the child tuples recursively...
 			final Iterator<TupleType> tupleLists = tuple.getTupleTypeMemberIterator();
@@ -815,16 +815,16 @@ public class RelationalSubsystem implements Subsystem {
 		 */
 		void delete(Tuple tuple, Transaction transaction) {
 			transaction.update(
-					"tupleDelete",
-					"{TableName}", tableName,
-					"{Id}", Integer.toString(tuple.getId()));
+			        "tupleDelete",
+			        "{TableName}", tableName,
+			        "{Id}", Integer.toString(tuple.getId()));
 		}
 
 		/**
 		 * Depth first delete of a tuple and all its children
 		 */
 		@SuppressWarnings("unused")
-        private void deleteRecursively(Tuple tuple, Transaction transaction) throws SQLException {
+		private void deleteRecursively(Tuple tuple, Transaction transaction) throws SQLException {
 
 			// Women and children first...
 			final Iterator<TupleList> tupleLists = tuple.getTupleListIterator();
@@ -842,15 +842,15 @@ public class RelationalSubsystem implements Subsystem {
 		private int getNextId(Transaction transaction, EntityType entity) throws SQLException {
 			// SELECT nextId FROM entity WHERE id={Id}
 			final ResultSet rs = transaction.query(
-					"entityGetNextId",
-					"{Id}", Integer.toString(entity.getId()));
+			        "entityGetNextId",
+			        "{Id}", Integer.toString(entity.getId()));
 			rs.next();
 			final int result = rs.getInt(1);
 			transaction.update("entitySetNextId", "{Id}", Integer.toString(entity.getId()),
 			        "{NextId}", Integer.toString(result + 1));
 			return result;
 		}
-		
+
 	}
 
 }

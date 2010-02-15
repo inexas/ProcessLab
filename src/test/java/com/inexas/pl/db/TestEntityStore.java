@@ -15,7 +15,7 @@ public class TestEntityStore extends AbstractProcessLabTest {
 		assertNotNull(store);
 	}
 	
-	@Test
+    @Test
 	public void createLoadDeleteEntityType() {
 		final List<AbstractType> members = new ArrayList<AbstractType>();
 		final KtcvType<?> ktcv = KtcvType.getKtcvType(DataType.STRING, "String");
@@ -28,6 +28,11 @@ public class TestEntityStore extends AbstractProcessLabTest {
 		
 		store.create(entity);
 		assertTrue(entity.getId() != 0);
+
+		@SuppressWarnings("unchecked")
+		final Ktcv<String> retrievedKtcv = (Ktcv<String>)entity.getKtcv("String");
+		retrievedKtcv.setValue("Hello world");
+		store.update(entity);
 		
 		store.delete(entity);
 		assertTrue(entity.getId() == 0);
