@@ -7,7 +7,7 @@ package com.inexas.pl.entity;
  * 
  * @author keith
  */
-public class DateInputFormatConstraint implements Constraint {
+public class DateInputFormatConstraint extends Constraint {
 	public static final String NAME = "date.input.format";
 	private final String pattern;
 
@@ -15,16 +15,24 @@ public class DateInputFormatConstraint implements Constraint {
 		this.pattern = pattern;
 	}
 
-	public void check(Object toCheck) throws Exception {
+	@Override
+    public void check(Object toCheck) {
 		// nothing to do
 	}
 
-	public String getName() {
+	@Override
+    public String getName() {
 		return NAME;
 	}
 
 	public String getValue() {
 		return pattern;
 	}
+
+	@Override
+    public void toWiki(StringBuilder sb) {
+	    // !todo Implement me
+	    throw new RuntimeException("How about implementing me?!");
+    }
 
 }

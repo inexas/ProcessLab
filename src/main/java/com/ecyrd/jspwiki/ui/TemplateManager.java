@@ -182,7 +182,7 @@ public class TemplateManager
 	 * 
 	 * @param sContext
 	 *            The servlet context
-	 * @param name
+	 * @param key
 	 *            The name of the resource
 	 * @return The name of the resource which was found.
 	 */

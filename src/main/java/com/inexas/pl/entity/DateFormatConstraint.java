@@ -4,86 +4,83 @@ import java.text.*;
 import java.util.*;
 
 /**
- * The date format constraint is for use with date KTCVs only. By default date
- * parsing and formatting is set to the current locale.
- * 
- * @author keith
+ * The date format constraint is for use with date NTCVs only. 
+ * By default date parsing and formatting is set to the current
+ * locale.
  */
-public class DateOutputFormatConstraint extends Constraint {
-	public static final String NAME = "date.output.format";
+public class DateFormatConstraint extends Constraint {
+	public static final String NAME = "dateformat";
 	private final DateFormat parser, formatter;
 	private final String format;
-
+	
 	/**
-	 * Create a new date format constraint with a default locale parsing and
-	 * formatting pattern.
+	 * Create a new date format constraint with a default locale
+	 * parsing and formatting pattern.
 	 * 
 	 * @see SimpleDateFormat
 	 * @see #DateFormatConstraint(String)
 	 * @see #DateFormatConstraint(String,String)
 	 */
-	public DateOutputFormatConstraint() {
+	public DateFormatConstraint() {
 		parser = formatter = new SimpleDateFormat();
 		format = "simple";
 	}
-
+	
 	/**
-	 * Create a new date format constraint with a matching parsing and
-	 * formatting pattern. The patterns are the same as the SimpleDateFormat
-	 * class
+	 * Create a new date format constraint with a matching parsing
+	 * and formatting pattern. The patterns are the same as the 
+	 * SimpleDateFormat class
 	 * 
-	 * @param pattern
-	 *            the parsing and formatting pattern
+	 * @param pattern the parsing and formatting pattern
 	 * @see SimpleDateFormat
 	 * @see #DateFormatConstraint()
 	 * @see #DateFormatConstraint(String)
 	 * @see #DateFormatConstraint(String,String)
 	 */
-	public DateOutputFormatConstraint(String pattern) {
+	public DateFormatConstraint(String pattern) {
 		parser = formatter = new SimpleDateFormat(pattern);
 		format = pattern;
 	}
-
+	
 	/**
-	 * Create a new date format constraint with a different parsing and
-	 * formatting pattern. The patterns are the same as the SimpleDateFormat
-	 * class
+	 * Create a new date format constraint with a different parsing
+	 * and formatting pattern. The patterns are the same as the 
+	 * SimpleDateFormat class
 	 * 
-	 * @param parsePattern
-	 *            the parsing pattern
-	 * @param formatPattern
-	 *            the formatting pattern
+	 * @param parsePattern the parsing pattern
+	 * @param formatPattern the formatting pattern
 	 * @see SimpleDateFormat
 	 * @see #DateFormatConstraint()
 	 * @see #DateFormatConstraint(String)
 	 */
-	public DateOutputFormatConstraint(String parsePattern, String formatPattern) {
+	public DateFormatConstraint(String parsePattern, String formatPattern) {
 		parser = new SimpleDateFormat(parsePattern);
 		formatter = new SimpleDateFormat(formatPattern);
 		format = parsePattern + ", " + formatPattern;
 	}
-
+	
 	public Date parse(String input) throws ParseException {
 		return parser.parse(input);
 	}
-
+	
 	public String format(Date output) {
 		return formatter.format(output);
 	}
 
 	@Override
-    public String getName() {
+	public String getName() {
 		return NAME;
 	}
 
 	@Override
-    public void check(Object toCheck) {
+	public void check(Object toCheck) {
 		// nothing to do, all Dates have valid format
 	}
 
 	/**
-	 * Return true if this date format contains time. This can be combined with
-	 * isDate() if the format contains both date and time
+	 * Return true if this date format contains time. This can
+	 * be combined with isDate() if the format contains both
+	 * date and time
 	 * 
 	 * @return true if this date format contains time
 	 * @see #isDate()
@@ -94,8 +91,9 @@ public class DateOutputFormatConstraint extends Constraint {
 	}
 
 	/**
-	 * Return true if this date format contains the date. This can be combined
-	 * with isTime() if the format contains both date and time
+	 * Return true if this date format contains the date. This can
+	 * be combined with isTime() if the format contains both
+	 * date and time
 	 * 
 	 * @return true if this date format contains time
 	 * @see #isTime()
@@ -104,7 +102,7 @@ public class DateOutputFormatConstraint extends Constraint {
 		// todo implement me!
 		throw new RuntimeException("Implement me!");
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return NAME.hashCode();
@@ -122,8 +120,8 @@ public class DateOutputFormatConstraint extends Constraint {
 		}
 		try {
 			// check we have the same types...
-			final DateOutputFormatConstraint rhs = (DateOutputFormatConstraint)rhsObject;
-			// both LHS and RHS are the same types, check for an exact match...
+			final DateFormatConstraint rhs = (DateFormatConstraint)rhsObject;
+			// both lhs and rhs are the same types, check for an exact match...
 			return formatter.equals(formatter) && parser.equals(rhs.parser);
 		} catch(ClassCastException e) {
 			// not the same types: false...
@@ -137,13 +135,8 @@ public class DateOutputFormatConstraint extends Constraint {
 	}
 
 	@Override
-    public void toWiki(StringBuilder sb) {
+	public void toWiki(StringBuilder sb) {
 		sb.append("dateformat ");
 		sb.append(format);
-	}
-
-	public String getValue() {
-		// todo Auto-generated method stub
-		return null;
 	}
 }

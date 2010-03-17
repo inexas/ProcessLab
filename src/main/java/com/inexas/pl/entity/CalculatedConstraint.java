@@ -8,7 +8,7 @@ import java.util.*;
  * @author keith
  * 
  */
-public class CalculatedConstraint implements Constraint {
+public class CalculatedConstraint extends Constraint {
 	public final static String NAME = "calculated";
 	private final String expressionText;
 
@@ -21,11 +21,13 @@ public class CalculatedConstraint implements Constraint {
 	/**
 	 * Values cannot be set
 	 */
-	public void check(Object toCheck) {
+	@Override
+    public void check(Object toCheck) {
 		throw new RuntimeException("Value is calculated and cannot be set");
 	}
 
-	public String getName() {
+	@Override
+    public String getName() {
 		return NAME;
 	}
 
@@ -48,5 +50,11 @@ public class CalculatedConstraint implements Constraint {
 		// return visitor.getDependencies();
 		return null;
 	}
+
+	@Override
+    public void toWiki(StringBuilder sb) {
+	    // !todo Implement me
+	    throw new RuntimeException("How about implementing me?!");
+    }
 
 }

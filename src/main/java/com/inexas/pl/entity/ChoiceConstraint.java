@@ -6,7 +6,7 @@ import java.util.*;
  * Choice is a set of strings that are read in from the constraints that limit
  * the set of values
  */
-public class ChoiceConstraint implements Constraint {
+public class ChoiceConstraint extends Constraint {
 	public final static String NAME = "choice";
 	private final String choice[];
 	private final String value;
@@ -21,7 +21,8 @@ public class ChoiceConstraint implements Constraint {
 		}
 	}
 
-	public void check(Object toCheck) throws Exception {
+	@Override
+    public void check(Object toCheck) {
 		boolean found = false;
 		for(int i = choice.length; --i >= 0;) {
 			if(choice[i].equals(toCheck)) {
@@ -36,7 +37,8 @@ public class ChoiceConstraint implements Constraint {
 		}
 	}
 
-	public String getName() {
+	@Override
+    public String getName() {
 		return NAME;
 	}
 
@@ -47,5 +49,11 @@ public class ChoiceConstraint implements Constraint {
 	public String[] getChoice() {
 		return choice;
 	}
+
+	@Override
+    public void toWiki(StringBuilder sb) {
+	    // !todo Implement me
+	    throw new RuntimeException("How about implementing me?!");
+    }
 
 }

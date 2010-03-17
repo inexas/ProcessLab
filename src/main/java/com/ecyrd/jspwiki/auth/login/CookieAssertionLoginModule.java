@@ -152,7 +152,7 @@ public class CookieAssertionLoginModule extends AbstractLoginModule {
 	 * 
 	 * @param response
 	 *            The Servlet response
-	 * @param name
+	 * @param key
 	 *            The name to write into the cookie.
 	 */
 	public static void setUserCookie(HttpServletResponse response, String n) {

@@ -8,7 +8,7 @@ import java.util.*;
 public enum DataType {
 	BOOLEAN("Boolean", 0, false),
 	DOUBLE("Double", 1, false),
-	DATE("Sate", 2, false),
+	DATETIME("DateTime", 2, false),
 	INTEGER("Integer", 3, true),
 	LONG("Long", 4, true),
 	SHORT("Short", 5, true),
@@ -22,7 +22,7 @@ public enum DataType {
 		typeLookup.put("java.lang.Boolean", DataType.BOOLEAN);
 		typeLookup.put("boolean", DataType.BOOLEAN);
 		
-		typeLookup.put("Date", DataType.DATE);
+		typeLookup.put("Date", DataType.DATETIME);
 		
 		typeLookup.put("Double", DataType.DOUBLE);
 		typeLookup.put("java.lang.Double", DataType.DOUBLE);
@@ -48,7 +48,7 @@ public enum DataType {
 		classes = new Class<?>[8];
 		classes[DataType.BOOLEAN.asInt] = boolean.class;
 		classes[DataType.DOUBLE.asInt] = double.class;
-		classes[DataType.DATE.asInt] = Date.class;
+		classes[DataType.DATETIME.asInt] = Date.class;
 		classes[DataType.INTEGER.asInt] = int.class;
 		classes[DataType.LONG.asInt] = long.class;
 		classes[DataType.SHORT.asInt] = short.class;

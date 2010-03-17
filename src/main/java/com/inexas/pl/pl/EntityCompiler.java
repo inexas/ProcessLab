@@ -100,7 +100,7 @@ public class EntityCompiler {
 					break;
 					
 				case EntityParser.DATE:
-					dataType = DataType.DATE;
+					dataType = DataType.DATETIME;
 					break;
 					
 				case EntityParser.DOUBLE:

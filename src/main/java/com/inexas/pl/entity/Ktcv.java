@@ -185,4 +185,9 @@ public class Ktcv<T> extends Instance implements TupleMember, ChangeListener {
 		dirty = false;
 	}
 
+	public boolean isReadWrite() {
+	    // !todo Implement me
+	    throw new RuntimeException("How about implementing me?!");
+    }
+
 }

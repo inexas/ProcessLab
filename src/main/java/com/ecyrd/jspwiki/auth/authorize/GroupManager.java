@@ -308,7 +308,7 @@ public final class GroupManager implements Authorizer, WikiEventListener {
 	 * do that, use {@link #setGroup(WikiSession, Group)}.
 	 * </p>
 	 * 
-	 * @param name
+	 * @param key
 	 *            the name of the group to construct
 	 * @param memberLine
 	 *            the line of text containing the group membership list

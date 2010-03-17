@@ -19,7 +19,7 @@ public class KtcvType<T> extends AbstractType {
 		case BOOLEAN:
 			result = new KtcvType<Boolean>(type, key);
 			break;
-		case DATE:
+		case DATETIME:
 			result = new KtcvType<Date>(type, key);
 			break;
 		case DOUBLE:
