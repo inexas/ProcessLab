@@ -163,7 +163,7 @@
 
    <servlet>
        <servlet-name>Spreadsheet</servlet-name>
-       <servlet-class>com.inexas.pl.SpreadsheetServlet</servlet-class>
+       <servlet-class>com.inexas.pl.bi.SpreadsheetServlet</servlet-class>
    </servlet>
 
 	<servlet-mapping>
